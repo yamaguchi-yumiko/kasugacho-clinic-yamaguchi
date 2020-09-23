@@ -1,2 +1,2 @@
 # kasugacho-clinic-yamaguchi　
-２０２０.8.18　実務課題練習
+2020.8.18　実務課題練習
