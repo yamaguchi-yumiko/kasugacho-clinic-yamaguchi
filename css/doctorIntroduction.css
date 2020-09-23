@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+@media screen and (min-width:768px) {
+
+    /* 蛹ｻ蟶ｫ邏ｹ莉句�譛� */
+    section h2 {
+        font-size: 30px;
+    }
+
+    .flexbox {
+        flex-wrap: wrap;
+    }
+
+    #hospitalGuide .danraku{
+        margin-bottom: 15px;
+    }
+
+    #hospitalGuide h3{
+        margin: 20px 0 15px 0;
+    }
+    #hospitalGuide h3 + p{
+        margin-bottom: 15px;
+    }
+
+    #hospitalGuide img{
+        height: 335px;
+    }
+
+    #hospitalGuide ul{
+        padding-left: 20px;
+    }
+
+    #hospitalGuide ul li{
+        list-style: unset;
+    }
+
+    #hospitalGuide .explain h2 span{
+        font-size: 16px;
+    }
+
+    #hospitalGuide .explain {
+        margin-left: 3%;
+    }
+
+    #hospitalGuide .explain-box{
+        margin-left: 2.5vw;
+    }
+
+    #hospitalGuide .one-thing {
+        margin-bottom: 15px;
+    }
+
+
+    /* 蛹ｻ蟶ｫ邏ｹ莉句句挨 */
+    #hospitalGuide .docter-woman{
+        margin: 60px 20px 20px 20px;
+    }
+
+    #hospitalGuide .docter-man{
+        margin:  30px 20px 20px 20px;
+    }
+
+    #hospitalGuide .docter-woman .one-thing {
+        margin-top: 60px;
+    }
+
+    /* 螟匁擂諡�ｽ灘現蟶ｫ */
+    .docter-schedule{
+        margin: 20px;
+    }
+
+    .docter-schedule .schedule {
+        border: 1px solid #fff;
+        margin: 10px 0px 20px 0px;
+    }
+
+    .docter-schedule .schedule .row{
+    width: 100%;
+    }
+
+    .schedule dl {
+    display: flex;
+    text-align: center;
+    font-size: 30px;
+    border-bottom: 1px solid #fff;
+    }
+    .schedule dl:last-child {
+    border-bottom: none;
+    }
+    .schedule dl dt {
+    padding:9x 1px;
+    background: #46c9ba none repeat scroll 0 0;
+    color: #fff;
+    font-weight: bold;
+    border-right: 1px solid #fff;
+    }
+
+    .schedule dl dd:nth-of-type(1) {
+        font-size: 30px;
+    }
+
+    .schedule dl dd {
+        padding: 25px 1px 10px 1px;
+        border-right: 1px solid #fff;
+        color: #fff;
+        font-size: 23px;
+        }
+
+    .orange{
+        background-color: #f39800;
+    }
+
+    .blue{
+        background-color:#6ecef1;
+    }
+
+    .pink{
+        background-color:#f16eb5;
+    }
+
+    .docter-schedule .caution{
+        color: #e60012;
+        margin: 20px 0 90px 0;
+    }
+    .docter-schedule p{
+        font-size: 20px;
+    }
+
+}
+
+@media screen and (min-width:768px) and (max-width:999px) {
+/* 蛹ｻ蟶ｫ邏ｹ莉� */
+    section h2 {
+        font-size: 3vw;
+    }
+
+    #hospitalGuide img {
+        height: 33.5vw;
+    }
+
+    #hospitalGuide .explain h2 span{
+        font-size: 1.6vw;
+    }
+
+    #hospitalGuide .rs-1000 {
+        display: block;
+    }
+
+/* 螟匁擂諡�ｽ灘現蟶ｫ */
+    .docter-schedule p {
+        font-size: 2vw;
+    }
+}

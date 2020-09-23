@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+@media screen and (min-width:768px) {
+
+    /* 繝輔か繝ｳ繝医し繧､繧ｺ */
+    #hospitalGuide p{
+        font-size: 15px;
+    }
+    /* 逞�劼縺ｮ逅�ｿｵ */
+    #hospitalGuide .waiting-room{
+        margin:9px 8px;
+        width: 97%;
+    }
+
+    #hospitalGuide .philosophy h2 {
+        margin-left: 10px;
+    }
+
+    #hospitalGuide .philosophy {
+        margin: 15px 30px;
+    }
+
+    #hospitalGuide .philosophy p:nth-of-type(1) {
+        margin: 5px 0 40px 0;
+    }
+
+    #hospitalGuide .philosophy p:nth-of-type(3) {
+        text-align: right;
+        margin: 20px 0;
+    }
+
+    #hospitalGuide .flexbox{
+        margin: 0 20px 60px;
+    }
+
+    #hospitalGuide .flexbox img{
+        margin: 10px 0;
+        width: 95%;
+    }
+
+    #hospitalGuide .flexbox p{
+        width: 95%;
+    }
+
+    #hospitalGuide .flexbox p span{
+        font-size: 12px;
+    }
+
+    #hospitalGuide .flexbox .parking{
+        width: 100%
+    }
+
+    #hospitalGuide .flexbox .examination-room{
+        width: 100%
+    }
+}

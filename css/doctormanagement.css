@@ -1,0 +1,310 @@
+@charset "UTF-8";
+
+/*-------------------------
+	共通
+-------------------------*/
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+body,
+p,
+ul,
+li,
+h1,
+h2,
+h3,
+dd,
+dl,
+dt,
+aside {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ",
+    Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #323131;
+}
+
+.header {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navlist ul,
+.list_nav ul {
+  background: #fff;
+  display: flex;
+}
+
+.navlist li {
+  width: 170px;
+  padding: 5px 0 5px 0;
+  margin-right: 5px;
+  background-color: #000;
+}
+
+.list_nav li {
+  width: 150px;
+  padding: 5px 0 5px 0;
+  margin-right: 5px;
+  background-color: #666;
+}
+
+.list_nav li:nth-of-type(1n + 2) {
+  background-color: #cccccc;
+}
+
+.list_nav {
+  margin-bottom: 30px;
+}
+
+.navlist li a,
+.list_nav li a {
+  font-size: 18px;
+  color: #ffff;
+  display: block;
+}
+
+.conteaner {
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+.main {
+  height: 870px;
+  background: #fff;
+  padding-top: 70px;
+}
+
+.footer {
+  background: #fff;
+  text-align: right;
+  padding-right: 5px;
+}
+
+.submid_conteaner {
+  display:flex;
+}
+
+.submid_conteaner p:nth-of-type(1n + 2){
+  margin-left: 40px;
+}
+
+/*-------------------------
+ ログイン画面
+-------------------------*/
+
+.loginconteaner {
+  background-color: #f39800;
+}
+
+.logintop {
+  max-width: 1200px;
+  font-size: 25px;
+  margin: auto;
+  text-align: center;
+}
+
+.logintop h1 {
+  font-size: 45px;
+  margin: 0 0 0 100px;
+}
+
+.loginmain {
+  margin-top: 50px;
+  padding: 0 0 0 300px;
+}
+
+.loginmain h1 {
+  margin-bottom: 30px;
+}
+
+.loginform form {
+  margin-left: 100px;
+}
+
+.loginform input {
+  font-size: 20px;
+}
+
+.errortop {
+  margin-bottom: 10px;
+}
+
+.loginsubmit input {
+  margin: 30px 360px 0 0;
+}
+
+.error {
+  color: #f00;
+  margin-right: 250px;
+}
+
+/*-------------------------
+ トップ画面
+-------------------------*/
+.conteaner {
+  background: #f39800;
+  color: #323131;
+}
+
+.section {
+  width: 600px;
+  height: 300px;
+  margin: 100px auto 20px auto;
+  border: 1px solid #000;
+}
+
+/*-------------------------
+ 医師管理画面
+-------------------------*/
+
+.list_conteaner {
+  background: #f39800;
+  max-width: 1300px;
+  margin: auto;
+  text-align: center;
+}
+
+.list_main {
+  background: #fff;
+  padding: 20px 0 30px 0;
+}
+
+.listbutton {
+  text-align: left;
+  margin-left: 60px;
+}
+
+.listbutton a {
+  width: 200px;
+  height: 30px;
+  font-size: 20px;
+  text-align: center;
+  background: #cccccc;
+  color: #666;
+  padding: 4px 0 4px 0;
+  display: inline-block;
+  box-shadow: 2px 2px 4px gray;
+  border-radius: 5px;
+}
+
+.listbox {
+  width: 1200px;
+  margin: auto;
+  border-collapse: collapse;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.sort a {
+  color: #535353;
+  background: #cccccc;
+  border: 1px solid #535353;
+  margin-left: 5px;
+  padding: 2px;
+}
+
+.listbox th,
+.listbox td {
+  padding: 10px 20px 10px 20px;
+  border: 1px solid #666;
+}
+
+.buttun,
+.add_buttun {
+  width: 60px;
+  height: 30px;
+  display: inline-block;
+  background: #cccccc;
+  color: #666;
+  text-align: center;
+  padding-top: 3px;
+  margin-left: 10px;
+  box-shadow: 2px 2px 4px #666;
+  border-radius: 8px;
+}
+
+.add_buttun {
+  width: 80px;
+}
+
+/*-------------------------
+ 医師管理登録/編集
+-------------------------*/
+
+.add_conteaner {
+  background: #f39800;
+  max-width: 1300px;
+  margin: auto;
+  text-align: center;
+}
+
+.add_main {
+  height: 900px;
+  background: #fff;
+  padding-top: 20px;
+}
+
+.add_main form p {
+  text-align: left;
+  margin-left: 150px;
+}
+
+.add_table {
+  width: 1000px;
+  border-collapse: collapse;
+  margin: 30px auto 0 auto;
+}
+
+.add_table th {
+  width: 210px;
+}
+
+.add_table textarea {
+  margin-top: 5px;
+}
+
+.add_table tr,.add_table th{
+  border: 1px solid #1c1c1c;
+}
+
+.add_table td {
+  text-align: left;
+}
+
+.submit {
+  width: 220px;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
+  background: #cccccc;
+  box-shadow: 2px 2px 4px gray;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.complete {
+  margin-top: 150px;
+  font-size: 25px;
+}
+
+/*-------------------------
+ 医師管理完了
+-------------------------*/
+.done_main {
+  height: 650px;
+  background: #fff;
+  padding-top: 20px;
+}
