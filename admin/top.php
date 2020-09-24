@@ -26,7 +26,7 @@ auth_confirm();
             <ul>
                 <li><a href="top.php">top</a></li>
                 <li><a href="doctor_list.php">医師管理</a></li>
-                <li><a href="consultation_time_list.php">診療時間管理</a></li>
+                <li><a href="consultation_time_list.php?time">診療時間管理</a></li>
             </ul>
         </div>
     </header>

@@ -38,6 +38,20 @@ function getPage()
         if (isset($_GET['orderby'])) {
             return '<p class="listbutton"><a href="#">' . '医師管理リスト' . '</a></p>';
         }
+
+        if (isset($_GET['time'])) {
+            return '<p class="listbutton"><a href="#">' . '診療時間管理リスト' . '</a></p>';
+        }
+
+        if (isset($_GET['time_edit'])) {
+            return '<p class="listbutton"><a href="#">' . '診療時間編集' . '</a></p>';
+        }
+        if (isset($_GET['time_conf'])) {
+            return '<p class="listbutton"><a href="#">' . '診療時間編集確認' . '</a></p>';
+        }
+        if (isset($_GET['time_done'])) {
+            return '<p class="listbutton"><a href="#">' . '診療時間編集完了' . '</a></p>';
+        }
     } else {
         return '<p class="listbutton"><a href="#">' . '医師管理リスト' . '</a></p>';
     }

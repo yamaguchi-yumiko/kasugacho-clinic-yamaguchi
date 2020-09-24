@@ -27,7 +27,7 @@ auth_confirm();
             <ul>
                 <li><a href="top.php">top</a></li>
                 <li><a href="doctor_list.php">医師管理</a></li>
-                <li><a href="consultation_time_list.php">診療時間管理</a></li>
+                <li><a href="consultation_time_list.php?time">診療時間管理</a></li>
             </ul>
         </div>
     </header>
@@ -40,39 +40,118 @@ auth_confirm();
             </ul>
         </div>
         <?= getPage(); ?>
-        <table class="consultation-listbox">
-            <tr>
-                <th></th>
-                <th>月</th>
-                <th>火</th>
-                <th>水</th>
-                <th>木</th>
-                <th>金</th>
-                <th>土</th>
-                <th>日・祝</th>
-            </tr>
-            <tr>
-                <td>午前<br>09:00<br>〜<br>12:00</td>
-                <td>●</td>
-                <td>●</td>
-                <td>●</td>
-                <td>●</td>
-                <td>●</td>
-                <td>●</td>
-                <td>●</td>
-            </tr>
-            <tr>
-                <td>午前<br>15:00<br>〜<br>18:00</td>
-                <td>●</td>
-                <td>●</td>
-                <td>●</td>
-                <td>●</td>
-                <td>●</td>
-                <td>●</td>
-                <td>●</td>
-            </tr>
-        </table>
-        <p class="time-buttun"><a href="consultation_time_edit.php">編集</a></p>
+        <form action="" method="post">
+
+            <table class="consultation-edit-listbox">
+                <tr>
+                    <th></th>
+                    <th>月</th>
+                    <th>火</th>
+                    <th>水</th>
+                    <th>木</th>
+                    <th>金</th>
+                    <th>土</th>
+                    <th>日・祝</th>
+                </tr>
+                <tr>
+                    <td><input type="text" size="10">診察時間<input type="text" size="10">〜<input type="text" size="10"></td>
+                    <td>
+                        <label class="consultation-edit-label"><select name="">
+                                <option value="">診察する</option>
+                            </select></label>
+                        <span>備考</span><br><textarea cols="14" rows="4">例)17:00まで</textarea>
+                    </td>
+                    <td>
+                        <label class="consultation-edit-label"><select name="">
+                                <option value="">診察する</option>
+                            </select></label>
+                        <span>備考</span><br><textarea cols="14" rows="4">例)17:00まで</textarea>
+                    </td>
+                    <td>
+                        <label class="consultation-edit-label"><select name="">
+                                <option value="">診察する</option>
+                            </select></label>
+                        <span>備考</span><br><textarea cols="14" rows="4">例)17:00まで</textarea>
+                    </td>
+                    <td>
+                        <label class="consultation-edit-label"><select name="">
+                                <option value="">診察する</option>
+                            </select></label>
+                        <span>備考</span><br><textarea cols="14" rows="4">例)17:00まで</textarea>
+                    </td>
+                    <td>
+                        <label class="consultation-edit-label"><select name="">
+                                <option value="">診察する</option>
+                            </select></label>
+                        <span>備考</span><br><textarea cols="14" rows="4">例)17:00まで</textarea>
+                    </td>
+                    <td>
+                        <label class="consultation-edit-label"><select name="">
+                                <option value="">診察する</option>
+                            </select></label>
+                        <span>備考</span><br><textarea cols="14" rows="4">例)17:00まで</textarea>
+                    </td>
+                    <td>
+                        <label class="consultation-edit-label"><select name="">
+                                <option value="">診察する</option>
+                            </select></label>
+                        <span>備考</span><br><textarea cols="14" rows="4">例)17:00まで</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" size="10">診察時間<input type="text" size="10">〜<input type="text" size="10"></td>
+                    <td>
+                        <label class="consultation-edit-label"><select name="">
+                                <option value="">診察する</option>
+                            </select></label>
+                        <span>備考</span><br><textarea cols="14" rows="4">例)17:00まで</textarea>
+                    </td>
+                    <td>
+                        <label class="consultation-edit-label"><select name="">
+                                <option value="">診察する</option>
+                            </select></label>
+                        <span>備考</span><br><textarea cols="14" rows="4">例)17:00まで</textarea>
+                    </td>
+                    <td>
+                        <label class="consultation-edit-label"><select name="">
+                                <option value="">診察する</option>
+                            </select></label>
+                        <span>備考</span><br><textarea cols="14" rows="4">例)17:00まで</textarea>
+                    </td>
+                    <td>
+                        <label class="consultation-edit-label"><select name="">
+                                <option value="">診察する</option>
+                            </select></label>
+                        <span>備考</span><br><textarea cols="14" rows="4">例)17:00まで</textarea>
+                    </td>
+                    <td>
+                        <label class="consultation-edit-label"><select name="">
+                                <option value="">診察する</option>
+                            </select></label>
+                        <span>備考</span><br><textarea cols="14" rows="4">例)17:00まで</textarea>
+                    </td>
+                    <td>
+                        <label class="consultation-edit-label"><select name="">
+                                <option value="">診察する</option>
+                            </select></label>
+                        <span>備考</span><br><textarea cols="14" rows="4">例)17:00まで</textarea>
+                    </td>
+                    <td>
+                        <label class="consultation-edit-label"><select name="">
+                                <option value="">診察する</option>
+                            </select></label>
+                        <span>備考</span><br><textarea cols="14" rows="4">例)17:00まで</textarea>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="submid_time">
+                <p class="time-buttun"><input  type="submit" value="戻る" formaction="consultation_time_list.php"></p>
+                <p class="time-buttun"><input  type="submit" value="確認" formaction="consultation_time_conf.php?time_conf"></p>
+            </div>
+
+        </form>
+
     </main>
 
     <footer class="footer">2020 ebacrop.inc</footer>

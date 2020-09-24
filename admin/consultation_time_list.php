@@ -27,7 +27,7 @@ auth_confirm();
             <ul>
                 <li><a href="top.php">top</a></li>
                 <li><a href="doctor_list.php">医師管理</a></li>
-                <li><a href="consultation_time_list.php">診療時間管理</a></li>
+                <li><a href="consultation_time_list.php?time">診療時間管理</a></li>
             </ul>
         </div>
     </header>
@@ -72,7 +72,7 @@ auth_confirm();
                 <td>●</td>
             </tr>
         </table>
-        <p class="time-buttun"><a href="consultation_time_edit.php">編集</a></p>
+        <p class="time-buttun"><a href="consultation_time_edit.php?time_edit">編集</a></p>
     </main>
 
     <footer class="footer">2020 ebacrop.inc</footer>
