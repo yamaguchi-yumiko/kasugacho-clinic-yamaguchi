@@ -1,6 +1,11 @@
 <?php
 require_once('config.php');
 auth_confirm();
+$time = new consultationTime();
+$getTimeTable = $time->getTimetable();
+// echo '<pre>';
+// print_r($getTimeTabletable);
+// echo '</pre>';
 
 ?>
 
@@ -51,8 +56,9 @@ auth_confirm();
                 <th>土</th>
                 <th>日・祝</th>
             </tr>
+
             <tr>
-                <td>午前<br>09:00<br>〜<br>12:00</td>
+                <td><?= $getTimeTable[0]['name'] ?><br><?= $date = (new DateTime($getTimeTable[0]['start_time']))->format('H:i') ?><br>〜<br><?= $date = (new DateTime($getTimeTable[0]['end_time']))->format('H:i') ?></td>
                 <td>●</td>
                 <td>●</td>
                 <td>●</td>
@@ -62,7 +68,7 @@ auth_confirm();
                 <td>●</td>
             </tr>
             <tr>
-                <td>午前<br>15:00<br>〜<br>18:00</td>
+                <td><?= $getTimeTable[1]['name'] ?><br><?= $date = (new DateTime($getTimeTable[1]['start_time']))->format('H:i') ?><br>〜<br><?= $date = (new DateTime($getTimeTable[1]['end_time']))->format('H:i') ?></td>
                 <td>●</td>
                 <td>●</td>
                 <td>●</td>
@@ -71,6 +77,7 @@ auth_confirm();
                 <td>●</td>
                 <td>●</td>
             </tr>
+
         </table>
         <p class="time-buttun"><a href="consultation_time_edit.php?time_edit">編集</a></p>
     </main>

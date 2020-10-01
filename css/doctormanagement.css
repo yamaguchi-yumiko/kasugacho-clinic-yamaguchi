@@ -361,11 +361,6 @@ body {
   margin-top: 50px;
 }
 
-.consultation-edit-listbox textarea {
-  border-color: #bbbbbb;
-  color: #bbbbbb;
-}
-
 .consultation-edit-listbox th {
   border: 1px solid #666;
 }
