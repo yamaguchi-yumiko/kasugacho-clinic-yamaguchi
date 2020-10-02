@@ -19,6 +19,18 @@ if (!empty($_POST['edit_done'])) {
     exit;
 }
 
+//登録確認画面の戻るボタンが押されたら登録ページへリダイレクト
+if (isset($_POST['add_return'])) {
+    header("Location: doctor_edit.php?add");
+    exit;
+}
+
+//編集確認画面の戻るボタンが押されたら編集ページへリダイレクト
+if (isset($_POST['edit_return'])) {
+    header("Location: doctor_edit.php?id=$_GET[id]");
+    exit;
+}
+
 //アップデート時の現在時刻を取得
 $DateTime = new DateTime();
 
@@ -112,7 +124,7 @@ $DateTime = new DateTime();
                     </tr>
                 </table>
                 <div class="submid_conteaner">
-                    <p><input class="submit" type="submit" name="add_return" value="戻る" formaction="doctor_edit.php"></p>
+                    <p><input class="submit" type="submit" name="add_return" value="戻る"></p>
                     <p><input class="submit" type="submit" name="add_done" value="登録完了する"></p>
                 </div>
             <?php else : ?>
@@ -170,7 +182,7 @@ $DateTime = new DateTime();
                         </tr>
                     </table>
                     <div class="submid_conteaner">
-                        <p><input class="submit" type="submit" name="add_return" value="戻る" formaction="doctor_edit.php?id=<?=h($_GET['id'])?>"></p>
+                        <p><input class="submit" type="submit" name="edit_return" value="戻る"></p>
                         <p><input class="submit" type="submit" name="edit_done" value="編集を完了する"></p>
                     </div>
                 </form>

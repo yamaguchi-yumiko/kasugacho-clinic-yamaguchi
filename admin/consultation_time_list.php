@@ -2,9 +2,9 @@
 require_once('config.php');
 auth_confirm();
 $time = new consultationTime();
-$getTimeTable = $time->getTimetable();
+$time_table  = $time->getTimetable();
 // echo '<pre>';
-// print_r($getTimeTabletable);
+// print_r($time_table table);
 // echo '</pre>';
 
 ?>
@@ -58,7 +58,7 @@ $getTimeTable = $time->getTimetable();
             </tr>
 
             <tr>
-                <td><?= $getTimeTable[0]['name'] ?><br><?= $date = (new DateTime($getTimeTable[0]['start_time']))->format('H:i') ?><br>〜<br><?= $date = (new DateTime($getTimeTable[0]['end_time']))->format('H:i') ?></td>
+                <td><?= $time_table [0]['name'] ?><br><?= $date = (new DateTime($time_table [0]['start_time']))->format('H:i') ?><br>〜<br><?= $date = (new DateTime($time_table [0]['end_time']))->format('H:i') ?></td>
                 <td>●</td>
                 <td>●</td>
                 <td>●</td>
@@ -68,7 +68,7 @@ $getTimeTable = $time->getTimetable();
                 <td>●</td>
             </tr>
             <tr>
-                <td><?= $getTimeTable[1]['name'] ?><br><?= $date = (new DateTime($getTimeTable[1]['start_time']))->format('H:i') ?><br>〜<br><?= $date = (new DateTime($getTimeTable[1]['end_time']))->format('H:i') ?></td>
+                <td><?= $time_table [1]['name'] ?><br><?= $date = (new DateTime($time_table [1]['start_time']))->format('H:i') ?><br>〜<br><?= $date = (new DateTime($time_table [1]['end_time']))->format('H:i') ?></td>
                 <td>●</td>
                 <td>●</td>
                 <td>●</td>

@@ -7,6 +7,18 @@ if (isset($_GET['id'])) {
     $doctor_id = $doctorInfo->getDoctorId($_GET['id']);
 }
 
+//登録画面の戻るボタンが押されたらリストページへリダイレクト
+if (isset($_POST['add_return'])) {
+    header("Location: doctor_list.php");
+    exit;
+}
+
+//編集画面の戻るボタンが押されたらリストページへリダイレクト
+if (isset($_POST['edit_return'])) {
+    header("Location: doctor_list.php");
+    exit;
+}
+
 ?>
 <!DOCTYPE HTML>
 <html lang="ja">
@@ -89,7 +101,7 @@ if (isset($_GET['id'])) {
                     </tr>
                 </table>
                 <div class="submid_conteaner">
-                    <p><input class="submit" type="submit" name="" value="戻る" formaction="doctor_list.php"></p>
+                    <p><input class="submit" type="submit" name="add_return" value="戻る" ></p>
                     <p><input class="submit" type="submit" value="確認画面へ" formaction="doctor_conf.php"></p>
                 </div>
             </form>
@@ -139,7 +151,7 @@ if (isset($_GET['id'])) {
                         </tr>
                     </table>
                     <div class="submid_conteaner">
-                        <p><input class="submit" type="submit" value="戻る" formaction="doctor_list.php"></p>
+                        <p><input class="submit" type="submit" name="edit_return" value="戻る"></p>
                         <p><input class="submit" type="submit" value="確認画面へ" formaction="doctor_conf.php?id=<?=$doctor_id['id']?>"></p>
                     </div>
 
@@ -191,7 +203,7 @@ if (isset($_GET['id'])) {
                     </table>
 
                     <div class="submid_conteaner">
-                        <p><input class="submit" type="submit" name="" value="戻る" formaction="doctor_list.php"></p>
+                        <p><input class="submit" type="submit" name="edit_return" value="戻る" ></p>
                         <p><input class="submit" type="submit" value="確認画面へ" formaction="doctor_conf.php?id=<?=$doctor_id['id']?>"></p>
                     </div>
                 </form>

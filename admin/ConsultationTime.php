@@ -47,5 +47,6 @@ class ConsultationTime extends Model
         $stm = $this->dbh->prepare($sql);
         return $stm->execute($data);
     }
-
 }
+
+
