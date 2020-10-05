@@ -17,6 +17,10 @@ function getPage()
         if (isset($_POST['edit_check'])) {
             return '<p class="listbutton"><a href="#">' . '医師名簿編集確認' . '</a></p>';
         }
+
+        if (isset($_POST['time_conf'])) {
+            return '<p class="listbutton"><a href="#">' . '診療時間編集確認' . '</a></p>';
+        }
     } elseif (!empty($_GET)) {
 
         if (isset($_GET['add'])) {
@@ -37,6 +41,19 @@ function getPage()
 
         if (isset($_GET['orderby'])) {
             return '<p class="listbutton"><a href="#">' . '医師管理リスト' . '</a></p>';
+        }
+
+        if (isset($_GET['time'])) {
+            return '<p class="listbutton"><a href="#">' . '診療時間管理リスト' . '</a></p>';
+        }
+
+        if (isset($_GET['time_edit'])) {
+            return '<p class="listbutton"><a href="#">' . '診療時間編集' . '</a></p>';
+        }
+
+
+        if (isset($_GET['time_done'])) {
+            return '<p class="listbutton"><a href="#">' . '診療時間編集完了' . '</a></p>';
         }
     } else {
         return '<p class="listbutton"><a href="#">' . '医師管理リスト' . '</a></p>';
@@ -84,5 +101,35 @@ class SortList extends Model
 
         $stm = $this->dbh->query($sql);
         return $stm->fetchAll();
+    }
+}
+
+//確認画面のvalueを数字から文字へ変換を表示
+function getSelectName($data)
+{
+    if ($data === '1') {
+        return '診察する';
+    } elseif ($data === '2') {
+        return  ' 特別時間';
+    } elseif ($data === '99') {
+        return '診察しない';
+    }
+}
+
+//timetableの時間を00:00に変換して表示
+function getDateTime($data)
+{
+    return $date = (new Datetime($data))->format('H:i');
+}
+
+//
+function getSymbol($data)
+{
+    if ($data === '1') {
+        return '<p class="circle"></p>';
+    } elseif ($data === '2') {
+        return '<p class="triangl"></p>';
+    } elseif ($data === '99') {
+        return '<p class="cross"></p>';
     }
 }
