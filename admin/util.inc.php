@@ -8,57 +8,46 @@ function h($string)
 //リスト管理のボタン表示
 function getPage()
 {
-    if (!empty($_POST)) {
 
-        if (isset($_POST['add_check'])) {
-            return '<p class="listbutton"><a href="#">' . '医師名簿登録確認' . '</a></p>';
-        }
-
-        if (isset($_POST['edit_check'])) {
-            return '<p class="listbutton"><a href="#">' . '医師名簿編集確認' . '</a></p>';
-        }
-
-        if (isset($_POST['time_conf'])) {
-            return '<p class="listbutton"><a href="#">' . '診療時間編集確認' . '</a></p>';
-        }
-    } elseif (!empty($_GET)) {
-
-        if (isset($_GET['add'])) {
-            return '<p class="listbutton"><a href="#">' . '医師名簿登録' . '</a></p>';
-        }
-
-        if (isset($_GET['id'])) {
-            return '<p class="listbutton"><a href="#">' . '医師名簿編集' . '</a></p>';
-        }
-
-        if (isset($_GET['add_done'])) {
-            return '<p class="listbutton"><a href="#">' . '医師名簿登録完了' . '</a></p>';
-        }
-
-        if (isset($_GET['edit_done'])) {
-            return '<p class="listbutton"><a href="#">' . '医師名簿編集完了' . '</a></p>';
-        }
-
-        if (isset($_GET['orderby'])) {
-            return '<p class="listbutton"><a href="#">' . '医師管理リスト' . '</a></p>';
-        }
-
-        if (isset($_GET['time'])) {
-            return '<p class="listbutton"><a href="#">' . '診療時間管理リスト' . '</a></p>';
-        }
-
-        if (isset($_GET['time_edit'])) {
-            return '<p class="listbutton"><a href="#">' . '診療時間編集' . '</a></p>';
-        }
-
-
-        if (isset($_GET['time_done'])) {
-            return '<p class="listbutton"><a href="#">' . '診療時間編集完了' . '</a></p>';
-        }
-    } else {
-        return '<p class="listbutton"><a href="#">' . '医師管理リスト' . '</a></p>';
-    }
+if(isset($_GET['doctor'])){
+    $befor = '医師名簿';
 }
+
+if(isset($_GET['consultation'])){
+    $befor = '診療時間';
+}
+
+if(isset($_GET['list'])){
+    $afte = '管理リスト';
+}
+
+if(isset($_GET['add'])){
+    $afte = '登録';
+}
+
+if(isset($_GET['addConf'])){
+    $afte = '登録確認';
+}
+
+if(isset($_GET['addDone'])){
+    $afte = '登録完了';
+}
+
+if(isset($_GET['edit'])){
+    $afte = '編集';
+}
+
+if(isset($_GET['editConf'])){
+    $afte = '編集確認';
+}
+
+if(isset($_GET['editDone'])){
+    $afte = '編集完了';
+}
+
+return '<p class="listbutton"><a href="#">' .$befor.$afte. '</a></p>';
+}
+
 
 //医師情報一覧のソート機能
 class SortList extends Model
@@ -66,9 +55,7 @@ class SortList extends Model
 
     public function sortInfo()
     {
-
         $this->connect();
-
         if (isset($_GET['orderby'])) {
             //▲を押したらIDの新しい順に表示
             if ($_GET['orderby'] === 'id_asc') {
@@ -122,7 +109,7 @@ function getDateTime($data)
     return $date = (new Datetime($data))->format('H:i');
 }
 
-//
+//条件に合った記号を表示
 function getSymbol($data)
 {
     if ($data === '1') {

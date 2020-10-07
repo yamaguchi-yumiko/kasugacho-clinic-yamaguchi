@@ -30,8 +30,6 @@ class DoctorInfo extends Model
         return $stm->execute($data);
       }
 
-
-    //医師情報を編
     //編集を押した時にIDの内容を取得
     public function getDoctorId($id)
     {

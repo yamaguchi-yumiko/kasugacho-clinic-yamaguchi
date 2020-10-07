@@ -8,8 +8,8 @@ if (isset($_POST['login'])) {
         $error = 'IDかパスワードが入力されていません。';
     } else {
 
-        $admin_user = new AdminUser();
-        $result = $admin_user->userAuth();
+        $befordmin_user = new AdminUser();
+        $result = $befordmin_user->userAuth();
 
         //戻り値が存在して、フォームからのパスワードとデータベースのパスワードが一致したら
         if ($result && $_POST['pass'] == $result['login_pass']) {

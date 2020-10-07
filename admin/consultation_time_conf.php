@@ -5,15 +5,10 @@ auth_confirm();
 $time = new consultationTime();
 //タイムテーブルの時間を取得
 $time_table = $time->getTimetable();
-
+//診療時間を取得
 $consultation_time = $time->getConsultationTime();
 
-if (isset($_POST['edit_return'])) {
-    header('Location:consultation_time_edit.php?time_edit');
-    exit;
-}
-
-if (!empty($_POST['done'])) {
+if (isset($_POST['done'])) {
 
     $time->addConsultationTime([$_POST['monday'], $_POST['timetable1'], $_POST['consultation_type1'], $_POST['remarks1']]);
     $time->addConsultationTime([$_POST['tuesday'], $_POST['timetable1'], $_POST['consultation_type2'], $_POST['remarks2']]);
@@ -34,7 +29,7 @@ if (!empty($_POST['done'])) {
     $time->updateTime1([$_POST['time_name1'], $_POST['start_time1'], $_POST['end_time1']]);
     $time->updateTime2([$_POST['time_name2'], $_POST['start_time2'], $_POST['end_time2']]);
 
-    header('Location: consultation_time_done.php?time_done');
+    header('Location: consultation_time_done.php?consultation&addDone');
     exit;
 }
 
@@ -62,8 +57,8 @@ if (!empty($_POST['done'])) {
         <div class="navlist">
             <ul>
                 <li><a href="top.php">top</a></li>
-                <li><a href="doctor_list.php">医師管理</a></li>
-                <li><a href="consultation_time_list.php?time">診療時間管理</a></li>
+                <li><a href="doctor_list.php?doctor&list">医師管理</a></li>
+                <li><a href="consultation_time_list.php?consultation&list">診療時間管理</a></li>
             </ul>
         </div>
     </header>
@@ -145,7 +140,7 @@ if (!empty($_POST['done'])) {
                     <th>日・祝</th>
                 </tr>
                 <tr>
-                    <td class="time"><p><?=$_POST['time_name1']?></p>診療時間<p><?=getDateTime($_POST['start_time1']) ?></p>〜<p><?=getDateTime($_POST['end_time1'])?></p></td>
+                    <td class="time"><p><?=$_POST['time_name1']?></p>診療時間<p><?=$_POST['start_time1']?></p>〜<p><?=$_POST['end_time1']?></p></td>
                     <td>
                         <p class="consultation"><?=getSelectName($_POST['consultation_type1'])?></p>
                         <span>備考</span><br>
@@ -183,7 +178,7 @@ if (!empty($_POST['done'])) {
                     </td>
                 </tr>
                 <tr>
-                <td class="time"><p><?=$_POST['time_name2'] ?></p>診療時間<p><?=getDateTime($_POST['start_time2']) ?></p>〜<p><?=getDateTime($_POST['end_time2'])?></p></td>
+                <td class="time"><p><?=$_POST['time_name2'] ?></p>診療時間<p><?=$_POST['start_time2']?></p>〜<p><?=$_POST['end_time2']?></p></td>
                     <td>
                         <p class="consultation"><?=getSelectName($_POST['consultation_type8'])?></p>
                         <span>備考</span><br>
@@ -222,7 +217,7 @@ if (!empty($_POST['done'])) {
                 </tr>
             </table>
             <div class="submid_time">
-                <p class="time-buttun"><input type="submit" name="edit_return" value="戻る"></p>
+                <p class="time-buttun"><input type="submit"  value="戻る" name="confreturn" formaction="consultation_time_edit.php?consultation&edit"></p>
                 <p class="time-buttun"><input type="submit" name="done" value="完了"></p>
             </div>
 
