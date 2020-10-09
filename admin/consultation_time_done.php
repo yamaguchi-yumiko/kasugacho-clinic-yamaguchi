@@ -35,21 +35,13 @@ auth_confirm();
 
         <div class="list_nav">
             <ul>
-                <li><a href="#">医師管理名簿</a></li>
+                <li><a href="#">診療時間編集</a></li>
             </ul>
         </div>
 
-        <?php if (isset($_GET['addDone'])) : ?>
-
-            <?=getPage();?>
-            <p class="complete">登録が完了しました。</p>
-
-        <?php else : ?>
-
             <?=getPage();?>
             <p class="complete">編集が完了しました。</p>
-
-        <?php endif; ?>
+            
     </main>
 
     <footer class="footer">2020 ebacrop.inc</footer>

@@ -92,7 +92,7 @@ class SortList extends Model
 }
 
 //確認画面のvalueを数字から文字へ変換を表示
-function getSelectName($data)
+function changeSelectName($data)
 {
     if ($data === '1') {
         return '診察する';
@@ -104,13 +104,13 @@ function getSelectName($data)
 }
 
 //timetableの時間を00:00に変換して表示
-function getDateTime($data)
+function changeTimeFormat($data)
 {
     return $date = (new Datetime($data))->format('H:i');
 }
 
 //条件に合った記号を表示
-function getSymbol($data)
+function getMark($data)
 {
     if ($data === '1') {
         return '<p class="circle"></p>';

@@ -2,31 +2,14 @@
 
 class ConsultationTime extends Model
 {
+
     //午前・午後の時間を取得
-    public function getTimetable()
+    public function getTimeTable()
     {
         $this->connect();
         $sql = 'SELECT * FROM  timetable';
         $stm = $this->dbh->query($sql);
         return $stm->fetchAll();
-    }
-    //最初の時間帯を更新
-    public function updateTime1($date)
-    {
-        $this->connect();
-        $sql = 'UPDATE timetable SET name = ?,start_time = ?, end_time = ? WHERE id = 1';
-        $stm = $this->dbh->prepare($sql);
-        return $stm->execute($date);
-    }
-
-    //最後の時間帯を更新
-    public function updateTime2($date)
-    {
-        $this->connect();
-        $sql = 'UPDATE timetable SET
-        name = ? ,start_time = ? ,end_time = ? WHERE id = 2';
-        $stm = $this->dbh->prepare($sql);
-        return $stm->execute($date);
     }
 
     //診療時間の詳細を取得
@@ -38,13 +21,26 @@ class ConsultationTime extends Model
         return $stm->fetchAll();
     }
 
+    //診察時間帯を更新
     //診療時間のデータが入っていなければ追加、入っていれば更新
-    public function addConsultationTime($data)
+    public function editConsultationTime($data1,$data2)
     {
         $this->connect();
-        $sql = 'INSERT INTO consultation_time(week_id,timetable_id,consultation_type,remarks)
-        VALUES(?, ?, ?, ?) ON DUPLICATE KEY UPDATE week_id = VALUES(week_id), timetable_id = VALUES(timetable_id),consultation_type = VALUES(consultation_type),remarks = VALUES(remarks)';
-        $stm = $this->dbh->prepare($sql);
-        return $stm->execute($data);
+        $this->dbh->beginTransaction();
+        try {
+            $sql = 'UPDATE timetable SET name = ?,start_time = ?, end_time = ? WHERE id = ?';
+            $stm = $this->dbh->prepare($sql);
+            $stm->execute($data1);
+
+            $sql = 'INSERT INTO consultation_time(week_id,timetable_id,consultation_type,remarks)VALUES(?, ?, ?, ?) ON DUPLICATE KEY UPDATE week_id = VALUES(week_id), timetable_id = VALUES(timetable_id),consultation_type = VALUES(consultation_type),remarks = VALUES(remarks)';
+            $stma = $this->dbh->prepare($sql);
+            $stma->execute($data2);
+
+            return $this->dbh->commit();
+
+        } catch (Exception $e) {
+            $this->dbh->rollBack();
+            throw $e;
+        }
     }
 }

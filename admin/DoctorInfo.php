@@ -58,4 +58,6 @@ class DoctorInfo extends Model
         $stm = $this->dbh->prepare($sql);
         return $stm->execute([$id]);
     }
+
+
 }

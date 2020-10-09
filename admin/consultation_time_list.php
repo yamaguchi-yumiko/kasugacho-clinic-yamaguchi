@@ -3,9 +3,9 @@ require_once('config.php');
 auth_confirm();
 $time = new consultationTime();
 //タイムテーブルの時間を取得
-$time_table = $time->getTimetable();
+$timeTable = $time->getTimeTable();
 //診療時間を取得
-$consultation_time = $time->getConsultationTime();
+$consultationTime = $time->getConsultationTime();
 
 ?>
 
@@ -25,7 +25,7 @@ $consultation_time = $time->getConsultationTime();
 <body class="list_conteaner">
     <header>
         <div class="header">
-            <p>ログイン名[<?= h($_SESSION['name']) ?>]さん、ご機嫌いかがですか？</p>
+            <p>ログイン名[<?=h($_SESSION['name'])?>]さん、ご機嫌いかがですか？</p>
             <p><a href="logout.php">ログアウトする</a></p>
         </div>
         <div class="navlist">
@@ -41,7 +41,7 @@ $consultation_time = $time->getConsultationTime();
 
         <div class="list_nav">
             <ul>
-                <li><a href="#">医師管理名簿</a></li>
+                <li><a href="#">診療時間編集</a></li>
             </ul>
         </div>
         <?= getPage(); ?>
@@ -58,120 +58,120 @@ $consultation_time = $time->getConsultationTime();
             </tr>
 
             <tr>
-                <td><?= $time_table[0]['name'] ?><br><?= $date = (new DateTime($time_table[0]['start_time']))->format('H:i') ?><br>〜<br><?= $date = (new DateTime($time_table[0]['end_time']))->format('H:i') ?></td>
+                <td><?=$timeTable[0]['name']?><br><?=changeTimeFormat($timeTable[0]['start_time'])?><br>〜<br><?=changeTimeFormat($timeTable[0]['end_time'])?></td>
                 <td>
-                    <?php if (isset($consultation_time[0]['consultation_type'])) : ?>
-                        <?= getSymbol($consultation_time[0]['consultation_type']) ?>
-                        <p class="remarks_indicate"><?= $consultation_time[0]['remarks'] ?></p>
+                    <?php if (isset($consultationTime[0]['consultation_type'])) : ?>
+                        <?= getMark($consultationTime[0]['consultation_type']) ?>
+                        <p class="remarks_indicate"><?=$consultationTime[0]['remarks']?></p>
                     <?php else : ?>
-                        <?= '<p class="circle"></p>' ?>
+                        <?='<p class="circle"></p>'?>
                     <?php endif; ?>
                 </td>
                 <td>
-                    <?php if (isset($consultation_time[1]['consultation_type'])) : ?>
-                        <?= getSymbol($consultation_time[1]['consultation_type']) ?>
-                        <p class="remarks_indicate"><?= $consultation_time[1]['remarks'] ?></p>
+                    <?php if (isset($consultationTime[1]['consultation_type'])) : ?>
+                        <?= getMark($consultationTime[1]['consultation_type']) ?>
+                        <p class="remarks_indicate"><?=$consultationTime[1]['remarks']?></p>
                     <?php else : ?>
-                        <?= '<p class="circle"></p>' ?>
+                        <?='<p class="circle"></p>'?>
                     <?php endif; ?>
                 </td>
                 <td>
-                    <?php if (isset($consultation_time[2]['consultation_type'])) : ?>
-                        <?= getSymbol($consultation_time[2]['consultation_type']) ?>
-                        <p class="remarks_indicate"><?= $consultation_time[2]['remarks'] ?></p>
+                    <?php if (isset($consultationTime[2]['consultation_type'])) : ?>
+                        <?=getMark($consultationTime[2]['consultation_type'])?>
+                        <p class="remarks_indicate"><?=$consultationTime[2]['remarks']?></p>
                     <?php else : ?>
-                        <?= '<p class="circle"></p>' ?>
+                        <?='<p class="circle"></p>'?>
                     <?php endif; ?>
                 </td>
                 <td>
-                    <?php if (isset($consultation_time[3]['consultation_type'])) : ?>
-                        <?= getSymbol($consultation_time[3]['consultation_type']) ?>
-                        <p class="remarks_indicate"><?= $consultation_time[3]['remarks'] ?></p>
+                    <?php if (isset($consultationTime[3]['consultation_type'])) : ?>
+                        <?=getMark($consultationTime[3]['consultation_type'])?>
+                        <p class="remarks_indicate"><?=$consultationTime[3]['remarks']?></p>
                     <?php else : ?>
-                        <?= '<p class="circle"></p>' ?>
+                        <?='<p class="circle"></p>'?>
                     <?php endif; ?>
                 </td>
                 <td>
-                    <?php if (isset($consultation_time[4]['consultation_type'])) : ?>
-                        <?= getSymbol($consultation_time[4]['consultation_type']) ?>
-                        <p class="remarks_indicate"><?= $consultation_time[4]['remarks'] ?></p>
+                    <?php if (isset($consultationTime[4]['consultation_type'])) : ?>
+                        <?=getMark($consultationTime[4]['consultation_type'])?>
+                        <p class="remarks_indicate"><?=$consultationTime[4]['remarks']?></p>
                     <?php else : ?>
-                        <?= '<p class="circle"></p>' ?>
+                        <?='<p class="circle"></p>'?>
                     <?php endif; ?>
                 </td>
                 <td>
-                    <?php if (isset($consultation_time[5]['consultation_type'])) : ?>
-                        <?= getSymbol($consultation_time[5]['consultation_type']) ?>
-                        <p class="remarks_indicate"><?= $consultation_time[5]['remarks'] ?></p>
+                    <?php if (isset($consultationTime[5]['consultation_type'])) : ?>
+                        <?=getMark($consultationTime[5]['consultation_type'])?>
+                        <p class="remarks_indicate"><?=$consultationTime[5]['remarks']?></p>
                     <?php else : ?>
-                        <?= '<p class="circle"></p>' ?>
+                        <?='<p class="circle"></p>'?>
                     <?php endif; ?>
                 </td>
                 <td>
-                    <?php if (isset($consultation_time[6]['consultation_type'])) : ?>
-                        <?= getSymbol($consultation_time[6]['consultation_type']) ?>
-                        <p class="remarks_indicate"><?= $consultation_time[6]['remarks'] ?></p>
+                    <?php if (isset($consultationTime[6]['consultation_type'])) : ?>
+                        <?=getMark($consultationTime[6]['consultation_type'])?>
+                        <p class="remarks_indicate"><?=$consultationTime[6]['remarks']?></p>
                     <?php else : ?>
-                        <?= '<p class="circle"></p>' ?>
+                        <?='<p class="circle"></p>'?>
                     <?php endif; ?>
                 </td>
             </tr>
             <tr>
-                <td><?= $time_table[1]['name'] ?><br><?= $date = (new DateTime($time_table[1]['start_time']))->format('H:i') ?><br>〜<br><?= $date = (new DateTime($time_table[1]['end_time']))->format('H:i') ?></td>
+                <td><?=$timeTable[1]['name'] ?><br><?=changeTimeFormat($timeTable[1]['start_time'])?><br>〜<br><?=changeTimeFormat($timeTable[1]['end_time'])?></td>
                 <td>
-                    <?php if (isset($consultation_time[7]['consultation_type'])) : ?>
-                        <?= getSymbol($consultation_time[7]['consultation_type']) ?>
-                        <p class="remarks_indicate"><?= $consultation_time[7]['remarks'] ?></p>
+                    <?php if (isset($consultationTime[7]['consultation_type'])) : ?>
+                        <?=getMark($consultationTime[7]['consultation_type'])?>
+                        <p class="remarks_indicate"><?=$consultationTime[7]['remarks']?></p>
                     <?php else : ?>
-                        <?= '<p class="circle"></p>' ?>
+                        <?='<p class="circle"></p>'?>
                     <?php endif; ?>
                 </td>
                 <td>
-                    <?php if (isset($consultation_time[8]['consultation_type'])) : ?>
-                        <?= getSymbol($consultation_time[8]['consultation_type']) ?>
-                        <p class="remarks_indicate"><?= $consultation_time[8]['remarks'] ?></p>
+                    <?php if (isset($consultationTime[8]['consultation_type'])) : ?>
+                        <?=getMark($consultationTime[8]['consultation_type']) ?>
+                        <p class="remarks_indicate"><?=$consultationTime[8]['remarks']?></p>
                     <?php else : ?>
-                        <?= '<p class="circle"></p>' ?>
+                        <?='<p class="circle"></p>'?>
                     <?php endif; ?>
                 </td>
                 <td>
-                    <?php if (isset($consultation_time[9]['consultation_type'])) : ?>
-                        <?= getSymbol($consultation_time[9]['consultation_type']) ?>
-                        <p class="remarks_indicate"><?= $consultation_time[9]['remarks'] ?></p>
+                    <?php if (isset($consultationTime[9]['consultation_type'])) : ?>
+                        <?=getMark($consultationTime[9]['consultation_type'])?>
+                        <p class="remarks_indicate"><?=$consultationTime[9]['remarks']?></p>
                     <?php else : ?>
-                        <?= '<p class="circle"></p>' ?>
+                        <?='<p class="circle"></p>'?>
                     <?php endif; ?>
                 </td>
                 <td>
-                    <?php if (isset($consultation_time[10]['consultation_type'])) : ?>
-                        <?= getSymbol($consultation_time[10]['consultation_type']) ?>
-                        <p class="remarks_indicate"><?= $consultation_time[10]['remarks'] ?></p>
+                    <?php if (isset($consultationTime[10]['consultation_type'])) : ?>
+                        <?=getMark($consultationTime[10]['consultation_type'])?>
+                        <p class="remarks_indicate"><?=$consultationTime[10]['remarks']?></p>
                     <?php else : ?>
-                        <?= '<p class="circle"></p>' ?>
+                        <?='<p class="circle"></p>' ?>
                     <?php endif; ?>
                 </td>
                 <td>
-                    <?php if (isset($consultation_time[11]['consultation_type'])) : ?>
-                        <?= getSymbol($consultation_time[11]['consultation_type']) ?>
-                        <p class="remarks_indicate"><?= $consultation_time[11]['remarks'] ?></p>
+                    <?php if (isset($consultationTime[11]['consultation_type'])) : ?>
+                        <?=getMark($consultationTime[11]['consultation_type'])?>
+                        <p class="remarks_indicate"><?=$consultationTime[11]['remarks']?></p>
                     <?php else : ?>
-                        <?= '<p class="circle"></p>' ?>
+                        <?='<p class="circle"></p>'?>
                     <?php endif; ?>
                 </td>
                 <td>
-                    <?php if (isset($consultation_time[12]['consultation_type'])) : ?>
-                        <?= getSymbol($consultation_time[12]['consultation_type']) ?>
-                        <p class="remarks_indicate"><?= $consultation_time[12]['remarks'] ?></p>
+                    <?php if (isset($consultationTime[12]['consultation_type'])) : ?>
+                        <?=getMark($consultationTime[12]['consultation_type'])?>
+                        <p class="remarks_indicate"><?=$consultationTime[12]['remarks']?></p>
                     <?php else : ?>
-                        <?= '<p class="circle"></p>' ?>
+                        <?='<p class="circle"></p>'?>
                     <?php endif; ?>
                 </td>
                 <td>
-                    <?php if (isset($consultation_time[13]['consultation_type'])) : ?>
-                        <?= getSymbol($consultation_time[13]['consultation_type']) ?>
-                        <p class="remarks_indicate"><?= $consultation_time[13]['remarks'] ?></p>
+                    <?php if (isset($consultationTime[13]['consultation_type'])) : ?>
+                        <?=getMark($consultationTime[13]['consultation_type'])?>
+                        <p class="remarks_indicate"><?=$consultationTime[13]['remarks']?></p>
                     <?php else : ?>
-                        <?= '<p class="circle"></p>' ?>
+                        <?='<p class="circle"></p>'?>
                     <?php endif; ?>
                 </td>
             </tr>

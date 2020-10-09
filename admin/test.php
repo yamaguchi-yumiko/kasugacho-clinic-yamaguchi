@@ -1,8 +1,8 @@
 <?php
 
 $this->connect();
-$sql = 'UPDATE consultation_time SET consultation_type = ? remarks = ?
-FROM consultation_time INNER JOIN m_week ON consultation_time.week_id = m_week.id INNER JOIN timetable ON consultation_time.timetable_id = timetable.id
+$sql = 'UPDATE consultationTime SET consultation_type = ? remarks = ?
+FROM consultationTime INNER JOIN m_week ON consultationTime.week_id = m_week.id INNER JOIN timetable ON consultationTime.timetable_id = timetable.id
 WHERE  week_id = id';
 $stm = $this->dbh->prepare($sql);
 return $stm->execute();
@@ -29,7 +29,7 @@ $stm = $this->dbh->prepare($sql);
 return $stm->execute();
 
         $this->connect();
-        $sql = 'INSERT INTO consultation_time(week_id,timetable_id,consultation_type,remarks)
+        $sql = 'INSERT INTO consultationTime(week_id,timetable_id,consultation_type,remarks)
         VALUES(?, ?, ?, ?)';
         $stm = $this->dbh->prepare($sql);
         return $stm->execute($data);
@@ -52,5 +52,3 @@ $stmt1 -> execute();
 $stmt2 = $db -> prepare($sql2);
 $stmt2 -> bindValue(1, $value2, PDO::PARAM_STR);
 $stmt2 -> execute();
-
-
