@@ -1,7 +1,6 @@
 <?php
 require_once('AdminUser.php');
 require_once('DoctorInfo.php');
-require_once('DoctorInfo.php');
 require_once('ConsultationTime.php');
 
 class Model

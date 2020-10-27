@@ -19,14 +19,14 @@ auth_confirm();
 
     <header>
         <div class="header">
-            <p>ログイン名[<?=h($_SESSION['name'])?>]さん、ご機嫌いかがですか？</p>
+            <p>ログイン名[<?=$_SESSION['name']?>]さん、ご機嫌いかがですか？</p>
             <p><a href="logout.php">ログアウトする</a></p>
         </div>
         <div class="navlist">
             <ul>
                 <li><a href="top.php">top</a></li>
-                <li><a href="doctor_list.php?doctor&list">医師管理</a></li>
-                <li><a href="consultationTime_list.php?consultation&list">診療時間管理</a></li>
+                <li><a href="doctor_list.php">医師管理</a></li>
+                <li><a href="consultation_time_list.php">診療時間管理</a></li>
             </ul>
         </div>
     </header>

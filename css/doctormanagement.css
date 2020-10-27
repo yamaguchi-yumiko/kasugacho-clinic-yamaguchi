@@ -504,11 +504,10 @@ body {
 -------------------------*/
 
 .remarks {
-  height: 50px;
-  padding-top:30px;
+  height: 45px;
+  padding-top: 25px;
   border: 1px solid #666;
 }
-
 .consultation {
   margin: 10px 0 10px 0;
   padding: 3px 0 3px 0;
@@ -520,5 +519,10 @@ body {
 }
 
 .time p:nth-child(1) {
-  margin-bottom: 15px;
+  margin: 10px 0 15px 0;
+}
+
+.consultation-edit-listbox span {
+  display: inline-block;
+  padding-top: 10px;
 }

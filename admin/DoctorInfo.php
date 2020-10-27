@@ -1,22 +1,20 @@
 <?php
-
 class DoctorInfo extends Model
 {
-    //医師情報をサイトページに表示
-    //医師紹介ページ:データの登録の古い順に表示し、院長は先頭に表示
+    //医師情報を医師管理リストとサイトページに表示
     public function getDoctorInfo()
     {
         $this->connect();
-        $sql = 'SELECT * FROM docter WHERE delete_flg = 0 ORDER BY directer_flg = 1 DESC,id ASC';
+        $sql = sortInfo('SELECT * FROM docter WHERE delete_flg = 0 ORDER BY');
         $stm = $this->dbh->query($sql);
         return $stm->fetchAll();
     }
 
     //トップページ:院長みの情報を表示
-    public function getDirectorInfo()
+    public function getDirecterInfo()
     {
         $this->connect();
-        $sql = 'SELECT * FROM docter  WHERE delete_flg = 0 AND directer_flg = 1 ';
+        $sql = 'SELECT * FROM docter WHERE delete_flg = 0 AND directer_flg = 1';
         $stm = $this->dbh->query($sql);
         return $stm->fetch();
     }
@@ -25,13 +23,38 @@ class DoctorInfo extends Model
     public function addDoctor($data)
     {
         $this->connect();
-        $sql = 'INSERT INTO docter(name,roman_name,gender,specialty_disease,belong,img,COMMENT,directer_flg,directer_comment)VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $sql =
+            'INSERT INTO docter'
+                .'('
+                .'  name'
+                .', roman_name'
+                .', gender'
+                .', specialty_disease'
+                .', belong'
+                .', img'
+                .', comment'
+                .', directer_flg'
+                .', directer_comment'
+            .')VALUES('
+                .'  ?'
+                .', ?'
+                .', ?'
+                .', ?'
+                .', ?'
+                .', ?'
+                .', ?'
+                .', ?'
+                .', ?'
+            .')'
+        ;
+
         $stm = $this->dbh->prepare($sql);
         return $stm->execute($data);
-      }
+    }
 
+    //医師情報を編集
     //編集を押した時にIDの内容を取得
-    public function getDoctorId($id)
+    public function getDoctorIdInfo($id)
     {
         $this->connect();
         $sql = 'SELECT * FROM docter WHERE id = ?';
@@ -44,8 +67,20 @@ class DoctorInfo extends Model
     public function editDoctor($data)
     {
         $this->connect();
-        $sql = 'UPDATE docter SET
-        name = ?,roman_name = ?,gender = ?,specialty_disease = ?,belong = ?,img = ?,comment = ?,directer_flg = ?,directer_comment = ?,updated_at = ? WHERE id = ?';
+        $sql =
+            'UPDATE docter SET'
+                .'  name = ?'
+                .', roman_name = ?'
+                .', gender = ?'
+                .', specialty_disease = ?'
+                .', belong = ?'
+                .', img = ?'
+                .', comment = ?'
+                .', directer_flg = ?'
+                .', directer_comment = ?'
+                .', updated_at = ?'
+            .'WHERE id = ?'
+        ;
         $stm = $this->dbh->prepare($sql);
         return $stm->execute($data);
     }
@@ -58,6 +93,4 @@ class DoctorInfo extends Model
         $stm = $this->dbh->prepare($sql);
         return $stm->execute([$id]);
     }
-
-
 }

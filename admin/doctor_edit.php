@@ -2,11 +2,14 @@
 require_once('config.php');
 auth_confirm();
 
-$doctorInfo = new DoctorInfo();
+$doctor_info = new DoctorInfo();
+
+//GETパラメーターのURLのキーを値に変換、_で分割してGET判定
+$param = getParam();
 
 //リスト画面の編集ボタンがが押されたたら医師情報の内容を取得
-if (isset($_GET['edit'])) {
-    $doctorId = $doctorInfo->getDoctorId($_GET['id']);
+if (isset($param['edit'])) {
+    $doctorId = $doctor_info->getDoctorIdInfo($_GET['id']);
 }
 
 ?>
@@ -26,14 +29,14 @@ if (isset($_GET['edit'])) {
 <body class="add_conteaner">
     <header>
         <div class="header">
-            <p>ログイン名[<?=h($_SESSION['name'])?>]さん、ご機嫌いかがですか？</p>
+            <p>ログイン名[<?=$_SESSION['name']?>]さん、ご機嫌いかがですか？</p>
             <p><a href="logout.php">ログアウトする</a></p>
         </div>
         <div class="navlist">
             <ul>
                 <li><a href="top.php">top</a></li>
-                <li><a href="doctor_list.php?doctor&list">医師管理</a></li>
-                <li><a href="consultation_time_list.php?consultation&list">診療時間管理</a></li>
+                <li><a href="doctor_list.php">医師管理</a></li>
+                <li><a href="consultation_time_list.php">診療時間管理</a></li>
             </ul>
         </div>
     </header>
@@ -47,7 +50,7 @@ if (isset($_GET['edit'])) {
         </div>
 
         <!-- リスト画面の編集ボタンが押されたら-->
-        <?php if (isset($_GET['editlist'])) : ?>
+        <?php if (isset($param['edit'])) : ?>
             <?=getPage();?>
             <form action="" method="post">
                 <table class="add_table">
@@ -61,8 +64,11 @@ if (isset($_GET['edit'])) {
                     </tr>
                     <tr>
                         <th>性別</th>
-                        <td>男性<input type="radio" name="gender" value="1" <?=$doctorId['gender'] === '1' ? 'checked' : ''?>>
-                            女性<input type="radio" name="gender" value="2" <?=$doctorId['gender'] === '2' ? 'checked' : ''?>></td>
+                        <td>
+                            未選択<input type="radio" name="gender" value="" <?=$doctorId['gender'] === NULL ? 'checked' : ''?>>
+                            男性<input type="radio" name="gender" value="1" <?=$doctorId['gender'] === '1' ? 'checked' : ''?>>
+                            女性<input type="radio" name="gender" value="2" <?=$doctorId['gender'] === '2' ? 'checked' : ''?>>
+                        </td>
                     </tr>
                     <tr>
                         <th>専門疾患</th>
@@ -82,21 +88,23 @@ if (isset($_GET['edit'])) {
                     </tr>
                     <tr>
                         <th>役職</th>
-                        <td>医師<input type="radio" name="director" value="0" <?=$doctorId['directer_flg'] === '0' ? 'checked' : ''?>>
-                            院長<input type="radio" name="director" value="1" <?=$doctorId['directer_flg'] === '1' ? 'checked' : ''?>></td>
+                        <td>
+                            医師<input type="radio" name="directer_flg" value="0" <?=$doctorId['directer_flg'] === '0' ? 'checked' : ''?>>
+                            院長<input type="radio" name="directer_flg" value="1" <?=$doctorId['directer_flg'] === '1' ? 'checked' : ''?>>
+                        </td>
                     </tr>
                     <tr>
                         <th>院長ひとこと</th>
-                        <td><textarea name="directorcomment" cols="70" rows="10"><?=$doctorId['directer_comment']?></textarea></td>
+                        <td><textarea name="directer_comment" cols="70" rows="10"><?=$doctorId['directer_comment']?></textarea></td>
                     </tr>
                 </table>
 
                 <div class="submid_conteaner">
-                    <p><input class="submit" type="submit" value="戻る" formaction="doctor_list.php?doctor&list"></p>
-                    <p><input class="submit" type="submit" value="確認画面へ" formaction="doctor_conf.php?doctor&editConf&id=<?=$doctorId['id']?>"></p>
+                    <p><input class="submit" type="submit" value="戻る" formaction="doctor_list.php"></p>
+                    <p><input class="submit" type="submit" value="確認画面へ" formaction="doctor_conf.php?type=edit&id=<?=$doctorId['id']?>"></p>
                 </div>
             </form>
-
+            <!-- リスト画面の登録ボタンが押されたら-->
         <?php else : ?>
             <?= getPage(); ?>
             <form action="" method="post">
@@ -111,8 +119,11 @@ if (isset($_GET['edit'])) {
                     </tr>
                     <tr>
                         <th>性別</th>
-                        <td>男性<input type="radio" name="gender" value="1" <?=(isset($_POST['gender']) && $_POST['gender'] === '1' ? 'checked' : '')?> checked>
-                            女性<input type="radio" name="gender" value="2" <?=(isset($_POST['gender']) && $_POST['gender'] === '2' ? ' checked' : '')?>></td>
+                        <td>
+                            未選択<input type="radio" name="gender" value="" <?=(isset($_POST['gender']) && $_POST['gender'] === '' ? 'checked' : '')?> checked>
+                            男性<input type="radio" name="gender" value="1" <?=(isset($_POST['gender']) && $_POST['gender'] === '1' ? 'checked' : '')?>>
+                            女性<input type="radio" name="gender" value="2" <?=(isset($_POST['gender']) && $_POST['gender'] === '2' ? ' checked' : '')?>>
+                        </td>
                     </tr>
                     <tr>
                         <th>専門疾患</th>
@@ -132,31 +143,37 @@ if (isset($_GET['edit'])) {
                     </tr>
                     <tr>
                         <th>役職</th>
-                        <td>医師<input type="radio" name="director" value="0" <?=(isset($_POST['director']) && $_POST['director'] === '0' ? 'checked' : '')?> checked>
-                            院長<input type="radio" name="director" value="1" <?=(isset($_POST['director']) && $_POST['director'] === '1' ? 'checked' : '')?>></td>
+                        <td>
+                            医師<input type="radio" name="directer_flg" value="0" <?=(isset($_POST['directer_flg']) && $_POST['directer_flg'] === '0' ? 'checked' : '')?> checked>
+                            院長<input type="radio" name="directer_flg" value="1" <?=(isset($_POST['directer_flg']) && $_POST['directer_flg'] === '1' ? 'checked' : '')?>>
+                        </td>
                     </tr>
                     <tr>
                         <th>院長ひとこと</th>
-                        <td><textarea name="directorcomment" cols="70" rows="10"><?=(isset($_POST['directorcomment']) ? $_POST['directorcomment'] : '')?></textarea></td>
+                        <td><textarea name="directer_comment" cols="70" rows="10"><?=(isset($_POST['directer_comment']) ? $_POST['directer_comment'] : '')?></textarea></td>
                     </tr>
                 </table>
-                <!-- リスト画面の登録ボタンが押されたら、または編集画面の戻るボタンが押されたたら -->
-                <?php if (isset($_GET['add'])) : ?>
-                    <div class="submid_conteaner">
-                        <p><input class="submit" type="submit" value="戻る" formaction="doctor_list.php?doctor&list"></p>
-                        <p><input class="submit" type="submit" value="確認画面へ" formaction="doctor_conf.php?doctor&addConf"></p>
-                    </div>
-            </form>
-            <!-- 編集画面の戻るボタンが押されたら -->
-        <?php else : ?>
-            <div class="submid_conteaner">
-                <p><input class="submit" type="submit" value="戻る" formaction="doctor_list.php?doctor&list"></p>
-                <p><input class="submit" type="submit" value="確認画面へ" formaction="doctor_conf.php?doctor&editConf&id=<?=$doctorId['id']?>"></p>
-            </div>
-            </form>
-        <?php endif; ?>
 
-    <?php endif; ?>
+                <!-- リスト画面の登録ボタンが押されたら、または編集画面の戻るボタンが押されたたら -->
+                <?php if (isset($param['add'])) : ?>
+
+                    <div class="submid_conteaner">
+                        <p><input class="submit" type="submit" value="戻る" formaction="doctor_list.php"></p>
+                        <p><input class="submit" type="submit" value="確認画面へ" formaction="doctor_conf.php?type=add"></p>
+                    </div>
+
+                    <!-- 編集画面の戻るボタンが押されたら -->
+                <?php else : ?>
+
+                    <div class="submid_conteaner">
+                        <p><input class="submit" type="submit" value="戻る" formaction="doctor_list.php"></p>
+                        <p><input class="submit" type="submit" value="確認画面へ" formaction="doctor_conf.php&id=<?=$doctorId['id']?>&type=edit"></p>
+                    </div>
+
+                <?php endif; ?>
+                </form>
+
+            <?php endif; ?>
     </main>
 
     <footer class="footer">2020 ebacrop.inc</footer>

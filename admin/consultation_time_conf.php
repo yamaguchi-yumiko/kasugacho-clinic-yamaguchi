@@ -2,32 +2,32 @@
 require_once('config.php');
 auth_confirm();
 
-$time = new consultationTime();
+$time = new ConsultationTime();
 //タイムテーブルの時間を取得
 $timeTable = $time->getTimeTable();
 //診療時間を取得
-$consultationTime = $time->getConsultationTime();
+$consultation_time = $time->getConsultationTime();
 
 if (isset($_POST['done'])) {
     // 診療時間のデータが入っていなければ追加、入っていれば更新
     // 午前
-    $time->editConsultationTime([$_POST['time_name1'], $_POST['start_time1'], $_POST['end_time1'], $_POST['timetable1']],[$_POST['monday'], $_POST['timetable1'], $_POST['consultation_type1'], $_POST['remarks1']]);
-    $time->editConsultationTime([$_POST['time_name1'], $_POST['start_time1'], $_POST['end_time1'], $_POST['timetable1']],[$_POST['tuesday'], $_POST['timetable1'], $_POST['consultation_type2'], $_POST['remarks2']]);
-    $time->editConsultationTime([$_POST['time_name1'], $_POST['start_time1'], $_POST['end_time1'], $_POST['timetable1']],[$_POST['wednesday'], $_POST['timetable1'], $_POST['consultation_type3'], $_POST['remarks3']]);
-    $time->editConsultationTime([$_POST['time_name1'], $_POST['start_time1'], $_POST['end_time1'], $_POST['timetable1']],[$_POST['thursday'], $_POST['timetable1'], $_POST['consultation_type4'], $_POST['remarks4']]);
-    $time->editConsultationTime([$_POST['time_name1'], $_POST['start_time1'], $_POST['end_time1'], $_POST['timetable1']],[$_POST['friday'], $_POST['timetable1'], $_POST['consultation_type5'], $_POST['remarks5']]);
-    $time->editConsultationTime([$_POST['time_name1'], $_POST['start_time1'], $_POST['end_time1'], $_POST['timetable1']],[$_POST['saturday'], $_POST['timetable1'], $_POST['consultation_type6'], $_POST['remarks6']]);
-    $time->editConsultationTime([$_POST['time_name1'], $_POST['start_time1'], $_POST['end_time1'], $_POST['timetable1']],[$_POST['sunday'], $_POST['timetable1'], $_POST['consultation_type7'], $_POST['remarks7']]);
+    $time->editConsultationTime([$_POST['time_name1'], $_POST['start_time1'], $_POST['end_time1'], $_POST['timetable1']], [$_POST['monday'], $_POST['timetable1'], $_POST['consultation_type1'], insertNull($_POST['remarks1'])]);
+    $time->editConsultationTime([$_POST['time_name1'], $_POST['start_time1'], $_POST['end_time1'], $_POST['timetable1']], [$_POST['tuesday'], $_POST['timetable1'], $_POST['consultation_type2'], insertNull($_POST['remarks2'])]);
+    $time->editConsultationTime([$_POST['time_name1'], $_POST['start_time1'], $_POST['end_time1'], $_POST['timetable1']], [$_POST['wednesday'], $_POST['timetable1'], $_POST['consultation_type3'], insertNull($_POST['remarks3'])]);
+    $time->editConsultationTime([$_POST['time_name1'], $_POST['start_time1'], $_POST['end_time1'], $_POST['timetable1']], [$_POST['thursday'], $_POST['timetable1'], $_POST['consultation_type4'], insertNull($_POST['remarks4'])]);
+    $time->editConsultationTime([$_POST['time_name1'], $_POST['start_time1'], $_POST['end_time1'], $_POST['timetable1']], [$_POST['friday'], $_POST['timetable1'], $_POST['consultation_type5'], insertNull($_POST['remarks5'])]);
+    $time->editConsultationTime([$_POST['time_name1'], $_POST['start_time1'], $_POST['end_time1'], $_POST['timetable1']], [$_POST['saturday'], $_POST['timetable1'], $_POST['consultation_type6'], insertNull($_POST['remarks6'])]);
+    $time->editConsultationTime([$_POST['time_name1'], $_POST['start_time1'], $_POST['end_time1'], $_POST['timetable1']], [$_POST['sunday'], $_POST['timetable1'], $_POST['consultation_type7'], insertNull($_POST['remarks7'])]);
     // 午後
-    $time->editConsultationTime([$_POST['time_name2'], $_POST['start_time2'], $_POST['end_time2'], $_POST['timetable2']],[$_POST['monday'], $_POST['timetable2'], $_POST['consultation_type8'], $_POST['remarks8']]);
-    $time->editConsultationTime([$_POST['time_name2'], $_POST['start_time2'], $_POST['end_time2'], $_POST['timetable2']],[$_POST['tuesday'], $_POST['timetable2'], $_POST['consultation_type9'], $_POST['remarks9']]);
-    $time->editConsultationTime([$_POST['time_name2'], $_POST['start_time2'], $_POST['end_time2'], $_POST['timetable2']],[$_POST['wednesday'], $_POST['timetable2'], $_POST['consultation_type10'], $_POST['remarks10']]);
-    $time->editConsultationTime([$_POST['time_name2'], $_POST['start_time2'], $_POST['end_time2'], $_POST['timetable2']],[$_POST['thursday'], $_POST['timetable2'], $_POST['consultation_type11'], $_POST['remarks11']]);
-    $time->editConsultationTime([$_POST['time_name2'], $_POST['start_time2'], $_POST['end_time2'], $_POST['timetable2']],[$_POST['friday'], $_POST['timetable2'], $_POST['consultation_type12'], $_POST['remarks12']]);
-    $time->editConsultationTime([$_POST['time_name2'], $_POST['start_time2'], $_POST['end_time2'], $_POST['timetable2']],[$_POST['saturday'], $_POST['timetable2'], $_POST['consultation_type13'], $_POST['remarks13']]);
-    $time->editConsultationTime([$_POST['time_name2'], $_POST['start_time2'], $_POST['end_time2'], $_POST['timetable2']],[$_POST['sunday'], $_POST['timetable2'], $_POST['consultation_type14'], $_POST['remarks14']]);
+    $time->editConsultationTime([$_POST['time_name2'], $_POST['start_time2'], $_POST['end_time2'], $_POST['timetable2']], [$_POST['monday'], $_POST['timetable2'], $_POST['consultation_type8'], insertNull($_POST['remarks8'])]);
+    $time->editConsultationTime([$_POST['time_name2'], $_POST['start_time2'], $_POST['end_time2'], $_POST['timetable2']], [$_POST['tuesday'], $_POST['timetable2'], $_POST['consultation_type9'], insertNull($_POST['remarks9'])]);
+    $time->editConsultationTime([$_POST['time_name2'], $_POST['start_time2'], $_POST['end_time2'], $_POST['timetable2']], [$_POST['wednesday'], $_POST['timetable2'], $_POST['consultation_type10'], insertNull($_POST['remarks10'])]);
+    $time->editConsultationTime([$_POST['time_name2'], $_POST['start_time2'], $_POST['end_time2'], $_POST['timetable2']], [$_POST['thursday'], $_POST['timetable2'], $_POST['consultation_type11'], insertNull($_POST['remarks11'])]);
+    $time->editConsultationTime([$_POST['time_name2'], $_POST['start_time2'], $_POST['end_time2'], $_POST['timetable2']], [$_POST['friday'], $_POST['timetable2'], $_POST['consultation_type12'], insertNull($_POST['remarks12'])]);
+    $time->editConsultationTime([$_POST['time_name2'], $_POST['start_time2'], $_POST['end_time2'], $_POST['timetable2']], [$_POST['saturday'], $_POST['timetable2'], $_POST['consultation_type13'], insertNull($_POST['remarks13'])]);
+    $time->editConsultationTime([$_POST['time_name2'], $_POST['start_time2'], $_POST['end_time2'], $_POST['timetable2']], [$_POST['sunday'], $_POST['timetable2'], $_POST['consultation_type14'], insertNull($_POST['remarks14'])]);
 
-    header('Location: consultation_time_done.php?consultation&editDone');
+    header('Location: consultation_time_done.php?type=edit');
     exit;
 }
 
@@ -49,14 +49,14 @@ if (isset($_POST['done'])) {
 <body class="list_conteaner">
     <header>
         <div class="header">
-            <p>ログイン名[<?=h($_SESSION['name'])?>]さん、ご機嫌いかがですか？</p>
+            <p>ログイン名[<?=$_SESSION['name']?>]さん、ご機嫌いかがですか？</p>
             <p><a href="logout.php">ログアウトする</a></p>
         </div>
         <div class="navlist">
             <ul>
                 <li><a href="top.php">top</a></li>
-                <li><a href="doctor_list.php?doctor&list">医師管理</a></li>
-                <li><a href="consultation_time_list.php?consultation&list">診療時間管理</a></li>
+                <li><a href="doctor_list.php">医師管理</a></li>
+                <li><a href="consultation_time_list.php">診療時間管理</a></li>
             </ul>
         </div>
     </header>
@@ -124,7 +124,7 @@ if (isset($_POST['done'])) {
             <input type="hidden" name="remarks10" value="<?=$_POST['remarks10']?>">
             <input type="hidden" name="consultation_type11" value="<?=$_POST['consultation_type11']?>">
             <input type="hidden" name="remarks11" value="<?=$_POST['remarks11']?>">
-            <input type="hidden" name="consultation_type12" value="<?=$_POST['consultation_type12']?>">
+            <input type="hidden" name="consultation_type12" value="<?= $_POST['consultation_type12']?>">
             <input type="hidden" name="remarks12" value="<?=$_POST['remarks12']?>">
             <input type="hidden" name="consultation_type13" value="<?=$_POST['consultation_type13']?>">
             <input type="hidden" name="remarks13" value="<?=$_POST['remarks13']?>">
@@ -143,84 +143,88 @@ if (isset($_POST['done'])) {
                     <th>日・祝</th>
                 </tr>
                 <tr>
-                    <td class="time"><p><?=$_POST['time_name1']?></p>診療時間<p><?=$_POST['start_time1']?></p>〜<p><?=$_POST['end_time1']?></p></td>
-                    <td>
-                        <p class="consultation"><?=changeSelectName($_POST['consultation_type1'])?></p>
-                        <span>備考</span><br>
-                        <p class="remarks"><?=$_POST['remarks1']?></p>
+                    <td class="time">
+                        <p><?=$_POST['time_name1']?></p>診療時間<p><?=$_POST['start_time1']?></p>〜<p><?=$_POST['end_time1']?></p>
                     </td>
                     <td>
-                        <p class="consultation"><?=changeSelectName($_POST['consultation_type2'])?></p>
+                        <p><?=toExaminationType($_POST['consultation_type1'])?></p>
                         <span>備考</span><br>
-                        <p class="remarks"><?=$_POST['remarks2']?></p>
+                        <p class="remarks"><?=$_POST['remarks1'] ?></p>
                     </td>
                     <td>
-                        <p class="consultation"><?=changeSelectName($_POST['consultation_type3'])?></p>
+                        <p><?=toExaminationType($_POST['consultation_type2'])?></p>
                         <span>備考</span><br>
-                        <p class="remarks"><?=$_POST['remarks3']?></p>
+                        <p class="remarks"><?=$_POST['remarks2'] ?></p>
                     </td>
                     <td>
-                        <p class="consultation"><?=changeSelectName($_POST['consultation_type4'])?></p>
+                        <p><?=toExaminationType($_POST['consultation_type3'])?></p>
                         <span>備考</span><br>
-                        <p class="remarks"><?=$_POST['remarks4']?></p>
+                        <p class="remarks"><?=$_POST['remarks3'] ?></p>
                     </td>
                     <td>
-                        <p class="consultation"><?=changeSelectName($_POST['consultation_type5'])?></p>
+                        <p><?=toExaminationType($_POST['consultation_type4'])?></p>
                         <span>備考</span><br>
-                        <p class="remarks"><?=$_POST['remarks5']?></p>
+                        <p class="remarks"><?=$_POST['remarks4'] ?></p>
                     </td>
                     <td>
-                        <p class="consultation"><?=changeSelectName($_POST['consultation_type6'])?></p>
+                        <p><?=toExaminationType($_POST['consultation_type5'])?></p>
                         <span>備考</span><br>
-                        <p class="remarks"><?=$_POST['remarks6']?></p>
+                        <p class="remarks"><?=$_POST['remarks5'] ?></p>
                     </td>
                     <td>
-                        <p class="consultation"><?=changeSelectName($_POST['consultation_type7'])?></p>
+                        <p><?=toExaminationType($_POST['consultation_type6'])?></p>
                         <span>備考</span><br>
-                        <p class="remarks"><?=$_POST['remarks7']?></p>
+                        <p class="remarks"><?=$_POST['remarks6'] ?></p>
+                    </td>
+                    <td>
+                        <p><?=toExaminationType($_POST['consultation_type7'])?></p>
+                        <span>備考</span><br>
+                        <p class="remarks"><?=$_POST['remarks7'] ?></p>
                     </td>
                 </tr>
                 <tr>
-                <td class="time"><p><?=$_POST['time_name2'] ?></p>診療時間<p><?=$_POST['start_time2']?></p>〜<p><?=$_POST['end_time2']?></p></td>
+                    <td class="time">
+                        <p><?=$_POST['time_name2']?></p>診療時間<p><?=$_POST['start_time2']?></p>〜<p><?=$_POST['end_time2']?></p>
+                    </td>
                     <td>
-                        <p class="consultation"><?=changeSelectName($_POST['consultation_type8'])?></p>
+                        <p><?=toExaminationType($_POST['consultation_type8'])?></p>
                         <span>備考</span><br>
                         <p class="remarks"><?=$_POST['remarks8']?></p>
                     </td>
                     <td>
-                        <p class="consultation"><?=changeSelectName($_POST['consultation_type9'])?></p>
+                        <p><?=toExaminationType($_POST['consultation_type9'])?></p>
                         <span>備考</span><br>
                         <p class="remarks"><?=$_POST['remarks9']?></p>
                     </td>
                     <td>
-                        <p class="consultation"><?=changeSelectName($_POST['consultation_type10'])?></p>
+                        <p><?=toExaminationType($_POST['consultation_type10'])?></p>
                         <span>備考</span><br>
                         <p class="remarks"><?=$_POST['remarks10']?></p>
                     </td>
                     <td>
-                        <p class="consultation"><?=changeSelectName($_POST['consultation_type11'])?></p>
+                        <p><?=toExaminationType($_POST['consultation_type11'])?></p>
                         <span>備考</span><br>
                         <p class="remarks"><?=$_POST['remarks11']?></p>
                     </td>
                     <td>
-                        <p class="consultation"><?=changeSelectName($_POST['consultation_type12'])?></p>
+                        <p><?=toExaminationType($_POST['consultation_type12'])?></p>
                         <span>備考</span><br>
                         <p class="remarks"><?=$_POST['remarks12']?></p>
                     </td>
                     <td>
-                        <p class="consultation"><?=changeSelectName($_POST['consultation_type13'])?></p>
+                        <p><?=toExaminationType($_POST['consultation_type13'])?></p>
                         <span>備考</span><br>
                         <p class="remarks"><?=$_POST['remarks13']?></p>
                     </td>
                     <td>
-                        <p class="consultation"><?=changeSelectName($_POST['consultation_type14'])?></p>
+                        <p><?=toExaminationType($_POST['consultation_type14'])?></p>
                         <span>備考</span><br>
                         <p class="remarks"><?=$_POST['remarks14']?></p>
                     </td>
                 </tr>
             </table>
             <div class="submid_time">
-                <p class="time-buttun"><input type="submit"  value="戻る" name="confreturn" formaction="consultation_time_edit.php?consultation&edit"></p>
+                <p class="time-buttun"><input type="submit" value="戻る" formaction="consultation_time_edit.php?type=edit"></p>
                 <p class="time-buttun"><input type="submit" name="done" value="完了"></p>
             </div>
 

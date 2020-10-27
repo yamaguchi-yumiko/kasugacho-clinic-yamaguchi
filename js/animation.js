@@ -78,19 +78,19 @@ $(function () {
         $('.row').each(function () {
             var txt = $(this).html();
             if (browserWidth <= 767) {
-                console.log('蜈･縺｣縺�')
+                console.log('変更')
                 $(this).html(
-                    txt.replace(/莉頑搗螳怜離/g, '笳�')
-                        .replace(/莉頑搗蜿狗ｾ�/g, '笳�')
+                    txt.replace(/今村宗嗣/g, '今村宗嗣')
+                        .replace(/今村友美/g, '今村友美')
                 );
             } else {
                 $(this).html(
-                    txt.replace(/笳�/g, '莉頑搗螳怜離')
+                    txt.replace(/今村宗嗣/g, '今村宗嗣')
                     // .replace(/笳�/g, '莉頑搗蜿狗ｾ�')
                 );
                 console.log($("#pink").text())
-                $("#pink1").text('莉頑搗蜿狗ｾ�')
-                $("#pink2").text('莉頑搗蜿狗ｾ�')
+                $("#pink1").text('今村友美')
+                $("#pink2").text('今村友美')
 
             }
         });

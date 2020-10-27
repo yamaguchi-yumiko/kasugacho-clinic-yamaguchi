@@ -51,7 +51,7 @@ if (isset($_POST['login'])) {
     </header>
     <div class="logintop">
         <h1>春日町診療所管理システム 管理画面ログイン</h1>
-        <main id="main" role="main" class="loginmain">
+        <main  class="loginmain">
             <div class="errortop">
                 <?php if (isset($error)) : ?>
                     <span class="error"><?=$error?></span>
