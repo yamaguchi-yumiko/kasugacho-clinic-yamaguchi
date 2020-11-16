@@ -19,15 +19,10 @@
     <!-- js -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
     <script type="text/javascript" src="./js/animation.js"></script>
-    <script type="text/javascript">
-    </script>
 </head>
-
 <body>
     <div id='top-fixed' class='sp'></div>
-
     <header id="headerTop">
-
         <div class='hamburger sp'>
             <ul class="accordion-menu">
                 <li>
@@ -46,8 +41,7 @@
                 </li>
             </ul>
         </div>
-        <div class="sp">
-        </div>
+        <div class="sp"></div>
         <div id="top" class="pc">
             <img src="./img/title-logo-1.png" alt="春日町診療所">
             <div class="tel">

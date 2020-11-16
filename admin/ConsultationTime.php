@@ -1,7 +1,6 @@
 <?php
 class ConsultationTime extends Model
 {
-
     //午前・午後の時間を取得
     public function getTimeTable()
     {
@@ -10,7 +9,6 @@ class ConsultationTime extends Model
         $stm = $this->dbh->query($sql);
         return $stm->fetchAll();
     }
-
     //診療時間の詳細を取得
     public function getConsultationTime()
     {
@@ -27,18 +25,16 @@ class ConsultationTime extends Model
         $stm = $this->dbh->query($sql);
         return $stm->fetchAll();
     }
-
     //診察時間帯を更新
     //診療時間のデータが入っていなければ追加、入っていれば更新
-    public function editConsultationTime($data1, $data2)
+    public function editConsultationTime($timetable, $week_id ,$timetable_id,$consultation_type,$remarks)
     {
         $this->connect();
         $this->dbh->beginTransaction();
         try {
             $sql = 'UPDATE timetable SET name = ?, start_time = ?, end_time = ? WHERE id = ?';
             $stm = $this->dbh->prepare($sql);
-            $stm->execute($data1);
-
+            $stm->execute($timetable);
             $sql =
             'INSERT INTO consultation_time('
                 .'  week_id'
@@ -69,12 +65,13 @@ class ConsultationTime extends Model
                     .' remarks'
                 .')'
             ;
-
-            $stma = $this->dbh->prepare($sql);
-            $stma->execute($data2);
-
+            $stm = $this->dbh->prepare($sql);
+            $stm->bindValue(1,$week_id);
+            $stm->bindValue(2,$timetable_id);
+            $stm->bindValue(3,$consultation_type);
+            $stm->bindValue(4,empty($remarks) ? null : $remarks , PDO::PARAM_STR_CHAR);
+            $stm->execute();
             return $this->dbh->commit();
-
         } catch (Exception $e) {
             $this->dbh->rollBack();
             throw $e;

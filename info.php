@@ -1,21 +1,16 @@
 <?php
 require_once('admin/config.php');
-
-$time = new ConsultationTime();
+$consultationTime = new ConsultationTime();
 //タイムテーブルの時間を取得
-$time_table = $time->getTimeTable();
+$timetable =$consultationTime->getTimeTable();
 //診療時間を取得
-$consultation_time = $time->getConsultationTime();
-
+$consultation_time = $consultationTime->getConsultationTime();
 ?>
-
 <!--header共通 -->
 <?php require_once('header.php'); ?>
-
 <main>
     <!-- aside共通 -->
     <?php require_once('aside.php'); ?>
-
     <!-- access -->
     <section id="info">
         <h1>お知らせ</h1>
@@ -43,22 +38,18 @@ $consultation_time = $time->getConsultationTime();
                         　スギ花粉症に関しては治療を開始できる時期が決まっています。（ダニアレルギー性鼻　炎治療は通年開始できます。）
                         　治療に興味のある患者様はお気軽に来院時にご相談ください。
                     </p>
-
                     <a href="" class="js-modal-open btn-info" data-target="modal02">
                         ▼お知らせ
                     </a>
                 </dd>
             </dl>
-
         </div>
     </section>
     <div id="modal01" class="modal js-modal">
         <div class="modal__bg js-modal-close"></div>
         <div class="modal__content">
             <a class="js-modal-close" href="">×</a>
-
             <h2>夏季休暇 <span>May 28,2019</span></h2>
-
             <p>8月15日（月）～8月22日（日）までの間、夏季休暇となります旨ご了承ください。
             </p>
         </div>
@@ -69,7 +60,6 @@ $consultation_time = $time->getConsultationTime();
         <div class="modal__bg js-modal-close"></div>
         <div class="modal__content">
             <a class="js-modal-close" href="">×</a>
-
             <h2>スギ花粉症・ダニによるアレルギー性鼻炎に対する舌下免疫療法を始めました<span>June 11, 2018</span></h2>
             <p>
                 スギ花粉症、ダニアレルギー性鼻炎の治療の一つに舌下免疫療法があります。

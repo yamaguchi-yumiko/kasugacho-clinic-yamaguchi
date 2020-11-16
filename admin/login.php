@@ -3,27 +3,22 @@ require_once('config.php');
 
 // もしログインボタンが押されたら
 if (isset($_POST['login'])) {
-
     if ($_POST['id'] === '' || $_POST['pass'] === '') {
         $error = 'IDかパスワードが入力されていません。';
     } else {
-
         $befordmin_user = new AdminUser();
         $result = $befordmin_user->userAuth();
 
         //戻り値が存在して、フォームからのパスワードとデータベースのパスワードが一致したら
         if ($result && $_POST['pass'] == $result['login_pass']) {
-
             //セッションIDを再発行
             session_regenerate_id(true);
-
             //ユーザ情報をセッション変数に登録
             $_SESSION['id'] = $result['id'];
             $_SESSION['name'] = $result['name'];
             $_SESSION['login_id'] = $result['login_id'];
             //ログイン許可をセッション変数'auth'に登録
             $_SESSION['auth'] = 1;
-
             header('Location: top.php');
             exit;
         }
@@ -34,7 +29,6 @@ if (isset($_POST['login'])) {
 ?>
 <!DOCTYPE HTML>
 <html lang="ja">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,9 +36,7 @@ if (isset($_POST['login'])) {
     <title>春日町診療所システム 管理画面ログイン</title>
     <link rel="stylesheet" type="text/css" href="../css/doctormanagement.css" media="all">
 </head>
-
 <body class="loginconteaner">
-
     <div id='top-fixed' class='sp'></div>
     <header id="headerTop">
         <div id="top" class="pc"></div>
@@ -76,5 +68,4 @@ if (isset($_POST['login'])) {
         <footer class="loginfootr"></footer>
     </div>
 </body>
-
 </html>

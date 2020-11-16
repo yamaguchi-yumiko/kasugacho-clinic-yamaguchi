@@ -2,14 +2,13 @@
 class DoctorInfo extends Model
 {
     //医師情報を医師管理リストとサイトページに表示
-    public function getDoctorInfo()
+    public function getDoctorsInfo()
     {
         $this->connect();
         $sql = sortInfo('SELECT * FROM docter WHERE delete_flg = 0 ORDER BY');
         $stm = $this->dbh->query($sql);
         return $stm->fetchAll();
     }
-
     //トップページ:院長みの情報を表示
     public function getDirecterInfo()
     {
@@ -18,79 +17,93 @@ class DoctorInfo extends Model
         $stm = $this->dbh->query($sql);
         return $stm->fetch();
     }
-
-    //医師情報を登録
-    public function addDoctor($data)
+    //DBに登録と更新する
+    public function addDoctor($name, $roman_name, $gender, $specialty_disease, $belong, $img, $comment, $directer_flg, $directer_comment, $updated_at, $id)
     {
         $this->connect();
-        $sql =
-            'INSERT INTO docter'
-                .'('
-                .'  name'
-                .', roman_name'
-                .', gender'
-                .', specialty_disease'
-                .', belong'
-                .', img'
-                .', comment'
-                .', directer_flg'
-                .', directer_comment'
-            .')VALUES('
-                .'  ?'
-                .', ?'
-                .', ?'
-                .', ?'
-                .', ?'
-                .', ?'
-                .', ?'
-                .', ?'
-                .', ?'
-            .')'
+        if (isset($_POST['add_done'])) {
+            $sql =
+                'INSERT INTO docter'
+                . '('
+                . '  name'
+                . ', roman_name'
+                . ', gender'
+                . ', specialty_disease'
+                . ', belong'
+                . ', img'
+                . ', comment'
+                . ', directer_flg'
+                . ', directer_comment'
+                . ')VALUES('
+                . '  ?'
+                . ', ?'
+                . ', ?'
+                . ', ?'
+                . ', ?'
+                . ', ?'
+                . ', ?'
+                . ', ?'
+                . ', ?'
+                . ')'
+            ;
+            $stm = $this->dbh->prepare($sql);
+            $stm->bindValue(1, empty($name) ? null : $name, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(2, empty($roman_name) ? null : $roman_name, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(3, empty($gender) ? null : $gender, PDO::PARAM_INT);
+            $stm->bindValue(4, empty($specialty_disease) ? null : $specialty_disease, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(5, empty($belong) ? null : $belong, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(6, empty($img) ? null : $img, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(7, empty($comment) ? null : $comment, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(8, $directer_flg, PDO::PARAM_INT);
+            $stm->bindValue(9, empty($directer_comment) ? null : $directer_comment, PDO::PARAM_STR_CHAR);
+            return $stm->execute()
         ;
-
-        $stm = $this->dbh->prepare($sql);
-        return $stm->execute($data);
+        } else {
+            $sql =
+                'UPDATE docter SET'
+                . '  name = ?'
+                . ', roman_name = ?'
+                . ', gender = ?'
+                . ', specialty_disease = ?'
+                . ', belong = ?'
+                . ', img = ?'
+                . ', comment = ?'
+                . ', directer_flg = ?'
+                . ', directer_comment = ?'
+                . ', updated_at = ?'
+                . ' WHERE id = ?'
+            ;
+            $stm = $this->dbh->prepare($sql);
+            $stm->bindValue(1, empty($name) ? null : $name, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(2, empty($roman_name) ? null : $roman_name, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(3, empty($gender) ? null : $gender, PDO::PARAM_INT);
+            $stm->bindValue(4, empty($specialty_disease) ? null : $specialty_disease, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(5, empty($belong) ? null : $belong, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(6, empty($img) ? null : $img, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(7, empty($comment) ? null : $comment, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(8, $directer_flg, PDO::PARAM_INT);
+            $stm->bindValue(9, empty($directer_comment) ? null : $directer_comment, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(10, $updated_at);
+            $stm->bindValue(11, $id, PDO::PARAM_INT);
+            return $stm->execute()
+        ;
+        }
     }
-
-    //医師情報を編集
     //編集を押した時にIDの内容を取得
-    public function getDoctorIdInfo($id)
+    public function getDoctorInfo($doctor_id)
     {
         $this->connect();
         $sql = 'SELECT * FROM docter WHERE id = ?';
         $stm = $this->dbh->prepare($sql);
-        $stm->execute([$id]);
+        $stm->execute([$doctor_id]);
         return $stm->fetch();
     }
-
-    //編集内容を登録
-    public function editDoctor($data)
-    {
-        $this->connect();
-        $sql =
-            'UPDATE docter SET'
-                .'  name = ?'
-                .', roman_name = ?'
-                .', gender = ?'
-                .', specialty_disease = ?'
-                .', belong = ?'
-                .', img = ?'
-                .', comment = ?'
-                .', directer_flg = ?'
-                .', directer_comment = ?'
-                .', updated_at = ?'
-            .'WHERE id = ?'
-        ;
-        $stm = $this->dbh->prepare($sql);
-        return $stm->execute($data);
-    }
-
     //論理削除
-    public function deleteDoctor($id)
+    public function deleteDoctor($doctor_id)
     {
         $this->connect();
         $sql = 'UPDATE docter SET delete_flg = 1 WHERE id = ?';
         $stm = $this->dbh->prepare($sql);
-        return $stm->execute([$id]);
+        return $stm->execute([$doctor_id]);
     }
 }

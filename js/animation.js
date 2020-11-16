@@ -32,9 +32,9 @@ $(function () {
     /*縲繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ縺輔ｌ繧九→繝ｭ繧ｴ縺悟�迴ｾ縲*/
     // $(window).scroll(function () {
     //     if ($(this).scrollTop() > 100) {
-    //         $('div#top-fixed').css('background-image', 'url(./img/sp/titlelogo.png)');
+    //         $('div#top-fixed').css('background-img', 'url(./img/sp/titlelogo.png)');
     //     } else {
-    //         $('div#top-fixed').css('background-image', 'none');
+    //         $('div#top-fixed').css('background-img', 'none');
     //     }
     // });
 
@@ -133,7 +133,7 @@ $(function () {
     $(function () {
         $('.js-modal-open').each(function () {
             $(this).on('click', function () {
-                var target = $(this).data('target');
+                var target = $(this).datgetEditMedicalDetails('target');
                 var modal = document.getElementById(target);
                 $(modal).fadeIn();
                 return false;

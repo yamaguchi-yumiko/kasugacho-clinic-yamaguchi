@@ -179,15 +179,12 @@ body {
 
 .list_main {
   background: #fff;
-  padding: 20px 0 30px 0;
+  padding: 60px 0 30px 0;
 }
 
 .listbutton {
   text-align: left;
   margin-left: 60px;
-}
-
-.listbutton a {
   width: 200px;
   height: 30px;
   font-size: 20px;
@@ -195,7 +192,7 @@ body {
   background: #cccccc;
   color: #666;
   padding: 4px 0 4px 0;
-  display: inline-block;
+
   box-shadow: 2px 2px 4px gray;
   border-radius: 5px;
 }
@@ -222,8 +219,8 @@ body {
   border: 1px solid #666;
 }
 
-.buttun,
-.add_buttun {
+.button,
+.add_button {
   width: 60px;
   height: 30px;
   display: inline-block;
@@ -232,11 +229,10 @@ body {
   text-align: center;
   padding-top: 3px;
   margin-left: 10px;
-  box-shadow: 2px 2px 4px #666;
   border-radius: 8px;
 }
 
-.add_buttun {
+.add_button {
   width: 80px;
 }
 
@@ -252,9 +248,9 @@ body {
 }
 
 .add_main {
-  height: 900px;
+  height: 1000px;
   background: #fff;
-  padding-top: 20px;
+  padding-top: 60px;
 }
 
 .add_main form p {
@@ -285,13 +281,12 @@ body {
   text-align: left;
 }
 
-.submit {
+.submit input {
   width: 220px;
   height: 40px;
   font-size: 20px;
   text-align: center;
   background: #cccccc;
-  box-shadow: 2px 2px 4px gray;
   border-radius: 5px;
   margin-top: 30px;
 }
@@ -301,13 +296,22 @@ body {
   font-size: 25px;
 }
 
+.doctor td {
+  width: 100px;
+  height: 70px;
+}
+
+.doctor img {
+  width: 40%;
+}
+
 /*-------------------------
  医師管理完了
 -------------------------*/
 .done_main {
   height: 650px;
   background: #fff;
-  padding-top: 20px;
+  padding-top: 60px;
 }
 
 /*-------------------------
@@ -334,9 +338,10 @@ body {
   position: relative;
   padding: 20px 0px 20px 0px;
   border: 1px solid #666;
+  text-align: center;
 }
 
-.time-buttun a {
+.time-button a {
   width: 80px;
   height: 30px;
   display: inline-block;
@@ -462,7 +467,7 @@ body {
   border: none;
   outline: none;
   background: transparent;
-  background-image: none;
+  background-img: none;
   box-shadow: none;
   -webkit-appearance: none;
   appearance: none;
@@ -477,7 +482,7 @@ body {
   margin-right: 90px;
 }
 
-.time-buttun input {
+.time-button input {
   width: 80px;
   height: 30px;
   display: inline-block;
@@ -486,7 +491,6 @@ body {
   text-align: center;
   padding-top: 3px;
   margin-top: 30px;
-  box-shadow: 2px 2px 4px #666;
   border-radius: 8px;
 }
 

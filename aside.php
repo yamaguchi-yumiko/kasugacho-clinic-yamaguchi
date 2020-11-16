@@ -1,6 +1,6 @@
     <!-- aside共通 -->
     <?php
-    $morning_time = [
+    $before_time = [
         [$consultation_time[0]['consultation_type'], $consultation_time[0]['remarks'],],
         [$consultation_time[1]['consultation_type'], $consultation_time[1]['remarks'],],
         [$consultation_time[2]['consultation_type'], $consultation_time[2]['remarks'],],
@@ -9,23 +9,17 @@
         [$consultation_time[5]['consultation_type'], $consultation_time[5]['remarks'],],
 
     ];
-
-
-    $afternoon_time = [
+    $after_time = [
         [$consultation_time[7]['consultation_type'], $consultation_time[7]['remarks'],],
         [$consultation_time[8]['consultation_type'], $consultation_time[8]['remarks'],],
         [$consultation_time[9]['consultation_type'], $consultation_time[9]['remarks'],],
         [$consultation_time[10]['consultation_type'], $consultation_time[10]['remarks'],],
         [$consultation_time[11]['consultation_type'], $consultation_time[11]['remarks'],],
         [$consultation_time[12]['consultation_type'], $consultation_time[12]['remarks'],],
-
     ];
-
     ?>
     <!-- 診療時間 -->
     <aside class="pc">
-
-
         <section id="consultationHours">
             <h1>診療時間</h1>
             <div class="dltable">
@@ -41,45 +35,29 @@
                     <!-- <dt class="row8">日・祝日</dt> -->
                 </dl>
                 <dl>
-                    <dd class="active-time"><span class="font-size"><?= $time_table[0]['name'] ?></span><br><?= toTimetableTime($time_table[0]['start_time']) ?>
-                        <br>~<br><?= toTimetableTime($time_table[0]['end_time']) ?>
+                    <dd class="active-time"><span class="font-size"><?=$timetable[0]['name']?></span><br><?=toTimetableTime($timetable[0]['start_time'])?>
+                        <br>~<br><?=toTimetableTime($timetable[0]['end_time'])?>
                     </dd>
-                    <?php foreach ($morning_time as $morning) : ?>
+                    <?php foreach ($before_time as $before) : ?>
                         <dd class="row1">
-                            <?php if (isset($morning[0])) : ?>
-                                <?= setMark($morning[0]) ?>
-                            <?php else : ?>
-                                <?= '<p class="circle"></p>' ?>
-                            <?php endif; ?>
+                            <?=isset($before[0]) ? getConsultationTimeMark($before[0]) : '<p class="circle"></p>'?>
                         </dd>
                     <?php endforeach; ?>
                     <dd class="row8">
-                        <?php if (isset($consultation_time[6]['consultation_type'])) : ?>
-                            <?= setMark($consultation_time[6]['consultation_type']) ?>
-                        <?php else : ?>
-                            <?= '<p class="circle"></p>' ?>
-                        <?php endif; ?>
+                        <?=isset($consultation_time[6]['consultation_type']) ? getConsultationTimeMark($consultation_time[6]['consultation_type']) : '<p class="circle"></p>'?>
                     </dd>
                 </dl>
                 <dl>
-                    <dd class="active-time"><span class="font-size"><?= $time_table[1]['name'] ?></span><br><?= toTimetableTime($time_table[1]['start_time']) ?>
-                        <br>~<br><?= toTimetableTime($time_table[1]['end_time']) ?>
+                    <dd class="active-time"><span class="font-size"><?=$timetable[1]['name']?></span><br><?=toTimetableTime($timetable[1]['start_time'])?>
+                        <br>~<br><?=toTimetableTime($timetable[1]['end_time'])?>
                     </dd>
-                    <?php foreach ($afternoon_time as $afternoon) : ?>
+                    <?php foreach ($after_time as $after) : ?>
                         <dd class="row1">
-                            <?php if (isset($afternoon[0])) : ?>
-                                <?= setMark($afternoon[0]) ?>
-                            <?php else : ?>
-                                <?= '<p class="circle"></p>' ?>
-                            <?php endif; ?>
+                            <?=isset($after[0]) ? getConsultationTimeMark($after[0]) : '<p class="circle"></p>'?>
                         </dd>
                     <?php endforeach; ?>
                     <dd class="row8">
-                        <?php if (isset($consultation_time[13]['consultation_type'])) : ?>
-                            <?= setMark($consultation_time[13]['consultation_type']) ?>
-                        <?php else : ?>
-                            <?= '<p class="circle"></p>' ?>
-                        <?php endif; ?>
+                        <?=isset($consultation_time[13]['consultation_type']) ? getConsultationTimeMark($consultation_time[13]['consultation_type']) : '<p class="circle"></p>'?>
                     </dd>
                 </dl>
             </div>
