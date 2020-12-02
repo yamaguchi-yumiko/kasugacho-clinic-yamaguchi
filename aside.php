@@ -32,7 +32,6 @@
                     <dt class="row1">金</dt>
                     <dt class="row1">土</dt>
                     <dt class="row8">日・祝</dt>
-                    <!-- <dt class="row8">日・祝日</dt> -->
                 </dl>
                 <dl>
                     <dd class="active-time"><span class="font-size"><?=$timetable[0]['name']?></span><br><?=toTimetableTime($timetable[0]['start_time'])?>
