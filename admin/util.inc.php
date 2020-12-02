@@ -9,7 +9,6 @@ function h($string)
 function getPage()
 {
     $before_names = ['doctor' => '医師', 'consultation' => '診療時間',];
-    $type_names = ['add' => '登録', 'edit' => '編集',];
     $after_names = ['list' => '管理リスト', 'conf' => '確認', 'done' => '完了',];
     //URLのファイル名を取得
     $file_name = basename($_SERVER['PHP_SELF'], '.php');
@@ -20,7 +19,7 @@ function getPage()
     //配列要素を文字列で連結して表示
     echo '<p class="listbutton">'
         . (isset($before_names[$before_string]) ? $before_names[$before_string] : '')
-        . (isset($_GET['type']) ? $type_names[$_GET['type']] : '')
+        . (isset($_GET['type']) ? TYPE_NAME[$_GET['type']] : '')
         . (isset($after_names[$after_string]) ? $after_names[$after_string] : '')
         . '</p>'
     ;
@@ -56,93 +55,78 @@ function sortInfo($sql)
 //確認画面の性別を取得
 function getGenderName()
 {
-    $gender = [GENDER_MAN => '男性', GENDER_WOMAN => '女性', '' => '未選択',];
-    echo (isset($gender[$_POST['gender']]) ? $gender[$_POST['gender']] : '');
-}
-//submitボタンを取得
-function getSubmitButton()
-{
-    $input_value = ['add' => '登録完了する', 'edit' => '編集を完了する',];
-    $input_name = ['add' => 'add_done', 'edit' => 'edit_done',];
-
-    if ((filter_input(INPUT_GET, 'type') === 'add')) {
-        $form_action_add = ['add' => 'add',];
-    } else {
-        $form_action_edit = ['edit' => 'edit&id=' . $_GET['id']];
-        $doctorInfo = new DoctorInfo();
-        $doctor_info = $doctorInfo->getDoctorInfo($_GET['id']);
-        $form_action_edit = ['edit' => "edit&id={$doctor_info['id']}",];
-    }
-    //URLのファイル名を取得
-    $file_name = basename($_SERVER['PHP_SELF'], '.php');
-    //ファイル名の最後の文字列を取得して_を空に置換
-    $after_string = str_replace('_', '', substr($file_name, strrpos($file_name, '_')));
-    //confページだったら
-    if ($after_string === 'conf') {
-        //戻るボタン
-        echo  '<form action="" method="post">'
-            . '<div class="submid_conteaner">'
-            . '<p class="submit"><input type="submit" value="戻る" onClick="form.action=\''
-            . 'doctor_edit.php?type='
-            . (isset($form_action_add[$_GET['type']]) ? $form_action_add[$_GET['type']] : '')
-            . (isset($form_action_edit[$_GET['type']]) ? $form_action_edit[$_GET['type']] : '')
-            . '\';return true" ></p>'
-            //戻るボタン
-            . '<p class="submit"><input type="submit" name="'
-            . (isset($input_name[$_GET['type']]) ? $input_name[$_GET['type']] : '')
-            . '" value="'
-            . (isset($input_value[$_GET['type']]) ? $input_value[$_GET['type']] : '')
-            . '" onClick="form.action=\'doctor_done.php?type='
-            . (isset($form_action_add[$_GET['type']]) ? $form_action_add[$_GET['type']] : '')
-            . (isset($form_action_edit[$_GET['type']]) ? $form_action_edit[$_GET['type']] : '')
-            . '\';return true" ></p>'
-            . '</div>'
-        ;
-    } else {
-        echo '<form action="doctor_conf.php?type='
-            . (isset($form_action_add[$_GET['type']]) ? $form_action_add[$_GET['type']] : '')
-            . (isset($form_action_edit[$_GET['type']]) ? $form_action_edit[$_GET['type']] : '')
-            . '"method="post">'
-        ;
-    }
+    $gender_name_after = ['' => '未選択'];
+    $gender_array_merge = GENDER + $gender_name_after;
+    echo (isset($gender_array_merge[$_POST['gender']]) ? $gender_array_merge[h($_POST['gender'])] : '');
 }
 // 完了画面の文言を取得
 function getDoneSentence()
 {
-    $sentence = ['add' => '登録が完了しました。', 'edit' => '編集が完了しました。',];
-    echo '<p class="complete">' . (isset($sentence[$_GET['type']]) ? $sentence[$_GET['type']] : '') . '</p>';
+    echo '<p class="complete">' . (isset(TYPE_NAME[$_GET['type']]) ? TYPE_NAME[$_GET['type']] : '') . 'が完了しました。</p>';
 }
-
 /*診療時間管理ページ*/
 //timetableの時間を00:00に変換して表示
 function toTimetableTime($time)
 {
     return $time = (new Datetime($time))->format('H:i');
 }
-//記号を取得
-function getConsultationTimeMark($consultation_type)
-{
-    echo (($consultation_type === '1') ? '<p class="circle"></>' : (($consultation_type === '2') ? '<p class="triangl"></p>' : (($consultation_type === '99') ? '<p class="cross"></p>' : '')));
-}
+
 //編集画面の診療詳細を取得
 function getEditMedicalDetails($consultation_type_name, $consultation_time_value, $remarks_name, $consultation_remarks_value)
 {
-    echo '<label class="consultation-edit-label">'
-        . '<select name="' . $consultation_type_name . '">'
-        . '<option value="1"' . (isset($consultation_time_value) && $consultation_time_value === '1' ? 'selected' : '') . '>診察する</option>'
-        . '<option value="2"' . (isset($consultation_time_value) && $consultation_time_value === '2' ? 'selected' : '') . '>特別時間</option>'
-        . '<option value="99"' . (isset($consultation_time_value) && $consultation_time_value === '99' ? 'selected' : '') . '>診察しない</option>'
-        . '</select>'
-        . '</label>'
-        . '<span>備考</span><br>'
-        . '<textarea cols="14" rows="4" name="' . $remarks_name . '" placeholder="例)17:00まで">' . (isset($consultation_time_value) ? $consultation_remarks_value : '') . '</textarea>'
+    echo '<td><label class="consultation-edit-label"><select name="'
+        . $consultation_type_name
+        . '"><option value="1"'
+        . (isset($consultation_time_value) && $consultation_time_value == 1 ? 'selected' : '')
+        . '>診察する</option><option value="2"'
+        . (isset($consultation_time_value) && $consultation_time_value == 2 ? 'selected' : '')
+        . '>特別時間</option><option value="99"'
+        . (isset($consultation_time_value) && $consultation_time_value == 99 ? 'selected' : '')
+        . '>診察しない</option></select></label><span>備考</span><br><textarea cols="14" rows="4" name="'
+        . $remarks_name
+        . '" placeholder="例)17:00まで">'
+        . (isset($consultation_time_value) ? $consultation_remarks_value : '')
+        . '</textarea></td>'
     ;
 }
 //確認画面の診療詳細を取得
 function getConfMedicalDetails($consultation_type, $remarks)
 {
-    echo '<p>' . (($consultation_type === '1') ? '診察する' : (($consultation_type === '2') ? '特別時間' : (($consultation_type === '99') ? '診察しない' : ''))) . '</p>'
-        . '<span>備考</span><br>'
-        . '<p class="remarks">' . $remarks . '</p>'
+    if (isset($_GET['type']) && $_GET['type'] === 'edit') {
+        echo '<td><p>'
+            . (($consultation_type == 1) ? '診察する' : (($consultation_type == 2) ? '特別時間' : (($consultation_type == 99) ? '診察しない' : '')))
+            . '</p><span>備考</span><br><p class="remarks">'
+            . $remarks
+            . '</p></td>'
+        ;
+    } else {
+        echo '<td><p class="'
+        .$consultation_type
+        .'"></p>'
+        .'<p class="remarks_indicate">'
+        .$remarks
+        .'</p></td>'
+    ;
+    }
+}
+
+
+//診療時間を取得
+function getConsultationTime($consultation_type)
+{
+    echo '<dd class="row1"><p class="'
+        . $consultation_type
+        . '"></p></dd>'
+    ;
+}
+
+//TOP画面の診療時間を取得
+function getTopConsultationTime($consultation_type, $remarks)
+{
+    echo '<td class="row2"><span><p class="'
+        . $consultation_type
+        . '"></p></span><div>'
+        . $remarks
+        . '</div></td>'
     ;
 }

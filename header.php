@@ -32,11 +32,20 @@
                         <span></span>
                     </div>
                     <ul class="submenuItems">
-                        <li><a href="index.php">TOP</a></li>
-                        <li><a href="guide.php">病院案内</a></li>
-                        <li><a href="doctorIntroduction.php?sort=directer_desc">医師紹介</a></li>
-                        <li><a href="access.php">アクセス</a></li>
-                        <li><a href="info.php">お知らせ</a></li>
+                        <li>
+                            <a href="index.php">TOP</a>
+                        </li>
+                        <li>
+                            <a href="guide.php">病院案内</a>
+                        </li>
+                        <li>
+                            <a href="doctorIntroduction.php?sort=directer_desc">医師紹介</a></li>
+                        <li>
+                            <a href="access.php">アクセス</a>
+                        </li>
+                        <li>
+                            <a href="info.php">お知らせ</a>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -46,16 +55,24 @@
             <img src="./img/title-logo-1.png" alt="春日町診療所">
             <div class="tel">
                 <p class="for-tel">お気軽にご相談ください</p>
-                <a href="0339998810" class="tel-top">
-                    ℡：03-3999-8810
-                </a>
+                <a href="0339998810" class="tel-top">℡：03-3999-8810</a>
             </div>
             <ul>
-                <li><a href="index.php">TOP</a></li>
-                <li><a href="guide.php"> 病院案内</a></li>
-                <li><a href="doctorIntroduction.php?sort=directer_desc">医師紹介</a></li>
-                <li><a href="access.php">アクセス</a></li>
-                <li><a href="info.php">お知らせ</a></li>
+                <li>
+                    <a href="index.php">TOP</a>
+                </li>
+                <li>
+                    <a href="guide.php"> 病院案内</a>
+                </li>
+                <li>
+                    <a href="doctorIntroduction.php?sort=directer_desc">医師紹介</a>
+                </li>
+                <li>
+                    <a href="access.php">アクセス</a>
+                </li>
+                <li>
+                    <a href="info.php">お知らせ</a>
+                </li>
             </ul>
         </div>
     </header>

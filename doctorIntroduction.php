@@ -24,9 +24,7 @@ $consultation_time = $consultationTime->getConsultationTime();
                     <h2><?=h($doctor['name'])?><span class="rs-1000"><?=h($doctor['roman_name'])?></span></h2>
                     <div class="explain-box">
                         <h3 class="w-25">専門疾患</h3>
-                        <p>
-                            <?h($doctor['specialty_disease'])?>
-                        </p>
+                        <p><?=h($doctor['specialty_disease'])?></p>
                         <p class="w-25">所属学会・認定証</p>
                         <?=nl2br(h($doctor['belong']))?>
                     </div>
@@ -34,9 +32,7 @@ $consultation_time = $consultationTime->getConsultationTime();
                 <hr class="sp">
                 <div class="sp-one-things">
                     <p class="w-25 one-thing">ひとこと</p>
-                    <p class="danraku">
-                        <?=nl2br(h($doctor['comment']))?>
-                    </p>
+                    <p class="danraku"><?=nl2br(h($doctor['comment']))?></p>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -48,30 +44,56 @@ $consultation_time = $consultationTime->getConsultationTime();
             </div>
             <div class="schedule">
                 <dl>
-                    <dt class="row"></dt>
-                    <dt class="row">月</dt>
-                    <dt class="row">火</dt>
-                    <dt class="row">水</dt>
-                    <dt class="row">木</dt>
-                    <dt class="row">金</dt>
-                    <dt class="row">土</dt>
+                    <dt class="row">
+                    </dt>
+                    <?php foreach (WEEK as $value) : ?>
+                        <dt class="row">
+                            <?=$value?>
+                        </dt>
+                    <?php endforeach; ?>
                 </dl>
                 <dl>
-                    <dd class="row orange">午前</dd>
-                    <dd class="row blue sp-circle">今村宗嗣</dd>
-                    <dd class="row pink" id="pink1">今村友美</dd>
-                    <dd class="row blue">今村宗嗣</dd>
-                    <dd class="row blue">今村宗嗣</dd>
-                    <dd class="row blue">今村宗嗣</dd>
-                    <dd class="row blue">今村宗嗣</dd>
+                    <dd class="row orange">
+                        午前
+                    </dd>
+                    <dd class="row blue sp-circle">
+                        今村宗嗣
+                    </dd>
+                    <dd class="row pink" id="pink1">
+                        今村友美
+                    </dd>
+                    <dd class="row blue">
+                        今村宗嗣
+                    </dd>
+                    <dd class="row blue">
+                        今村宗嗣
+                    </dd>
+                    <dd class="row blue">
+                        今村宗嗣
+                    </dd>
+                    <dd class="row blue">
+                        今村宗嗣
+                    </dd>
                 </dl>
                 <dl>
-                    <dd class="row orange">午後</dd>
-                    <dd class="row  blue">今村宗嗣</dd>
-                    <dd class="row blue">今村宗嗣</dd>
-                    <dd class="row blue">今村宗嗣</dd>
-                    <dd class="row blue">今村宗嗣</dd>
-                    <dd class="row pink" id="pink2">今村友美</dd>
+                    <dd class="row orange">
+                        午後
+                    </dd>
+                    <dd class="row  blue">
+                        今村宗嗣
+                    </dd>
+                    <dd class="row blue">
+                        今村宗嗣
+                    </dd>
+                    <dd class="row blue">
+                        今村宗嗣
+                    </dd>
+                    <dd class="row blue">
+                        今村宗嗣
+                    </dd>
+                    <dd class="row pink" id="pink2">
+                        今村友美
+                    </dd>
                     <dd class="row orange">
                     </dd>
                 </dl>
@@ -82,4 +104,4 @@ $consultation_time = $consultationTime->getConsultationTime();
     </section>
 </main>
 <!--fooder共通 -->
-<?php require_once('fooder.php'); ?>
+<?php require_once('fooder.php'); ?>t

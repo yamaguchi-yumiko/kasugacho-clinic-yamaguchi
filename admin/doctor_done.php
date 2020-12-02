@@ -3,19 +3,19 @@ require_once('config.php');
 auth_confirm();
 $doctorInfo = new DoctorInfo();
 //登録ボタンが押されたら登録、編集ボタンが押されたら更新
-if (isset($_POST['add_done']) || isset($_POST['edit_done'])) {
-    $doctorInfo->addDoctor(
+if (isset($_POST['done'])) {
+    $doctorInfo->setDoctor(
         $_POST['name'],
-        $_POST['roman'],
+        $_POST['roman_name'],
         $_POST['gender'],
-        $_POST['specialty'],
+        $_POST['specialty_disease'],
         $_POST['belong'],
         $_POST['img'],
         $_POST['comment'],
         $_POST['directer_flg'],
         $_POST['directer_comment'],
-        (new DateTime())->format('Y-m-d H:i:s.u'),
-        isset($_GET['id']) ? $_GET['id'] : ''
+        isset($_GET['id']) ? $_GET['id'] : '',
+        $_GET['type']
     );
 }
 ?>

@@ -93,11 +93,11 @@ body {
   padding-right: 5px;
 }
 
-.submid_conteaner {
+.submit_container {
   display: flex;
 }
 
-.submid_conteaner p:nth-of-type(1n + 2) {
+.submit_container p:nth-of-type(1n + 2) {
   margin-left: 40px;
 }
 
@@ -341,7 +341,7 @@ body {
   text-align: center;
 }
 
-.time-button a {
+.time-button input {
   width: 80px;
   height: 30px;
   display: inline-block;
@@ -350,7 +350,6 @@ body {
   text-align: center;
   padding-top: 3px;
   margin-top: 30px;
-  box-shadow: 2px 2px 4px #666;
   border-radius: 8px;
 }
 
@@ -467,7 +466,7 @@ body {
   border: none;
   outline: none;
   background: transparent;
-  background-img: none;
+  background-image: none;
   box-shadow: none;
   -webkit-appearance: none;
   appearance: none;

@@ -6,79 +6,53 @@ $consultationTime = new ConsultationTime();
 $timetable = $consultationTime->getTimeTable();
 //診療時間を取得
 $consultation_time = $consultationTime->getConsultationTime();
-
 ?>
 <!--header共通 -->
 <?php require_once('clinic_management_header.php'); ?>
 <main class="list_main">
     <?php getPage(); ?>
-        <table class="consultation-edit-listbox">
-            <tr>
-                <th></th>
-                <th>月</th>
-                <th>火</th>
-                <th>水</th>
-                <th>木</th>
-                <th>金</th>
-                <th>土</th>
-                <th>日・祝</th>
-            </tr>
-            <tr>
-                <td class="time">
-                    <p><?=$_POST['before_time_zone']?></p>診療時間<p><?=$_POST['before_start_time']?></p>〜<p><?=$_POST['before_end_time']?></p>
-                </td>
-                <!-- 診療詳細を取得 -->
-                <td>
-                    <?php getConfMedicalDetails($_POST['before_monday_type'], $_POST['before_monday_remarks']); ?>
-                </td>
-                <td>
-                    <?php getConfMedicalDetails($_POST['before_tuesday_type'], $_POST['before_tuesday_remarks']); ?>
-                </td>
-                <td>
-                    <?php getConfMedicalDetails($_POST['before_wednesday_type'], $_POST['before_wednesday_remarks']); ?>
-                </td>
-                <td>
-                    <?php getConfMedicalDetails($_POST['before_thursday_type'], $_POST['before_thursday_remarks']); ?>
-                </td>
-                <td>
-                    <?php getConfMedicalDetails($_POST['before_friday_type'], $_POST['before_friday_remarks']); ?>
-                </td>
-                <td>
-                    <?php getConfMedicalDetails($_POST['before_saturday_type'], $_POST['before_saturday_remarks']); ?>
-                </td>
-                <td>
-                    <?php getConfMedicalDetails($_POST['before_sunday_type'], $_POST['before_sunday_remarks']); ?>
-                </td>
-            </tr>
-            <tr>
-                <td class="time">
-                    <p><?=$_POST['after_time_zone']?></p>診療時間<p><?=$_POST['after_start_time']?></p>〜<p><?=$_POST['after_end_time']?></p>
-                </td>
-                 <!-- 診療詳細を取得 -->
-                <td>
-                    <?php getConfMedicalDetails($_POST['after_monday_type'], $_POST['after_monday_remarks']); ?>
-                </td>
-                <td>
-                    <?php getConfMedicalDetails($_POST['after_tuesday_type'], $_POST['after_tuesday_remarks']); ?>
-                </td>
-                <td>
-                    <?php getConfMedicalDetails($_POST['after_wednesday_type'], $_POST['after_wednesday_remarks']); ?>
-                </td>
-                <td>
-                    <?php getConfMedicalDetails($_POST['after_thursday_type'], $_POST['after_thursday_remarks']); ?>
-                </td>
-                <td>
-                    <?php getConfMedicalDetails($_POST['after_friday_type'], $_POST['after_friday_remarks']); ?>
-                </td>
-                <td>
-                    <?php getConfMedicalDetails($_POST['after_saturday_type'], $_POST['after_saturday_remarks']); ?>
-                </td>
-                <td>
-                    <?php getConfMedicalDetails($_POST['after_sunday_type'], $_POST['after_sunday_remarks']); ?>
-                </td>
-            </tr>
-        </table>
-         <form action="" method="post">
+    <table class="consultation-edit-listbox">
+        <tr>
+            <th>
+            </th>
+            <?php foreach (WEEK as $value) : ?>
+                <th>
+                    <?=$value?>
+                </th>
+            <?php endforeach; ?>
+        </tr>
+        <tr>
+            <td class="time">
+                <p><?=$_POST['before_time_zone']?></p>
+                診療時間<p><?=$_POST['before_start_time']?></p>
+                〜<p><?=$_POST['before_end_time']?></p>
+            </td>
+            <!-- 診療詳細を取得 -->
+            <?php getConfMedicalDetails($_POST['before_monday_type'], $_POST['before_monday_remarks']); ?>
+            <?php getConfMedicalDetails($_POST['before_tuesday_type'], $_POST['before_tuesday_remarks']); ?>
+            <?php getConfMedicalDetails($_POST['before_wednesday_type'], $_POST['before_wednesday_remarks']); ?>
+            <?php getConfMedicalDetails($_POST['before_thursday_type'], $_POST['before_thursday_remarks']); ?>
+            <?php getConfMedicalDetails($_POST['before_friday_type'], $_POST['before_friday_remarks']); ?>
+            <?php getConfMedicalDetails($_POST['before_saturday_type'], $_POST['before_saturday_remarks']); ?>
+            <?php getConfMedicalDetails($_POST['before_sunday_type'], $_POST['before_sunday_remarks']); ?>
+        </tr>
+        <tr>
+            <td class="time">
+                <p><?=$_POST['after_time_zone']?></p>
+                診療時間<p><?=$_POST['after_start_time']?></p>
+                〜<p><?=$_POST['after_end_time']?></p>
+            </td>
+            <!-- 診療詳細を取得 -->
+            <?php getConfMedicalDetails($_POST['after_monday_type'], $_POST['after_monday_remarks']); ?>
+            <?php getConfMedicalDetails($_POST['after_tuesday_type'], $_POST['after_tuesday_remarks']); ?>
+            <?php getConfMedicalDetails($_POST['after_wednesday_type'], $_POST['after_wednesday_remarks']); ?>
+            <?php getConfMedicalDetails($_POST['after_thursday_type'], $_POST['after_thursday_remarks']); ?>
+            <?php getConfMedicalDetails($_POST['after_friday_type'], $_POST['after_friday_remarks']); ?>
+            <?php getConfMedicalDetails($_POST['after_saturday_type'], $_POST['after_saturday_remarks']); ?>
+            <?php getConfMedicalDetails($_POST['after_sunday_type'], $_POST['after_sunday_remarks']); ?>
+        </tr>
+    </table>
+    <form action="consultation_time_done.php?type=edit" method="post">
         <!-- 入力値の受け渡し -->
         <!--曜日毎に登録するための値を受け渡し -->
         <input type="hidden" name="monday" value="1">
@@ -128,8 +102,8 @@ $consultation_time = $consultationTime->getConsultationTime();
         <input type="hidden" name="after_sunday_type" value="<?=$_POST['after_sunday_type']?>">
         <input type="hidden" name="after_sunday_remarks" value="<?=$_POST['after_sunday_remarks']?>">
         <div class="submid_time">
-            <p class="time-button"><input type="submit" value="戻る" onClick="form.action='consultation_time_edit.php?type=edit';return true"></p>
-            <p class="time-button"><input type="submit" name="done" value="完了" onClick="form.action='consultation_time_done.php?type=edit';return true"></p>
+            <p class="time-button"><input type="submit" value="戻る" formaction="consultation_time_edit.php?type=edit"></p>
+            <p class="time-button"><input type="submit" name="done" value="完了"></p>
         </div>
     </form>
 </main>

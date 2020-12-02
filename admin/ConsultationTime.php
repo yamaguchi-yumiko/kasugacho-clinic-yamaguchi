@@ -16,9 +16,9 @@ class ConsultationTime extends Model
         $sql =
             'SELECT * FROM m_week'
                 .' INNER JOIN consultation_time'
-                    .' ON m_week.id = consultation_time.week_id'
+                .' ON m_week.id = consultation_time.week_id'
                 .' INNER JOIN timetable'
-                    .' ON consultation_time.timetable_id = timetable.id'
+                .' ON consultation_time.timetable_id = timetable.id'
             .' WHERE'
                 .' delete_flg = 0'
         ;
@@ -36,40 +36,40 @@ class ConsultationTime extends Model
             $stm = $this->dbh->prepare($sql);
             $stm->execute($timetable);
             $sql =
-            'INSERT INTO consultation_time('
-                .'  week_id'
-                .', timetable_id'
-                .', consultation_type'
-                .', remarks'
-            .' )VALUES('
-                .'  ?'
-                .', ?'
-                .', ?'
-                .', ?'
-            .' )'
-            .' ON DUPLICATE KEY UPDATE'
-                .' week_id ='
-                .' VALUES('
-                    .' week_id'
-                .')'
-                .', timetable_id ='
-                .' VALUES('
-                    .' timetable_id'
+                'INSERT INTO consultation_time('
+                    .'week_id'
+                    .', timetable_id'
+                    .', consultation_type'
+                    .', remarks'
+                .' )VALUES('
+                    .'?'
+                    .', ?'
+                    .', ?'
+                    .', ?'
                 .' )'
-                .', consultation_type ='
-                .' VALUES('
-                    .' consultation_type'
-                .' )'
-                .', remarks ='
-                .' VALUES('
-                    .' remarks'
-                .')'
+                .' ON DUPLICATE KEY UPDATE'
+                    .' week_id ='
+                    .' VALUES('
+                        .' week_id'
+                    .')'
+                    .', timetable_id ='
+                    .' VALUES('
+                        .' timetable_id'
+                    .' )'
+                    .', consultation_type ='
+                    .' VALUES('
+                        .' consultation_type'
+                    .' )'
+                    .', remarks ='
+                    .' VALUES('
+                        .' remarks'
+                    .')'
             ;
             $stm = $this->dbh->prepare($sql);
             $stm->bindValue(1,$week_id);
             $stm->bindValue(2,$timetable_id);
             $stm->bindValue(3,$consultation_type);
-            $stm->bindValue(4,empty($remarks) ? null : $remarks , PDO::PARAM_STR_CHAR);
+            $stm->bindValue(4,!empty($remarks) ? $remarks : null, PDO::PARAM_STR_CHAR);
             $stm->execute();
             return $this->dbh->commit();
         } catch (Exception $e) {

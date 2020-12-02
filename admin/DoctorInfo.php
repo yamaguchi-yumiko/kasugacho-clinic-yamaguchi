@@ -18,76 +18,84 @@ class DoctorInfo extends Model
         return $stm->fetch();
     }
     //DBに登録と更新する
-    public function addDoctor($name, $roman_name, $gender, $specialty_disease, $belong, $img, $comment, $directer_flg, $directer_comment, $updated_at, $id)
-    {
+    public function setDoctor(
+        $name,
+        $roman_name,
+        $gender,
+        $specialty_disease,
+        $belong,
+        $img,
+        $comment,
+        $directer_flg,
+        $directer_comment,
+        $id,
+        $type
+    ) {
         $this->connect();
-        if (isset($_POST['add_done'])) {
+        if ($type === 'add') {
             $sql =
                 'INSERT INTO docter'
                 . '('
-                . '  name'
-                . ', roman_name'
-                . ', gender'
-                . ', specialty_disease'
-                . ', belong'
-                . ', img'
-                . ', comment'
-                . ', directer_flg'
-                . ', directer_comment'
+                    . 'name'
+                    . ', roman_name'
+                    . ', gender'
+                    . ', specialty_disease'
+                    . ', belong'
+                    . ', img'
+                    . ', comment'
+                    . ', directer_flg'
+                    . ', directer_comment'
                 . ')VALUES('
-                . '  ?'
-                . ', ?'
-                . ', ?'
-                . ', ?'
-                . ', ?'
-                . ', ?'
-                . ', ?'
-                . ', ?'
-                . ', ?'
+                    . '?'
+                    . ', ?'
+                    . ', ?'
+                    . ', ?'
+                    . ', ?'
+                    . ', ?'
+                    . ', ?'
+                    . ', ?'
+                    . ', ?'
                 . ')'
             ;
             $stm = $this->dbh->prepare($sql);
-            $stm->bindValue(1, empty($name) ? null : $name, PDO::PARAM_STR_CHAR);
-            $stm->bindValue(2, empty($roman_name) ? null : $roman_name, PDO::PARAM_STR_CHAR);
-            $stm->bindValue(3, empty($gender) ? null : $gender, PDO::PARAM_INT);
-            $stm->bindValue(4, empty($specialty_disease) ? null : $specialty_disease, PDO::PARAM_STR_CHAR);
-            $stm->bindValue(5, empty($belong) ? null : $belong, PDO::PARAM_STR_CHAR);
-            $stm->bindValue(6, empty($img) ? null : $img, PDO::PARAM_STR_CHAR);
-            $stm->bindValue(7, empty($comment) ? null : $comment, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(1, !empty($name) ? $name : null, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(2, !empty($roman_name) ? $roman_name : null, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(3, !empty($gender) ? $gender : null, PDO::PARAM_INT);
+            $stm->bindValue(4, !empty($specialty_disease) ? $specialty_disease : null, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(5, !empty($belong) ? $belong : null, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(6, !empty($img) ? $img : null, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(7, !empty($comment) ? $comment : null, PDO::PARAM_STR_CHAR);
             $stm->bindValue(8, $directer_flg, PDO::PARAM_INT);
-            $stm->bindValue(9, empty($directer_comment) ? null : $directer_comment, PDO::PARAM_STR_CHAR);
-            return $stm->execute()
-        ;
-        } else {
+            $stm->bindValue(9, !empty($directer_comment) ? $directer_comment : null, PDO::PARAM_STR_CHAR);
+        } elseif ($type === 'edit') {
             $sql =
                 'UPDATE docter SET'
-                . '  name = ?'
-                . ', roman_name = ?'
-                . ', gender = ?'
-                . ', specialty_disease = ?'
-                . ', belong = ?'
-                . ', img = ?'
-                . ', comment = ?'
-                . ', directer_flg = ?'
-                . ', directer_comment = ?'
-                . ', updated_at = ?'
+                    . 'name = ?'
+                    . ', roman_name = ?'
+                    . ', gender = ?'
+                    . ', specialty_disease = ?'
+                    . ', belong = ?'
+                    . ', img = ?'
+                    . ', comment = ?'
+                    . ', directer_flg = ?'
+                    . ', directer_comment = ?'
+                    . ', updated_at = ?'
                 . ' WHERE id = ?'
             ;
             $stm = $this->dbh->prepare($sql);
-            $stm->bindValue(1, empty($name) ? null : $name, PDO::PARAM_STR_CHAR);
-            $stm->bindValue(2, empty($roman_name) ? null : $roman_name, PDO::PARAM_STR_CHAR);
-            $stm->bindValue(3, empty($gender) ? null : $gender, PDO::PARAM_INT);
-            $stm->bindValue(4, empty($specialty_disease) ? null : $specialty_disease, PDO::PARAM_STR_CHAR);
-            $stm->bindValue(5, empty($belong) ? null : $belong, PDO::PARAM_STR_CHAR);
-            $stm->bindValue(6, empty($img) ? null : $img, PDO::PARAM_STR_CHAR);
-            $stm->bindValue(7, empty($comment) ? null : $comment, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(1, !empty($name) ? $name : null, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(2, !empty($roman_name) ? $roman_name : null, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(3, !empty($gender) ? $gender : null, PDO::PARAM_INT);
+            $stm->bindValue(4, !empty($specialty_disease) ? $specialty_disease : null, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(5, !empty($belong) ? $belong : null, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(6, !empty($img) ? $img : null, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(7, !empty($comment) ? $comment : null, PDO::PARAM_STR_CHAR);
             $stm->bindValue(8, $directer_flg, PDO::PARAM_INT);
-            $stm->bindValue(9, empty($directer_comment) ? null : $directer_comment, PDO::PARAM_STR_CHAR);
-            $stm->bindValue(10, $updated_at);
+            $stm->bindValue(9, !empty($directer_comment) ? $directer_comment : null, PDO::PARAM_STR_CHAR);
+            $stm->bindValue(10, (new DateTime())->format('Y-m-d H:i:s.u'));
             $stm->bindValue(11, $id, PDO::PARAM_INT);
-            return $stm->execute()
-        ;
         }
+        return $stm->execute();
     }
     //編集を押した時にIDの内容を取得
     public function getDoctorInfo($doctor_id)

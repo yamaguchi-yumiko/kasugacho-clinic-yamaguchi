@@ -24,22 +24,7 @@
     width: 96.5%;
     border: 1px solid #cccccc;
     margin: 25px 5px 5px 5px;
-  }
-
-  .dltable1 .row9,
-  .dltable1 .row2,
-  .dltable1 .row3,
-  .dltable1 .row4,
-  .dltable1 .row5,
-  .dltable1 .row6,
-  .dltable1 .row7,
-  .dltable1 .row8 {
-    width: 30px;
-  }
-
-  .dltable1 .row8 {
-    width: 30%;
-    border-right: none;
+    text-align: center;
   }
 
   .active-time {
