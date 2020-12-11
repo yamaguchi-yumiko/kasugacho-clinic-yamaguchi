@@ -7,4 +7,3 @@ function auth_confirm()
     exit;
   }
 }
-

@@ -1,57 +1,30 @@
 <?php
 require_once('config.php');
 auth_confirm();
-
+$doctorInfo = new DoctorInfo();
+//登録ボタンが押されたら登録、編集ボタンが押されたら更新
+if (isset($_POST['add_done']) || isset($_POST['edit_done'])) {
+    $doctorInfo->addDoctor(
+        $_POST['name'],
+        $_POST['roman'],
+        $_POST['gender'],
+        $_POST['specialty'],
+        $_POST['belong'],
+        $_POST['img'],
+        $_POST['comment'],
+        $_POST['directer_flg'],
+        $_POST['directer_comment'],
+        (new DateTime())->format('Y-m-d H:i:s.u'),
+        isset($_GET['id']) ? $_GET['id'] : ''
+    );
+}
 ?>
-<!DOCTYPE HTML>
-<html lang="ja">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="device- initial-scale=1">
-    <meta name="robots" content="noindex,nofollow,noarchive">
-    <title>医師名簿登録完了ページ</title>
-    <link rel="stylesheet" type="text/css" href="../css/common.css" media="all">
-    <link rel="stylesheet" type="text/css" href="../css/doctormanagement.css" media="all">
-    <script type="text/javascript" src="../js/animation.js"></script>
-</head>
-
-<body class="add_conteaner">
-    <header>
-        <div class="header">
-            <p>ログイン名[<?=h($_SESSION['name'])?>]さん、ご機嫌いかがですか？</p>
-            <p><a href="logout.php">ログアウトする</a></p>
-        </div>
-        <div class="navlist">
-            <ul>
-                <li><a href="top.php">top</a></li>
-                <li><a href="doctor_list.php">医師管理</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <main class="done_main">
-
-        <div class="list_nav">
-            <ul>
-                <li><a href="#">医師管理名簿</a></li>
-            </ul>
-        </div>
-
-        <?php if (isset($_GET['add_done'])) : ?>
-
-            <?=getPage();?>
-            <p class="complete">登録が完了しました。</p>
-
-        <?php else : ?>
-
-            <?=getPage();?>
-            <p class="complete">編集が完了しました。</p>
-
-        <?php endif; ?>
-    </main>
-
-    <footer class="footer">2020 ebacrop.inc</footer>
-</body>
-
-</html>
+<!--header共通 -->
+<?php require_once('clinic_management_header.php'); ?>
+<main class="done_main">
+    <?php getPage(); ?>
+    <!-- 完了画面の文言を取得 -->
+    <?php getDoneSentence(); ?>
+</main>
+<!--footer共通 -->
+<?php require_once('clinic_management_footer.php'); ?>

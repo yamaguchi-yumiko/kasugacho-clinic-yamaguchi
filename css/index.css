@@ -1,251 +1,249 @@
 @charset "UTF-8";
 
-@media screen and (min-width:768px) {
-    #main{
+@media screen and (min-width: 768px) {
+  #main {
+    flex-wrap: wrap;
+  }
 
-        flex-wrap: wrap;
-    }
+  .evn {
+    width: 63%;
+    margin: 0 0 5px 0;
+  }
 
-    section:nth-child(even){
-        width: 63%;
-        margin: 0 0 5px 0;
-    }
+  .odd {
+    width: 36%;
+    margin: 0 5px 5px 0;
+  }
 
-    section:nth-child(odd){
-        width: 36%;
-        margin: 0 5px 5px 0;
-    }
+  .last {
+    width: 100%;
+    margin: 0%;
+  }
 
-    section:last-of-type{
-        width: 100%;
-        margin: 0%
-    }
+  .dltable1 {
+    width: 96.5%;
+    border: 1px solid #cccccc;
+    margin: 25px 5px 5px 5px;
+  }
 
-
-
-    .dltable {
-        width: 96.5%;
-        border: 1px solid #cccccc;
-        margin: 25px 5px 5px 5px;
-    }
-
-    .dltable .row1,.dltable .row2,.dltable .row3,.dltable .row4,.dltable .row5,.dltable .row6,.dltable .row7,.dltable .row8 {
+  .dltable1 .row9,
+  .dltable1 .row2,
+  .dltable1 .row3,
+  .dltable1 .row4,
+  .dltable1 .row5,
+  .dltable1 .row6,
+  .dltable1 .row7,
+  .dltable1 .row8 {
     width: 30px;
-    }
+  }
 
-    dd.bathu {
-        color: #E91E63 !important;
-        font-size: 3vw !important;
-        padding: 8px 1px !important;
-    }
+  .dltable1 .row8 {
+    width: 30%;
+    border-right: none;
+  }
 
-
-    .dltable .row8 {
-        width: 30%;
-        border-right: none;
-    }
-
-    .active-time{
-        font-size: 12px;
-        color: #696969 !important;
-        width: 50px;
-    }
-    .active-time .font-size{
-        font-size: 20px;
-    }
-    .dltable dl {
+  .active-time {
+    font-size: 12px;
+    color: #696969 !important;
+    width: 50px;
+  }
+  .active-time .font-size {
+    font-size: 20px;
+  }
+  .dltable1 dl {
     display: flex;
     text-align: center;
     font-size: 25px;
     border-bottom: 1px solid #ccc;
-    }
-    .dltable dl:last-child {
+  }
+  .dltable1 dl:last-child {
     border-bottom: none;
-    }
-    .dltable dl dt {
+  }
+  .dltable1 dl dt {
     padding: 15px 1px;
     background: #46c9ba none repeat scroll 0 0;
     color: #fff;
     font-weight: bold;
     border-right: 1px solid #dee2e6;
-    }
-    .dltable dl dd {
+  }
+  .dltable1 dl dd {
     padding: 12px 1px;
     border-right: 1px solid #b2b5b8;
     color: #f39800;
-    }
+  }
 
-    .row1 p, .row8 p {
-        padding: 20px 0;
-    }
+  .row9 p {
+    padding: 20px 0;
+  }
 
-    #consultationHours .active-time p {
-        width: 85%;
-        margin: auto;
-    }
+  #consultationHours .active-time p {
+    width: 85%;
+    margin: auto;
+  }
 
+  section#houtoKasuga {
+    background-image: url(../img/main_picture.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 
-    section#houtoKasuga {
-        background-image: url(../img/main_picture.png);
-        background-repeat: no-repeat;
-        background-position: center;
-    }
+  }
 
-    #houtoKasuga img{
-        width: 96.5%;
-        margin: 2% 0 0 2%;
-    }
+  #houtoKasuga img {
+    width: 96.5%;
+    margin: 2% 0 0 2%;
+  }
 
-    #houtoKasuga .explain-for-kasugacyo{
-        background-color: #f39800b0;
-        padding-left: 27px;
-        margin-top: 255px;
-    }
+  #houtoKasuga .explain-for-kasugacyo {
+    background-color: #f39800b0;
+    padding-left: 27px;
+    margin-top: 240px;
+  }
 
-    #houtoKasuga h1{
-        background-color: unset;
-        color: #fff;
-        padding: 5px 0 0 0px;
-    }
+  #houtoKasuga h1 {
+    background-color: unset;
+    color: #fff;
+    padding: 5px 0 0 0px;
+  }
 
-    #houtoKasuga p{
-        font-size: 12px;
-        color: #fff;
-        font-weight: normal;
-    }
+  #houtoKasuga p {
+    font-size: 12px;
+    color: #fff;
+    font-weight: normal;
+  }
 
+  .inquiry-box1 {
+    margin: 20px;
+    font-size: 20px;
+  }
 
-    .inquiry-box{
-        margin: 20px;
-        font-size: 20px;
-    }
+  .inquiry-box1 a {
+    font-size: 30px;
+    color: #696969;
+  }
 
-    .inquiry-box a{
-        font-size: 30px;
-    }
+  .inquiry hr {
+    margin: 0 -30px 0px -30px;
+  }
 
-    #inquiry .smart-phone{
-        display: flex;
-    }
+  #inquiry .smart-phone {
+    display: flex;
+  }
 
-    #inquiry .smart-phone p{
-        width: 44%;
-        margin: 30px 0 0 0;
-        text-align: center;
-    }
+  #inquiry .smart-phone p {
+    width: 44%;
+    margin: 30px 0 0 0;
+    text-align: center;
+  }
 
+  #info1 .scroll-box {
+    display: block;
+    margin: 20px 10px 5px;
+    overflow: scroll;
+    height: 210px;
+    border: solid 4px #e6e6e6;
+    overflow-x: hidden;
+  }
 
-    #info .scroll-box {
-        display: block;
-        margin: 20px 10px 5px;
-        overflow: scroll;
-        height: 210px;
-        border: solid 4px #e6e6e6;
-        overflow-x: hidden;
-    }
+  #info1 .scroll-box ul {
+    padding: 10px 0 0 20px;
+  }
+  #info1 .scroll-box ul li {
+    margin-bottom: 50px;
+  }
 
-    #info .scroll-box ul {
-        padding: 10px 0 0 20px;
-    }
-    #info .scroll-box ul li{
-        margin-bottom: 50px;
-    }
+  #info1 .scroll-box ul li a {
+    font-size: 25px;
+    color: #46c9ba;
+    text-decoration: underline;
+  }
 
-    #info .scroll-box ul li a {
-        font-size: 25px;
-        color: #46c9ba;
-        text-decoration: underline;
-    }
+  #info1 .scroll-box ul li p {
+    font-size: 15px;
+  }
 
-    #info .scroll-box ul li p {
-        font-size: 15px;
-    }
+  #info1 .scroll-box::-webkit-scrollbar {
+    width: 10px;
+  }
 
-    #info .scroll-box::-webkit-scrollbar{
-        width: 10px;
-    }
+  #info1 .scroll-box::-webkit-scrollbar-track {
+    border-left: solid 1px #ececec;
+  }
 
-    #info .scroll-box::-webkit-scrollbar-track{
-        border-left: solid 1px #ececec;
-    }
+  #info1 .scroll-box::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+  }
 
-    #info .scroll-box::-webkit-scrollbar-thumb{
-        background: #ccc;
-        border-radius: 10px;
-    }
+  #greeting .flexbox1 {
+    display: flex;
+    margin: 20px;
+  }
 
+  #greeting .docter-explain {
+    margin-left: 40px;
+  }
 
+  #greeting .docter-explain h2 {
+    font-size: 40px;
+    border-left: solid 15px #46c9ba;
+    padding-left: 50px;
+    margin-left: -15px;
+  }
 
-    #greeting .flexbox{
-        display:flex;
-        margin: 20px;
-    }
+  #greeting .docter-explain h2 span {
+    font-size: 20px;
+    padding-left: 35px;
+  }
 
-    #greeting img{
-        width: 263px;
-        height: 350px;
-    }
+  #greeting .docter-explain p:nth-of-type(1) {
+    font-size: 25px;
+    margin: 20px 0 10px 0;
+  }
 
-    #greeting .docter-explain{
-        margin-left: 40px;
-    }
-
-    #greeting .docter-explain h2{
-        font-size: 40px;
-        border-left: solid 15px #46c9ba;
-        padding-left: 50px;
-        margin-left: -15px;
-    }
-
-    #greeting .docter-explain h2 span{
-        font-size: 20px;
-        padding-left: 35px;
-    }
-
-    #greeting .docter-explain p:nth-of-type(1){
-        font-size: 25px;
-        margin: 20px 0 10px 0;
-    }
-
-    #greeting .docter-explain p:nth-of-type(2){
-        font-size: 20px;
-        margin-bottom: 25px;
-    }
+  #greeting .docter-explain p:nth-of-type(2) {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
 }
-@media screen and (min-width:768px) and (max-width:999px) {
+@media screen and (min-width: 768px) and (max-width: 999px) {
+  .dltable1 dl {
+    font-size: 2vw;
+    height: 109px;
+  }
 
+  .dltable1 dl:first-child {
+    height: 68px;
+  }
 
-    .dltable dl {
-        font-size: 2vw;
-        height: 109px;
-    }
+  .active-time .font-size {
+    font-size: 2vw;
+  }
 
-    .dltable dl:first-child{
-        height: 68px;
-    }
+  .inquiry-box1 {
+    font-size: 2vw;
+  }
 
-    .active-time .font-size {
-        font-size: 2vw;
-    }
+  .inquiry-box1 a {
+    font-size: 3vw;
+    color: #696969;
+  }
 
-    .inquiry-box {
-        font-size: 2vw;
-    }
+  #greeting img {
+    width: 100%;
+  }
 
-    .inquiry-box a {
-        font-size: 3vw;
-        color: #696969;
-    }
+  #greeting .rs-1000 {
+    display: block;
+  }
 
-    #greeting img {
-        width: 100%
-    }
+  #greeting .docter-explain h2 span {
+    padding-left: 0;
+  }
+}
 
-    #greeting .rs-1000 {
-        display: block;
-    }
-
-    #greeting .docter-explain h2 span {
-        padding-left: 0;
-    }
+.sma {
+  width: 44%;
+  margin: 30px 0 0 0;
+  text-align: center;
 }
