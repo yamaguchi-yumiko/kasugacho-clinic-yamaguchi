@@ -9,6 +9,8 @@ $consultationTime = new ConsultationTime();
 $timetable = $consultationTime->getTimeTable();
 //診療時間を取得
 $consultation_time = $consultationTime->getConsultationTime();
+//曜日を取得
+$week = $consultationTime->getWeek();
 ?>
 <!-- header共通 -->
 <?php require_once('header.php'); ?>
@@ -46,9 +48,9 @@ $consultation_time = $consultationTime->getConsultationTime();
                 <dl>
                     <dt class="row">
                     </dt>
-                    <?php foreach (WEEK as $value) : ?>
+                    <?php foreach ($week as $value) : ?>
                         <dt class="row">
-                            <?=$value?>
+                            <?=$value['name'] ?>
                         </dt>
                     <?php endforeach; ?>
                 </dl>

@@ -133,7 +133,7 @@ $(function () {
     $(function () {
         $('.js-modal-open').each(function () {
             $(this).on('click', function () {
-                var target = $(this).datgetEditMedicalDetails('target');
+                var target = $(this).dat('target');
                 var modal = document.getElementById(target);
                 $(modal).fadeIn();
                 return false;

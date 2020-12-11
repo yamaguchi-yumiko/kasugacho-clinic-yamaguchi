@@ -9,21 +9,23 @@ class ConsultationTime extends Model
         $stm = $this->dbh->query($sql);
         return $stm->fetchAll();
     }
+
+    //午前・午後の時間を取得
+    public function getWeek()
+    {
+        $this->connect();
+        $sql = 'SELECT * FROM m_week';
+        $stm = $this->dbh->query($sql);
+        return $stm->fetchAll();
+    }
+
     //診療時間の詳細を取得
     public function getConsultationTime()
     {
         $this->connect();
-        $sql =
-            'SELECT * FROM m_week'
-                .' INNER JOIN consultation_time'
-                .' ON m_week.id = consultation_time.week_id'
-                .' INNER JOIN timetable'
-                .' ON consultation_time.timetable_id = timetable.id'
-            .' WHERE'
-                .' delete_flg = 0'
-        ;
+        $sql = 'SELECT timetable_id,consultation_time. * FROM consultation_time WHERE delete_flg = 0';
         $stm = $this->dbh->query($sql);
-        return $stm->fetchAll();
+        return $stm->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_GROUP);
     }
     //診察時間帯を更新
     //診療時間のデータが入っていなければ追加、入っていれば更新

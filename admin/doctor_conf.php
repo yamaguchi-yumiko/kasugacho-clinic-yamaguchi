@@ -86,7 +86,7 @@ auth_confirm();
         <input type="hidden" name="name" value="<?=h($_POST['name'])?>">
         <input type="hidden" name="roman_name" value="<?=h($_POST['roman_name'])?>">
         <input type="hidden" name="gender" value="<?=h($_POST['gender'])?>">
-        <input type="hidden" name="specialty_disease" value="<?= h($_POST['specialty_disease'])?>">
+        <input type="hidden" name="specialty_disease" value="<?=h($_POST['specialty_disease'])?>">
         <input type="hidden" name="belong" value="<?=h($_POST['belong'])?>">
         <input type="hidden" name="img" value="<?=h($_POST['img'])?>">
         <input type="hidden" name="comment" value="<?=h($_POST['comment'])?>">
