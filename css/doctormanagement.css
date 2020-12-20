@@ -93,11 +93,11 @@ body {
   padding-right: 5px;
 }
 
-.submid_conteaner {
-  display:flex;
+.submit_container {
+  display: flex;
 }
 
-.submid_conteaner p:nth-of-type(1n + 2){
+.submit_container p:nth-of-type(1n + 2) {
   margin-left: 40px;
 }
 
@@ -179,15 +179,12 @@ body {
 
 .list_main {
   background: #fff;
-  padding: 20px 0 30px 0;
+  padding: 60px 0 30px 0;
 }
 
 .listbutton {
   text-align: left;
   margin-left: 60px;
-}
-
-.listbutton a {
   width: 200px;
   height: 30px;
   font-size: 20px;
@@ -195,7 +192,7 @@ body {
   background: #cccccc;
   color: #666;
   padding: 4px 0 4px 0;
-  display: inline-block;
+
   box-shadow: 2px 2px 4px gray;
   border-radius: 5px;
 }
@@ -222,8 +219,8 @@ body {
   border: 1px solid #666;
 }
 
-.buttun,
-.add_buttun {
+.button,
+.add_button {
   width: 60px;
   height: 30px;
   display: inline-block;
@@ -232,11 +229,10 @@ body {
   text-align: center;
   padding-top: 3px;
   margin-left: 10px;
-  box-shadow: 2px 2px 4px #666;
   border-radius: 8px;
 }
 
-.add_buttun {
+.add_button {
   width: 80px;
 }
 
@@ -252,9 +248,9 @@ body {
 }
 
 .add_main {
-  height: 900px;
+  height: 1000px;
   background: #fff;
-  padding-top: 20px;
+  padding-top: 60px;
 }
 
 .add_main form p {
@@ -276,7 +272,8 @@ body {
   margin-top: 5px;
 }
 
-.add_table tr,.add_table th{
+.add_table tr,
+.add_table th {
   border: 1px solid #1c1c1c;
 }
 
@@ -284,13 +281,12 @@ body {
   text-align: left;
 }
 
-.submit {
+.submit input {
   width: 220px;
   height: 40px;
   font-size: 20px;
   text-align: center;
   background: #cccccc;
-  box-shadow: 2px 2px 4px gray;
   border-radius: 5px;
   margin-top: 30px;
 }
@@ -300,13 +296,22 @@ body {
   font-size: 25px;
 }
 
+.doctor td {
+  width: 100px;
+  height: 70px;
+}
+
+.doctor img {
+  width: 40%;
+}
+
 /*-------------------------
  医師管理完了
 -------------------------*/
 .done_main {
   height: 650px;
   background: #fff;
-  padding-top: 20px;
+  padding-top: 60px;
 }
 
 /*-------------------------
@@ -314,30 +319,29 @@ body {
 -------------------------*/
 
 .consultation-listbox {
-    width: 800px;
-    margin: auto;
-    border-collapse: collapse;
-    text-align: center;
-    margin-top: 50px;
-  }
-
-.consultation-listbox th{
-    padding: 5px 5px 5px 5px;
-    border: 1px solid #666;
+  width: 600px;
+  table-layout: fixed;
+  margin: auto;
+  border-collapse: collapse;
+  margin-top: 50px;
 }
 
-.consultation-listbox td:nth-of-type(1n + 2) {
-
-    padding: 20px 20px 20px 20px;
-    border: 1px solid #666;
-  }
-
-.consultation-listbox td {
-  padding: 10px 0px 10px 0px;
+.consultation-listbox th {
   border: 1px solid #666;
 }
 
-.time-buttun a{
+.consultation-listbox td:nth-of-type(1n + 2) {
+  border: 1px solid #666;
+}
+
+.consultation-listbox td {
+  position: relative;
+  padding: 20px 0px 20px 0px;
+  border: 1px solid #666;
+  text-align: center;
+}
+
+.time-button input {
   width: 80px;
   height: 30px;
   display: inline-block;
@@ -346,6 +350,182 @@ body {
   text-align: center;
   padding-top: 3px;
   margin-top: 30px;
-  box-shadow: 2px 2px 4px #666;
   border-radius: 8px;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f39800;
+  margin-left: 25px;
+}
+
+.triangl {
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-bottom: 16px solid #00bcd4;
+  margin-left: 25px;
+}
+
+.cross {
+  display: inline-block;
+  position: relative;
+  margin: 7px 10px 0 7px;
+  padding: 0;
+  width: 4px;
+  height: 20px;
+  background: red;
+  transform: rotate(45deg);
+}
+
+.cross:before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  width: 20px;
+  height: 4px;
+  margin-top: -2px;
+  background: red;
+}
+
+.remarks_indicate {
+  position: absolute;
+  top: 90px;
+  left: 4px;
+  font-size: 12px;
+  color: red;
+}
+
+/*-------------------------
+ 診療時間管理編集
+-------------------------*/
+
+.consultation-edit-listbox {
+  margin: auto;
+  border-collapse: collapse;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.consultation-edit-listbox th {
+  border: 1px solid #666;
+}
+
+.consultation-edit-listbox td {
+  padding: 0px 7px 5px 7px;
+  border: 1px solid #666;
+  font-size: 14px;
+}
+
+.consultation-edit-listbox td input {
+  display: flex;
+  text-align: right;
+  padding-bottom: 3px;
+}
+
+.consultation-edit-listbox td input:nth-of-type(1) {
+  margin-bottom: 15px;
+}
+
+.consultation-edit-label {
+  overflow: hidden;
+  width: 90%;
+  display: block;
+  position: relative;
+  border: 1px solid #bbbbbb;
+  border-radius: 2px;
+  background: #ffffff;
+  margin: 8px 0 15px 5px;
+}
+
+.consultation-edit-label::before {
+  position: absolute;
+  top: 0.6em;
+  right: 0.6em;
+  width: 0;
+  height: 0;
+  padding: 0;
+  content: "";
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid;
+  pointer-events: none;
+}
+
+.consultation-edit-label select {
+  width: 100%;
+  padding-right: 1em;
+  cursor: pointer;
+  text-indent: 0.01px;
+  text-overflow: ellipsis;
+  border: none;
+  outline: none;
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 2px 0px 2px 8px;
+}
+
+.consultation-edit-label select::-ms-expand {
+  display: none;
+}
+
+.consultation-edit-listbox span {
+  margin-right: 90px;
+}
+
+.time-button input {
+  width: 80px;
+  height: 30px;
+  display: inline-block;
+  background: #cccccc;
+  color: #1c1c1c;
+  text-align: center;
+  padding-top: 3px;
+  margin-top: 30px;
+  border-radius: 8px;
+}
+
+.submid_time {
+  display: flex;
+  justify-content: center;
+}
+
+.submid_time p:nth-of-type(1n + 2) {
+  margin-left: 30px;
+}
+
+/*-------------------------
+ 診療時間確認
+-------------------------*/
+
+.remarks {
+  height: 45px;
+  padding-top: 25px;
+  border: 1px solid #666;
+}
+.consultation {
+  margin: 10px 0 10px 0;
+  padding: 3px 0 3px 0;
+  border: 1px solid #666;
+}
+.time p {
+  border: 1px solid #666;
+  padding: 2px 20px 0 20px;
+}
+
+.time p:nth-child(1) {
+  margin: 10px 0 15px 0;
+}
+
+.consultation-edit-listbox span {
+  display: inline-block;
+  padding-top: 10px;
 }

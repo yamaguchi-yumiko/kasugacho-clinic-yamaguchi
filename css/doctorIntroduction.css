@@ -11,56 +11,56 @@
         flex-wrap: wrap;
     }
 
-    #hospitalGuide .danraku{
+    #hospitalGuide_doctor .danraku{
         margin-bottom: 15px;
     }
 
-    #hospitalGuide h3{
+    #hospitalGuide_doctor h3{
         margin: 20px 0 15px 0;
     }
-    #hospitalGuide h3 + p{
+    #hospitalGuide_doctor h3 + p{
         margin-bottom: 15px;
     }
 
-    #hospitalGuide img{
+    #hospitalGuide_doctor img{
         height: 335px;
     }
 
-    #hospitalGuide ul{
+    #hospitalGuide_doctor ul{
         padding-left: 20px;
     }
 
-    #hospitalGuide ul li{
+    #hospitalGuide_doctor ul li{
         list-style: unset;
     }
 
-    #hospitalGuide .explain h2 span{
+    #hospitalGuide_doctor .explain h2 span{
         font-size: 16px;
     }
 
-    #hospitalGuide .explain {
+    #hospitalGuide_doctor .explain {
         margin-left: 3%;
     }
 
-    #hospitalGuide .explain-box{
+    #hospitalGuide_doctor .explain-box{
         margin-left: 2.5vw;
     }
 
-    #hospitalGuide .one-thing {
+    #hospitalGuide_doctor .one-thing {
         margin-bottom: 15px;
     }
 
 
     /* 蛹ｻ蟶ｫ邏ｹ莉句句挨 */
-    #hospitalGuide .docter-woman{
+    #hospitalGuide_doctor .docter-woman{
         margin: 60px 20px 20px 20px;
     }
 
-    #hospitalGuide .docter-man{
+    #hospitalGuide_doctor .docter-man{
         margin:  30px 20px 20px 20px;
     }
 
-    #hospitalGuide .docter-woman .one-thing {
+    #hospitalGuide_doctor .docter-woman .one-thing {
         margin-top: 60px;
     }
 
@@ -88,7 +88,7 @@
     border-bottom: none;
     }
     .schedule dl dt {
-    padding:9x 1px;
+    padding:9px 1px;
     background: #46c9ba none repeat scroll 0 0;
     color: #fff;
     font-weight: bold;
