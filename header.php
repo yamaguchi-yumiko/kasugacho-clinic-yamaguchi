@@ -1,3 +1,17 @@
+<?php
+require_once('admin/config.php');
+$consultationTime = new ConsultationTime();
+//診療時間を取得
+$consultation_time = $consultationTime->getConsultationTime();
+//曜日を取得
+$m_week = $consultationTime->getWeek();
+//タイムテーブルの時間を取得
+$timetable = $consultationTime->getTimeTable();
+foreach ($timetable as $value) {
+    $week_array[$value['id']] = $m_week;
+}
+$consultation_time = $consultation_time + $week_array;
+?>
 <!DOCTYPE HTML>
 <html lang="ja">
 <!--header共通 -->

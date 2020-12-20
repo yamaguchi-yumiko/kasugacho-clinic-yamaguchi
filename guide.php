@@ -1,13 +1,3 @@
-<?php
-require_once('admin/config.php');
-$consultationTime = new ConsultationTime();
-//タイムテーブルの時間を取得
-$timetable = $consultationTime->getTimeTable();
-//診療時間を取得
-$consultation_time = $consultationTime->getConsultationTime();
-//曜日を取得
-$week = $consultationTime->getWeek();
-?>
 <!-- header共通 -->
 <?php require_once('header.php'); ?>
 <main>

@@ -1,26 +1,14 @@
 <?php
 require_once('config.php');
 auth_confirm();
+$consultationTime = new ConsultationTime();
+//曜日を取得
+$week = $consultationTime->getWeek();
+//診療時間を取得
+$consultation_time = $consultationTime->getConsultationTime();
+// タイムテーブルを更新、診療時間のデータが入っていなければ登録、入っていれば更新
 if (isset($_POST['done'])) {
-    $consultationTime = new ConsultationTime();
-    //タイムテーブルの時間を取得
-    $timetable = $consultationTime->getTimeTable();
-    //曜日を取得
-    $week = $consultationTime->getWeek();
-    //診療時間を取得
-    $consultation_time = $consultationTime->getConsultationTime();
-    // 診療時間のデータが入っていなければ追加、入っていれば更新
-    foreach ($timetable as $value) {
-        foreach (!empty($consultation_time) ? $consultation_time[$value['id']] : $week as $val) {
-            $consultationTime->editConsultationTime(
-                [$_POST['time_zone_' . $value['id']], $_POST['start_time_' . $value['id']], $_POST['end_time_' . $value['id']], $_POST['timetable_' . $value['id']],],
-                $_POST[!empty($consultation_time) ? $val['week_id'] : $val['id']],
-                $_POST['timetable_' . $value['id']],
-                $_POST['consultation_type_' . (!empty($consultation_time) ? $val['timetable_id'] . $val['week_id'] : $value['id'] . $val['id'])],
-                $_POST['remarks_' . (!empty($consultation_time) ? $val['timetable_id'] . $val['week_id'] : $value['id'] . $val['id'])]
-            );
-        }
-    }
+    $consultationTime->editConsultationTime($_POST['time'], $_POST['consultation']);
 }
 ?>
 <!--header共通 -->

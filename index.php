@@ -1,19 +1,10 @@
+<!-- header共通 -->
+<?php require_once('header.php'); ?>
 <?php
-require_once('admin/config.php');
 $doctorInfo = new DoctorInfo();
 //院長情報を取得
 $directer_info = $doctorInfo->getDirecterInfo();
-
-$consultationTime = new ConsultationTime();
-//タイムテーブルの時間を取得
-$timetable = $consultationTime->getTimeTable();
-//診療時間を取得
-$consultation_time = $consultationTime->getConsultationTime();
-//曜日を取得
-$week = $consultationTime->getWeek();
 ?>
-<!-- header共通 -->
-<?php require_once('header.php'); ?>
 <main id="main" role="main">
     <!-- aside共通 -->
     <?php require_once('aside.php'); ?>

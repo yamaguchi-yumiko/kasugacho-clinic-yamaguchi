@@ -7,9 +7,9 @@
         <dl>
             <dt class="active-time">
             </dt>
-            <?php foreach ($week as $value) : ?>
+            <?php foreach ($m_week as $week) : ?>
                 <dt class="row1">
-                    <?=$value['name']?>
+                    <?=$week['name']?>
                 </dt>
             <?php endforeach; ?>
         </dl>
@@ -18,7 +18,7 @@
                 <dd class="active-time">
                     <span class="font-size"><?=$value['name']?></span><br><?=toTimetableTime($value['start_time'])?><br>~<br><?=toTimetableTime($value['end_time'])?>
                 </dd>
-                <?php foreach (!empty($consultation_time) ? $consultation_time[$value['id']] : $week as $val) : ?>
+                <?php foreach ($consultation_time[$value['id']] as $val) : ?>
                     <dd class="row1">
                         <p class="<?=isset($val['consultation_type']) ? ($val['consultation_type'] == 1 ? 'circle' : ($val['consultation_type'] == 2 ? 'triangl' : ($val['consultation_type'] == 99 ? 'cross' : ''))) : 'circle'?>"></p>
                     </dd>

@@ -5,9 +5,14 @@ $consultationTime = new ConsultationTime();
 //タイムテーブルの時間を取得
 $timetable = $consultationTime->getTimeTable();
 //曜日を取得
-$week = $consultationTime->getWeek();
+$m_week = $consultationTime->getWeek();
 //診療時間を取得
 $consultation_time = $consultationTime->getConsultationTime();
+//タイムテーブルのidの数分、多次元配列に変更
+foreach ($timetable as $value) {
+    $week_array[$value['id']] = $m_week;
+}
+$consultation_time = $consultation_time + $week_array;
 ?>
 <!--header共通 -->
 <?php require_once('clinic_management_header.php'); ?>
@@ -18,40 +23,41 @@ $consultation_time = $consultationTime->getConsultationTime();
             <tr>
                 <th>
                 </th>
-                <?php foreach ($week as $value) : ?>
+                <?php foreach ($m_week as $week) : ?>
                     <th>
-                        <?=$value['name']?>
+                        <?=$week['name']?>
                     </th>
-                    <!--曜日毎に登録するための値を受け渡し -->
-                    <input type="hidden" name="<?=$value['id']?>" value="<?=$value['id']?>">
                 <?php endforeach; ?>
             </tr>
-            <tr>
-                <?php foreach ($timetable as $value) : ?>
+            <?php foreach ($timetable as $key => $value) : ?>
+                <tr>
                     <td class="time">
-                        <p><?=$_POST['time_zone_' . $value['id']]?></p>診療時間<p><?=$_POST['start_time_' . $value['id']]?></p>〜<p><?=$_POST['end_time_' . $value['id']]?></p>
+                        <p><?=$_POST['time'][$key]['name']?></p>
+                        診療時間<p><?=$_POST['time'][$key]['start_time']?></p>
+                        〜<p><?=$_POST['time'][$key]['end_time']?></p>
                     </td>
-                    <!--タイムテーブルのID別に登録するための値を送信 -->
-                    <input type="hidden" name="timetable_<?=$value['id']?>" value="<?=$value['id']?>">
                     <!--タイムテーブルの内容を受け渡し-->
-                    <input type="hidden" name="time_zone_<?=$value['id']?>" value="<?=$_POST['time_zone_' . $value['id']]?>">
-                    <input type="hidden" name="start_time_<?=$value['id']?>" value="<?=$_POST['start_time_' . $value['id']]?>">
-                    <input type="hidden" name="end_time_<?=$value['id']?>" value="<?=$_POST['end_time_' . $value['id']]?>">
-                    <?php foreach (!empty($consultation_time) ? $consultation_time[$value['id']] : $week as $val) : ?>
+                    <input type="hidden" name="time[<?=$key?>][name]" value="<?=$_POST['time'][$key]['name']?>">
+                    <input type="hidden" name="time[<?=$key?>][start_time]" value="<?=$_POST['time'][$key]['start_time']?>">
+                    <input type="hidden" name="time[<?=$key?>][end_time]" value="<?=$_POST['time'][$key]['end_time']?>">
+                    <input type="hidden" name="time[<?=$key?>][id]" value="<?=$value['id']?>">
+                    <?php foreach ($consultation_time[$value['id']] as $key => $val) : ?>
                         <td>
-                            <p><?=($_POST['consultation_type_' . (!empty($consultation_time) ? $val['timetable_id'] . $val['week_id'] : $value['id'] . $val['id'])] == 1) ? '診察する' : (($_POST['consultation_type_' . (!empty($consultation_time) ? $val['timetable_id'] . $val['week_id'] : $value['id'] . $val['id'])] == 2) ? '特別時間' : (($_POST['consultation_type_' . (!empty($consultation_time) ? $val['timetable_id'] . $val['week_id'] : $value['id'] . $val['id'])] == 99) ? '診察しない' : ''))?></p>
+                            <p><?=($_POST['consultation'][$value['id']][$key]['consultation_type'] == 1) ? '診察する' : (($_POST['consultation'][$value['id']][$key]['consultation_type'] == 2) ? '特別時間' : (($_POST['consultation'][$value['id']][$key]['consultation_type'] == 99) ? '診察しない' : ''))?></p>
                             <span>備考</span><br>
-                            <p class="remarks"><?=$_POST['remarks_' . (!empty($consultation_time) ? $val['timetable_id'] . $val['week_id'] : $value['id'] . $val['id'])]?></p>
+                            <p class="remarks"><?=$_POST['consultation'][$value['id']][$key]['remarks']?></p>
                         </td>
-                        <!--診察種別と備考欄の内容を受け渡し-->
-                        <input type="hidden" name="consultation_type_<?=(!empty($consultation_time) ? $val['timetable_id'] . $val['week_id'] : $value['id'] . $val['id'])?>" value="<?=$_POST['consultation_type_' . (!empty($consultation_time) ? $val['timetable_id'] . $val['week_id'] : $value['id'] . $val['id'])]?>">
-                        <input type="hidden" name="remarks_<?=(!empty($consultation_time) ? $val['timetable_id'] . $val['week_id'] : $value['id'] . $val['id'])?>" value="<?=$_POST['remarks_' . (!empty($consultation_time) ? $val['timetable_id'] . $val['week_id'] : $value['id'] . $val['id'])]?>">
+                        <!--診療時間の値を受け渡し -->
+                        <input type="hidden" name="consultation[<?=$value['id']?>][<?=$key?>][week_id]" value="<?=$val['week_id']?>">
+                        <input type="hidden" name="consultation[<?=$value['id']?>][<?=$key?>][timetable_id]" value="<?=$value['id']?>">
+                        <input type="hidden" name="consultation[<?=$value['id']?>][<?=$key?>][consultation_type]" value="<?=$_POST['consultation'][$value['id']][$key]['consultation_type']?>">
+                        <input type="hidden" name="consultation[<?=$value['id']?>][<?=$key?>][remarks]" value="<?=$_POST['consultation'][$value['id']][$key]['remarks']?>">
                     <?php endforeach; ?>
-            </tr>
-        <?php endforeach; ?>
+                </tr>
+            <?php endforeach; ?>
         </table>
         <div class="submid_time">
-            <p class="time-button"><input type="submit" value="戻る" formaction="consultation_time_edit.php?type=edit"></p>
+            <p class="time-button"><input type="submit" name="return" value="戻る" formaction="consultation_time_edit.php?type=edit"></p>
             <p class="time-button"><input type="submit" name="done" value="完了"></p>
         </div>
     </form>
