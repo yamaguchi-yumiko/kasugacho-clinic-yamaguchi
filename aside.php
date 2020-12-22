@@ -20,7 +20,7 @@
                 </dd>
                 <?php foreach ($consultation_time[$value['id']] as $val) : ?>
                     <dd class="row1">
-                        <p class="<?=isset($val['consultation_type']) ? ($val['consultation_type'] == 1 ? 'circle' : ($val['consultation_type'] == 2 ? 'triangl' : ($val['consultation_type'] == 99 ? 'cross' : ''))) : 'circle'?>"></p>
+                        <p class="<?=isset($val['consultation_type']) ? ($val['consultation_type'] == 1 ? 'circle' : ($val['consultation_type'] == 2 ? 'triangle' : ($val['consultation_type'] == 99 ? 'cross' : ''))) : 'circle'?>"></p>
                     </dd>
                 <?php endforeach; ?>
             </dl>

@@ -51,9 +51,9 @@ if (isset($_POST['return'])) {
                         <td>
                             <label class="consultation-edit-label">
                                 <select name="consultation[<?=$value['id']?>][<?=$key?>][consultation_type]">
-                                    <option value="1"<?=isset($val['consultation_type']) && $val['consultation_type'] == 1 || !isset($val['consultation_type']) ? ' selected' : ''?>>診察する</option>
-                                    <option value="2"<?=isset($val['consultation_type']) && $val['consultation_type'] == 2 ? ' selected' : ''?>>特別時間</option>
-                                    <option value="99"<?=isset($val['consultation_type']) && $val['consultation_type'] == 99 ? ' selected' : ''?>>診察しない</option>
+                                    <?php foreach(CONSULTAION_TYPE as $consultationKey => $consultationValue):?>
+                                        <option value="<?=$consultationKey?>"<?=isset($val['consultation_type']) && $val['consultation_type'] == $consultationKey ? ' selected' : ''?>><?=$consultationValue?></option>
+                                    <?php endforeach;?>
                                 </select>
                             </label>
                             <span>備考</span><br>

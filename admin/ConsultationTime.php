@@ -23,21 +23,32 @@ class ConsultationTime extends Model
     public function getConsultationTime()
     {
         $this->connect();
-        $sql = 'SELECT timetable_id, consultation_time. week_id, timetable_id, consultation_type, remarks FROM consultation_time WHERE delete_flg = 0';
+        $sql =
+            'SELECT timetable_id, consultation_time.'
+                . 'week_id'
+                . ', timetable_id'
+                . ', consultation_type'
+                . ', remarks'
+            . ' FROM'
+                .' consultation_time'
+            . ' WHERE'
+                . ' delete_flg = 0'
+            ;
         $stm = $this->dbh->query($sql);
         return $stm->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_GROUP);
     }
 
     //診察時間帯を更新
     //診療時間のデータが入っていなければ追加、入っていれば更新
-    public function editConsultationTime($time, $consultation)
+    public function editConsultationTime($POST)
     {
         $this->connect();
+        //トランザクション開始
         $this->dbh->beginTransaction();
         try {
             $sql = 'UPDATE timetable SET name = ?, start_time = ?, end_time = ? WHERE id = ?';
             $stm = $this->dbh->prepare($sql);
-            foreach ($time as $value) {
+            foreach ($POST['time'] as $value) {
                 $stm->execute(array_values($value));
             }
             $sql =
@@ -71,19 +82,22 @@ class ConsultationTime extends Model
                 . ')'
             ;
             $stm = $this->dbh->prepare($sql);
-            foreach ($consultation as $value) {
-                foreach ($value as $valu) {
-                    $stm->bindValue(1, $valu['week_id']);
-                    $stm->bindValue(2, $valu['timetable_id']);
-                    $stm->bindValue(3, $valu['consultation_type']);
-                    $stm->bindValue(4, !empty($valu['remarks']) ? $valu['remarks'] : null, PDO::PARAM_STR_CHAR);
+            foreach ($POST['consultation'] as $value) {
+                foreach ($value as $val) {
+                    $stm->bindValue(1, $val['week_id']);
+                    $stm->bindValue(2, $val['timetable_id']);
+                    $stm->bindValue(3, $val['consultation_type']);
+                    $stm->bindValue(4, (!empty($val['remarks']) ? $val['remarks'] : null), PDO::PARAM_STR_CHAR);
                     $stm->execute();
                 }
             }
-            return $this->dbh->commit();
+             //エラーがなければコミット
+            $this->dbh->commit();
         } catch (Exception $e) {
+            //エラー時はロールバックで変更内容を破棄
             $this->dbh->rollBack();
-            throw $e;
+            //エラーメッセージをdoneに表示
+            echo '失敗しました。' . $e->getMessage();
         }
     }
 }

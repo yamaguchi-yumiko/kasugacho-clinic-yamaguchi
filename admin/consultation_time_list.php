@@ -35,8 +35,8 @@ $consultation_time = $consultation_time + $week_array;
                 </td>
                 <?php foreach ($consultation_time[$value['id']] as $val) : ?>
                     <td>
-                        <p class="<?=isset($val['consultation_type']) ? ($val['consultation_type'] == 1 ? 'circle' : ($val['consultation_type'] == 2 ? 'triangl' : ($val['consultation_type'] == 99 ? 'cross' : ''))) : 'circle'?>"></p>
-                        <p class="remarks_indicate"><?=isset($val['consultation_type']) ? $val['remarks'] : ''?></p>
+                        <p class="<?=isset($val['consultation_type']) ? getConsultationTimeMark($val['consultation_type']) : 'circle'?>"></p>
+                        <p class="remarks_indicate"><?=isset($val['remarks']) ? $val['remarks'] : ''?></p>
                     </td>
                 <?php endforeach; ?>
             </tr>

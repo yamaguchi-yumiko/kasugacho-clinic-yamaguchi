@@ -172,7 +172,7 @@
     margin: 30px 0 0 4px;
   }
 
-  .triangl {
+  .triangle {
     width: 0;
     height: 0;
     border-left: 11px solid transparent;
@@ -211,7 +211,7 @@
     margin: 1px 0 0 6px;
   }
 
-  .time-index .triangl {
+  .time-index .triangle {
     width: 0;
     height: 0;
     border-left: 11px solid transparent;
