@@ -1,6 +1,6 @@
 <!-- header共通 -->
-<?php require_once('header.php'); ?>
 <?php
+require_once('header.php');
 $doctorInfo = new DoctorInfo();
 //院長情報を取得
 $directer_info = $doctorInfo->getDirecterInfo();

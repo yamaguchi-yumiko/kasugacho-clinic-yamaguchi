@@ -5,12 +5,8 @@ $doctorInfo = new DoctorInfo();
 $doctors_Info = $doctorInfo->getDoctorsInfo();
 
 $consultationTime = new ConsultationTime();
-//タイムテーブルの時間を取得
-$timetable = $consultationTime->getTimeTable();
 //診療時間を取得
-$consultation_time = $consultationTime->getConsultationTime();
-//曜日を取得
-$m_week = $consultationTime->getWeek();
+$consultation_time = array_combine(CONSULTAION_INDEX, $consultationTime->getConsultationTime());
 ?>
 <!-- header共通 -->
 <?php require_once('header.php'); ?>
@@ -48,9 +44,9 @@ $m_week = $consultationTime->getWeek();
                 <dl>
                     <dt class="row">
                     </dt>
-                    <?php foreach ($m_week as $week) : ?>
+                    <?php foreach ($consultation_time['week'] as $week) : ?>
                         <dt class="row">
-                            <?=$value['name'] ?>
+                            <?=$value['name']?>
                         </dt>
                     <?php endforeach; ?>
                 </dl>

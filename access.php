@@ -8,7 +8,7 @@
         <h1>アクセス</h1>
         <div class="map">
             <h2>交通</h2>
-            <p>▼最寄り駅：都営大江戸線　練馬春日町駅　徒歩1分</p>
+            <p>▼最寄り駅：都営大江戸線&nbsp;練馬春日町駅&nbsp;徒歩1分</p>
             <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1266.5772522812567!2d139.6405894616329!3d35.75087070085896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z5p2x5Lqs6YO957e06aas5Yy65pil5pel55S6My0yOS00MDEtMTAy!5e0!3m2!1sja!2sjp!4v1569913468174!5m2!1sja!2sjp" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
         </div>
         <div class="map">

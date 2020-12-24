@@ -82,3 +82,12 @@ function getConsultationTimeMark($consultation_type)
     . (isset($consultation_type) && $consultation_type == 99 ? 'cross' : '')
 ;
 }
+
+//診察タイプの文言を取得
+function getConsultationTypeSentence($consultation_type)
+{
+    echo ($consultation_type == 1 ? '診察する' : '')
+    . ($consultation_type == 2 ? '特別時間' : '')
+    . ($consultation_type == 99 ? '診察しない' : '')
+;
+}

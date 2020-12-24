@@ -7,20 +7,20 @@
         <dl>
             <dt class="active-time">
             </dt>
-            <?php foreach ($m_week as $week) : ?>
+            <?php foreach ($consultation_time['week'] as $week) : ?>
                 <dt class="row1">
                     <?=$week['name']?>
                 </dt>
             <?php endforeach; ?>
         </dl>
-        <?php foreach ($timetable as $value) : ?>
+        <?php foreach ($consultation_time['timetable'] as $value) : ?>
             <dl>
                 <dd class="active-time">
-                    <span class="font-size"><?=$value['name']?></span><br><?=toTimetableTime($value['start_time'])?><br>~<br><?=toTimetableTime($value['end_time'])?>
+                    <span class="font-size"><?=h($value['name'])?></span><br><?=h(toTimetableTime($value['start_time']))?><br>~<br><?=h(toTimetableTime($value['end_time']))?>
                 </dd>
-                <?php foreach ($consultation_time[$value['id']] as $val) : ?>
+                <?php foreach ($consultation_time['week'] as $key => $val) : ?>
                     <dd class="row1">
-                        <p class="<?=isset($val['consultation_type']) ? ($val['consultation_type'] == 1 ? 'circle' : ($val['consultation_type'] == 2 ? 'triangle' : ($val['consultation_type'] == 99 ? 'cross' : ''))) : 'circle'?>"></p>
+                        <p class="<?=isset($consultation_time['consultation'][$value['id']][$key]['consultation_type']) ? h(getConsultationTimeMark($consultation_time['consultation'][$value['id']][$key]['consultation_type'])) : 'circle'?>"></p>
                     </dd>
                 <?php endforeach; ?>
             </dl>
@@ -32,7 +32,7 @@
         <img src="./img/main_picture.png" class="sp" alt="春日町病院">
         <div class="explain-for-kasugacyo">
             <h1>春日町診療所</h1>
-            <p>患者に寄り添う診療所として・・・・・・ <br>地域の皆様に信頼される医療を提供することを目標としております。<br>お気軽にご相談、ご来院ください。</p>
+            <p>患者に寄り添う診療所として・・・・・・<br>地域の皆様に信頼される医療を提供することを目標としております。<br>お気軽にご相談、ご来院ください。</p>
         </div>
     </section>
 <?php endif; ?>
