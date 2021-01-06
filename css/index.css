@@ -154,7 +154,7 @@
     border-radius: 10px;
   }
 
-  #greeting .flexbox1 {
+  #greeting .flexbox-second {
     display: flex;
     margin: 20px;
   }

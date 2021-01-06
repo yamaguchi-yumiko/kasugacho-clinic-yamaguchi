@@ -2,7 +2,7 @@
 require_once('admin/config.php');
 $consultationTime = new ConsultationTime();
 //診療時間を取得
-$consultation_time = array_combine(CONSULTAION_INDEX, $consultationTime->getConsultationTime());
+$consultation_time = $consultationTime->getConsultationTime();
 ?>
 <!DOCTYPE HTML>
 <html lang="ja">

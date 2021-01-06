@@ -37,9 +37,9 @@
     </section>
 <?php endif; ?>
 <!-- お問い合わせ -->
-<section id="inquiry1" class="<?=basename($_SERVER['PHP_SELF'], '.php') === 'index' ? 'odd' : ''?>">
+<section id="inquiry-aside" class="<?=basename($_SERVER['PHP_SELF'], '.php') === 'index' ? 'odd' : ''?>">
     <h1>お問い合わせ</h1>
-    <div class="inquiry1-box">
+    <div class="inquiry-aside-box">
         <p>電話暗号</p>
         <a href=""><i></i>℡:03-3999-8810</a>
         <hr>
@@ -50,20 +50,20 @@
     </div>
 </section>
 <!-- お知らせ -->
-<section id="<?=basename($_SERVER['PHP_SELF'], '.php') === 'index' ? 'info1' : 'info' ?>" class="<?=basename($_SERVER['PHP_SELF'], '.php') === 'index' ? 'evn' : ''?>">
+<section id="<?=basename($_SERVER['PHP_SELF'], '.php') === 'index' ? 'info1' : 'info'?>" class="<?=basename($_SERVER['PHP_SELF'], '.php') === 'index' ? 'evn' : ''?>">
     <h1>お知らせ</h1>
     <nav class="scroll-box">
         <ul>
             <li>
                 <a href="">下記休診日のお知らせ</a>
                 <span>
-                    <p>May 11,2017</p>
+                    <p>May&nbsp;11,2017</p>
                 </span>
             </li>
             <li>
                 <a href="">スギ花粉・ダニによるアレルギー性鼻炎に対する舌下免疫治療法を始めました</a>
                 <span>
-                    <p>May 28,2019</p>
+                    <p>May&nbsp;28,2019</p>
                 </span>
             </li>
         </ul>

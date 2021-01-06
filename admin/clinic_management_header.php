@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../css/doctormanagement.css" media="all">
     <script type="text/javascript" src="../js/animation.js"></script>
 </head>
-<body class="list_conteaner add_conteaner">
+<body class="list-conteaner add-conteaner">
     <header>
         <div class="header">
             <p>ログイン名[<?=h($_SESSION['name'])?>]さん、ご機嫌いかがですか？</p>

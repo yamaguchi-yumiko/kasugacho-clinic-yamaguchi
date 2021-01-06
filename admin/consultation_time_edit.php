@@ -3,12 +3,12 @@ require_once('config.php');
 auth_confirm();
 $consultationTime = new ConsultationTime();
 //診療時間を取得
-$consultation_time = array_combine(CONSULTAION_INDEX, $consultationTime->getConsultationTime());
+$consultation_time = $consultationTime->getConsultationTime();
 $consultation_time = $_POST + $consultation_time;
 ?>
 <!--header共通 -->
 <?php require_once('clinic_management_header.php'); ?>
-<main class="list_main">
+<main class="list-mai">
     <?php getPage(); ?>
     <form action="consultation_time_conf.php?type=edit" method="post">
         <table class="consultation-edit-listbox">
@@ -38,8 +38,8 @@ $consultation_time = $_POST + $consultation_time;
                         <td>
                             <label class="consultation-edit-label">
                                 <select name="consultation[<?=$value['id']?>][<?=$key?>][consultation_type]">
-                                    <?php foreach(CONSULTAION_TYPE as $consultationKey => $consultationValue):?>
-                                        <option value="<?=$consultationKey?>"<?=isset($consultation_time['consultation'][$value['id']][$key]['consultation_type']) && $consultation_time['consultation'][$value['id']][$key]['consultation_type'] == $consultationKey ? ' selected' : ''?>><?=$consultationValue?></option>
+                                    <?php foreach(CONSULTATION_TYPE as $k => $v):?>
+                                        <option value="<?=h($k)?>"<?=isset($consultation_time['consultation'][$value['id']][$key]['consultation_type']) && $consultation_time['consultation'][$value['id']][$key]['consultation_type'] == $k ? ' selected' : ''?>><?=$v?></option>
                                     <?php endforeach;?>
                                 </select>
                             </label>
@@ -50,7 +50,7 @@ $consultation_time = $_POST + $consultation_time;
                 </tr>
             <?php endforeach; ?>
         </table>
-        <div class="submid_time">
+        <div class="submid-time">
             <p class="time-button">
                 <input type="submit" value="確認">
             </p>

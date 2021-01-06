@@ -11,7 +11,7 @@
             <dl>
                 <dt>
                     <p>
-                        May 28,2019
+                        May&nbsp;28,2019
                     </p>
                 </dt>
                 <dd>
@@ -24,7 +24,7 @@
             <dl>
                 <dt>
                     <p>
-                        June 11,2018
+                        June&nbsp;11,2018
                     </p>
                 </dt>
                 <dd>

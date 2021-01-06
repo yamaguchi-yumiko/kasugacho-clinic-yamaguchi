@@ -11,7 +11,7 @@ $directer_info = $doctorInfo->getDirecterInfo();
     <!-- 挨拶 -->
     <section id="greeting" class="odd last">
         <h1>ご挨拶</h1>
-        <div class="sp-waku flexbox1">
+        <div class="sp-waku flexbox-second">
             <img src="./img/<?=h($directer_info['img'])?>" alt="医者">
             <div class="docter-explain">
                 <h2><?=h($directer_info['name'])?><span class="rs-1000"><?=h($directer_info['roman_name'])?></span></h2>

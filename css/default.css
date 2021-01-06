@@ -3,7 +3,8 @@
 @media screen and (min-width: 768px) {
   body {
     background-color: #e6e6e6;
-    margin: 0%;
+	margin: 0%;
+
     font-family: "繝｡繧､繝ｪ繧ｪ", sans-serif;
     font-weight: bold;
     color: #696969;
@@ -242,26 +243,26 @@
     background: #696969;
   }
 
-  .inquiry1-box {
+  .inquiry-aside-box {
     margin: 15px 20px 0 20px;
     font-size: 16px;
   }
 
-  .inquiry1-box a {
+  .inquiry-aside-box a {
     font-size: 24px;
     color: #696969;
   }
 
-  #inquiry1 .smart-phone {
+  #inquiry-aside .smart-phone {
     display: flex;
   }
 
-  #inquiry1 .smart-phone p {
+  #inquiry-aside .smart-phone p {
     width: 39%;
     margin: 16px 0 0 0;
     text-align: center;
   }
-  #inquiry1 hr {
+  #inquiry-aside hr {
     margin: 0 -30px 0px -30px;
   }
 
@@ -331,7 +332,7 @@
     display: flex;
   }
 
-  .flexbox1 {
+  .flexbox-second {
     display: flex;
   }
 

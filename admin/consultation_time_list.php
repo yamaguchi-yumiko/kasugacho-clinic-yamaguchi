@@ -3,11 +3,11 @@ require_once('config.php');
 auth_confirm();
 $consultationTime = new ConsultationTime();
 //診療時間を取得
-$consultation_time = array_combine(CONSULTAION_INDEX, $consultationTime->getConsultationTime());
+$consultation_time = $consultationTime->getConsultationTime();
 ?>
 <!--header共通 -->
 <?php require_once('clinic_management_header.php'); ?>
-<main class="list_main">
+<main class="list-mai">
     <?php getPage(); ?>
     <table class="consultation-listbox">
         <tr>
@@ -26,8 +26,8 @@ $consultation_time = array_combine(CONSULTAION_INDEX, $consultationTime->getCons
                 </td>
                 <?php foreach ($consultation_time['week'] as $key => $val) : ?>
                     <td>
-                        <p class="<?=isset($consultation_time['consultation'][$value['id']][$key]['consultation_type']) ? h(getConsultationTimeMark($consultation_time['consultation'][$value['id']][$key]['consultation_type'])) : 'circle'?>"></p>
-                        <p class="remarks_indicate"><?=isset($consultation_time['consultation'][$value['id']][$key]['remarks']) ? h($consultation_time['consultation'][$value['id']][$key]['remarks']) : ''?></p>
+                        <p class="<?=getConsultationTimeMark($consultation_time['consultation'][$value['id']][$key]['consultation_type'])?>"></p>
+                        <p class="remarks-indicate"><?=isset($consultation_time['consultation'][$value['id']][$key]['remarks']) ? h($consultation_time['consultation'][$value['id']][$key]['remarks']) : ''?></p>
                     </td>
                 <?php endforeach; ?>
             </tr>

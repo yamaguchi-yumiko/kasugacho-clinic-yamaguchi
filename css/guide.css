@@ -29,28 +29,28 @@
         margin: 20px 0;
     }
 
-    #hospitalGuide .flexbox1{
+    #hospitalGuide .flexbox-second{
         margin: 0 20px 60px;
     }
 
-    #hospitalGuide .flexbox1 img{
+    #hospitalGuide .flexbox-second img{
         margin: 10px 0;
         width: 95%;
     }
 
-    #hospitalGuide .flexbox1 p{
+    #hospitalGuide .flexbox-second p{
         width: 95%;
     }
 
-    #hospitalGuide .flexbox1 p span{
+    #hospitalGuide .flexbox-second p span{
         font-size: 12px;
     }
 
-    #hospitalGuide .flexbox1 .parking{
+    #hospitalGuide .flexbox-second .parking{
         width: 100%
     }
 
-    #hospitalGuide .flexbox1 .examination-room{
+    #hospitalGuide .flexbox-second .examination-room{
         width: 100%
     }
 }

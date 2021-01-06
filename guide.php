@@ -20,7 +20,7 @@
                     院長&nbsp;今村&nbsp;宗嗣
                 </p>
             </div>
-            <div class="flexbox1">
+            <div class="flexbox-second">
                 <div class="parking">
                     <h2>駐車場</h2>
                     <img src="./img/parking.png" alt="駐車場">

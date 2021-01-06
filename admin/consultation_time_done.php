@@ -2,14 +2,15 @@
 require_once('config.php');
 auth_confirm();
 $consultationTime = new ConsultationTime();
+$done_message = $consultationTime->editConsultationTime($_POST);
 ?>
 <!--header共通 -->
 <?php require_once('clinic_management_header.php'); ?>
-<main class="done_main">
+<main class="done-main">
     <?php getPage(); ?>
-    <?php if (isset($_POST['done'])) : ?>
-        <?php $consultationTime->editConsultationTime($_POST); ?>
-    <?php endif; ?>
+    <p class="complete">
+        <?=$done_message?>
+    </p>
 </main>
 <!--footer共通 -->
 <?php require_once('clinic_management_footer.php'); ?>

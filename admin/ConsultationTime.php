@@ -3,36 +3,38 @@ class ConsultationTime extends Model
 {
     public function getConsultationTime()
     {
-    $this->connect();
-    //午前・午後の時間を取得
-    $sql = 'SELECT * FROM timetable';
-    $stm = $this->dbh->query($sql);
-    $timetable_stm = $stm->fetchAll(PDO::FETCH_ASSOC);
+        $this->connect();
+        //午前・午後の時間を取得
+        $sql = 'SELECT * FROM timetable';
+        $stm = $this->dbh->query($sql);
+        $timetable = $stm->fetchAll(PDO::FETCH_ASSOC);
 
-    //週の情報を取得
-    $sql = 'SELECT id AS week_id, name FROM m_week';
-    $stm = $this->dbh->query($sql);
-    $week_stm = $stm->fetchAll(PDO::FETCH_ASSOC);
-    //診療時間の詳細を取得
-    $sql =
-        'SELECT timetable_id, consultation_time.'
-            . 'week_id'
-            . ', timetable_id'
-            . ', consultation_type'
-            . ', remarks'
-        . ' FROM'
-            .' consultation_time'
-        . ' WHERE'
-            . ' delete_flg = 0'
+        //週の情報を取得
+        $sql = 'SELECT id AS week_id, name FROM m_week';
+        $stm = $this->dbh->query($sql);
+        $week = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+        //診療時間の詳細を取得
+        $sql =
+            'SELECT'
+                . ' timetable_id'
+                . ', week_id'
+                . ', timetable_id'
+                . ', consultation_type'
+                . ', remarks'
+            . ' FROM'
+                . ' consultation_time'
+            . ' WHERE'
+                . ' delete_flg = 0'
         ;
-    $stm = $this->dbh->query($sql);
-    $consultation_stm = $stm->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_GROUP);
-    return [$timetable_stm, $consultation_stm, $week_stm,];
+        $stm = $this->dbh->query($sql);
+        $consultation = $stm->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_GROUP);
+        return ['timetable' => $timetable, 'consultation' => $consultation, 'week' => $week,];
     }
 
     //診察時間帯を更新
     //診療時間のデータが入っていなければ追加、入っていれば更新
-    public function editConsultationTime($POST)
+    public function editConsultationTime($post)
     {
         $this->connect();
         //トランザクション開始
@@ -40,8 +42,8 @@ class ConsultationTime extends Model
         try {
             $sql = 'UPDATE timetable SET name = ?, start_time = ?, end_time = ? WHERE id = ?';
             $stm = $this->dbh->prepare($sql);
-            foreach ($POST['timetable'] as $value) {
-                $stm->execute([$value['name'],$value['start_time'],$value['end_time'],$value['id']]);
+            foreach ($post['timetable'] as $value) {
+                $stm->execute([$value['name'], $value['start_time'], $value['end_time'], $value['id']]);
             }
             $sql =
                 'INSERT INTO consultation_time('
@@ -56,8 +58,7 @@ class ConsultationTime extends Model
                     . ', ?'
                 . ')'
                 . ' ON DUPLICATE KEY UPDATE'
-                    . ' week_id ='
-                    . ' VALUES('
+                    . ' week_id = VALUES('
                     . 'week_id'
                 . ')'
                 . ', timetable_id ='
@@ -74,7 +75,7 @@ class ConsultationTime extends Model
                 . ')'
             ;
             $stm = $this->dbh->prepare($sql);
-            foreach ($POST['consultation'] as $value) {
+            foreach ($post['consultation'] as $value) {
                 foreach ($value as $val) {
                     $stm->bindValue(1, $val['week_id']);
                     $stm->bindValue(2, $val['timetable_id']);
@@ -85,15 +86,11 @@ class ConsultationTime extends Model
             }
              //エラーがなければコミット
             $this->dbh->commit();
+            return '編集が完了しました。';
         } catch (PDOException $e) {
             //エラー時はロールバックで変更内容を破棄
             $this->dbh->rollBack();
-            $error = $e->getMessage();
+            return '編集に失敗しました。';
         }
-        //エラーがあった時、なかった時の処理
-        echo '<p class="complete">'
-            .(isset($error) ? '編集に失敗しました。': '編集が完了しました。')
-            .'</p>'
-            ;
     }
 }

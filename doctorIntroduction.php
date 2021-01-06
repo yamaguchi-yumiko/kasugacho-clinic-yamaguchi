@@ -6,14 +6,14 @@ $doctors_Info = $doctorInfo->getDoctorsInfo();
 
 $consultationTime = new ConsultationTime();
 //診療時間を取得
-$consultation_time = array_combine(CONSULTAION_INDEX, $consultationTime->getConsultationTime());
+$consultation_time = $consultationTime->getConsultationTime();
 ?>
 <!-- header共通 -->
 <?php require_once('header.php'); ?>
 <main>
     <!-- aside共通 -->
     <?php require_once('aside.php'); ?>
-    <section id="hospitalGuide_doctor">
+    <section id="hospitalGuide-doctor">
         <h1>医師紹介</h1>
         <?php foreach ($doctors_Info as $doctor) : ?>
             <div class="flexbox docter-man">
@@ -102,4 +102,4 @@ $consultation_time = array_combine(CONSULTAION_INDEX, $consultationTime->getCons
     </section>
 </main>
 <!--fooder共通 -->
-<?php require_once('fooder.php'); ?>t
+<?php require_once('fooder.php'); ?>
