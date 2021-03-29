@@ -3,7 +3,7 @@
 <?=basename($_SERVER['PHP_SELF'], '.php') === 'index' ? '' : '<aside class="pc">'?>
 <section id="consultationHours" class="<?=basename($_SERVER['PHP_SELF'], '.php') === 'index' ? 'odd' : ''?>">
     <h1>診療時間</h1>
-    <div class="dltable">
+    <div class="dl-table">
         <dl>
             <dt class="active-time">
             </dt>
@@ -16,15 +16,16 @@
         <?php foreach ($consultation_time['timetable'] as $value) : ?>
             <dl>
                 <dd class="active-time">
-                    <span class="font-size"><?=h($value['name'])?></span><br><?=h(toTimetableTime($value['start_time']))?><br>~<br><?=h(toTimetableTime($value['end_time']))?>
+                    <span class="font-size"><?=h($value['name'])?></span><br><?=toTimetableTime(h($value['start_time']))?><br>~<br><?=toTimetableTime(h($value['end_time']))?>
                 </dd>
                 <?php foreach ($consultation_time['week'] as $key => $val) : ?>
                     <dd class="row1">
-                        <p class="<?=isset($consultation_time['consultation'][$value['id']][$key]['consultation_type']) ? h(getConsultationTimeMark($consultation_time['consultation'][$value['id']][$key]['consultation_type'])) : 'circle'?>"></p>
+                        <p class="<?=isset($consultation_time['consultation'][$value['id']][$key]['consultation_type']) ? getConsultationTimeMark($consultation_time['consultation'][$value['id']][$key]['consultation_type']) : 'circle'?>"></p>
                     </dd>
                 <?php endforeach; ?>
             </dl>
         <?php endforeach; ?>
+    </div>
 </section>
 <!-- 春日町診療所 -->
 <?php if (basename($_SERVER['PHP_SELF'], '.php') === 'index') : ?>
@@ -48,6 +49,11 @@
             <img src="./img/ebaQR.png" alt="QR">
         </div>
     </div>
+	<div class="contact-forme">
+	<form action="contact.php" method="post">
+		<input type="submit" value="お問い合わせフォームはこちら">
+	</form>
+	</div>
 </section>
 <!-- お知らせ -->
 <section id="<?=basename($_SERVER['PHP_SELF'], '.php') === 'index' ? 'info1' : 'info'?>" class="<?=basename($_SERVER['PHP_SELF'], '.php') === 'index' ? 'evn' : ''?>">

@@ -26,5 +26,5 @@ $directer_info = $doctorInfo->getDirecterInfo();
         <a href="#" title="TOPへ"><img src="img/top.png" class="top" style="display: inline;"></a>
     </div>
 </main>
-<!--fooder共通 -->
-<?php require_once('fooder.php'); ?>
+<!--footer 共通 -->
+<?php require_once('footer.php'); ?>

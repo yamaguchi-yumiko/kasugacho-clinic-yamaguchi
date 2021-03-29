@@ -1,5 +1,6 @@
 <?php
 require_once('admin/config.php');
+require_once('vendor/autoload.php');
 $consultationTime = new ConsultationTime();
 //診療時間を取得
 $consultation_time = $consultationTime->getConsultationTime();
@@ -19,6 +20,7 @@ $consultation_time = $consultationTime->getConsultationTime();
     <link rel="stylesheet" type="text/css" href="./css/access.css" media="all">
     <link rel="stylesheet" type="text/css" href="./css/doctorIntroduction.css" media="all">
     <link rel="stylesheet" type="text/css" href="./css/index.css" media="all">
+	<link rel="stylesheet" type="text/css" href="./css/contact.css" media="all">
     <!-- sp -->
     <link rel="stylesheet" type="text/css" href="./css/sp/default.css" media="all">
     <link rel="stylesheet" type="text/css" href="./css/sp/info.css" media="all">

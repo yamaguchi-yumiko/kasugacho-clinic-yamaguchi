@@ -7,7 +7,7 @@ $consultation_time = $consultationTime->getConsultationTime();
 ?>
 <!--header共通 -->
 <?php require_once('clinic_management_header.php'); ?>
-<main class="list-mai">
+<main class="list-main">
     <?php getPage(); ?>
     <table class="consultation-listbox">
         <tr>
@@ -22,7 +22,7 @@ $consultation_time = $consultationTime->getConsultationTime();
         <?php foreach ($consultation_time['timetable'] as $value) : ?>
             <tr>
                 <td>
-                    <?=h($value['name'])?><br><?=h(toTimetableTime($value['start_time']))?><br>〜<br><?=h(toTimetableTime($value['end_time']))?>
+                    <?=h($value['name'])?><br><?=toTimetableTime(h($value['start_time']))?><br>〜<br><?=toTimetableTime(h($value['end_time']))?>
                 </td>
                 <?php foreach ($consultation_time['week'] as $key => $val) : ?>
                     <td>

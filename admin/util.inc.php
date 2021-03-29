@@ -79,3 +79,66 @@ function getConsultationTimeMark($consultation_type)
 {
     return (isset($consultation_type) ? h(CONSULTATION_MARK[$consultation_type]) : 'circle');
 }
+
+//フォームを経ずに直接アクセスした場合は拒否する
+function deny_access(){
+	if (!isset($_POST['token'])) {
+		header('Location: contact.php');
+		exit;
+	}
+}
+
+//お問い合わせページのメール送信
+function getSendMail($POST){
+	try {
+		define('SMTP_HOST', 'smtp.gmail.com');
+		define('SMTP_PORT', 587);
+		define('SMTP_PROTOCOL', 'tls');
+		define('GMAIL_ADMIN', 'fabulous1109@gmail.com');
+		define('GMAIL_APPPASS', 'dprscpajwauuljra');
+
+		$SwiftSmtpTransport = new Swift_SmtpTransport(
+			SMTP_HOST,
+			SMTP_PORT,
+			SMTP_PROTOCOL
+		);
+
+		$SwiftSmtpTransport ->setUsername(GMAIL_ADMIN);
+		$SwiftSmtpTransport ->setPassword(GMAIL_APPPASS);
+		$mailer = new Swift_Mailer($SwiftSmtpTransport);
+
+		$message = new Swift_Message('お問い合わせありがとうございます。');
+		$messageBody = "■お問い合わせ完了メール■\n\nこの度は、お問い合わせありがとうございます。\n下記の内容でお問い合わせを受け付けました。\n\n【お名前】"
+			. $POST['name']
+			. "\n\n【フリガナ】"
+			. $POST['kana']
+			. "\n\n【都道府】"
+			. $POST['Prefectures']
+			. "\n\n【市区町村】"
+			. $POST['city']
+			. "\n\n【番地】"
+			. $POST['address']
+			. "\n\n【マンション名等】"
+			. $POST['building']
+			. "\n\n【年齢】"
+			. $POST['age']
+			. "\n\n【メールアドレス】"
+			. $POST['email']
+			. "\n\n【電話番号】"
+			. $POST['phone']
+			. "\n\n【お問い合わせ内容】\n"
+			. $POST['inquiry']
+			. "\n\n=============================\n春日町診療所\nTEL：03-3999-8810\nmail：info＠Kasugacho.com\n============================="
+		;
+		$message->setBody($messageBody);
+		$message->setFrom(['fabulous1109@gmail.com' => 'info＠Kasugacho.com']);
+		$message->setTo([$POST['email'] => $POST['email']]);
+		//メール送信
+		$mailer->send($message);
+		return '<p>お問い合わせありがとうございました。<br>送信が完了しました。<p>';
+	} catch (Exception $e) {
+		return '<p class="error">大変申し訳ございません。内部エラーが発生しました。<p>'
+			.'<p>お手数ですが、時間をおいて再度お試し頂くか、03-3999-8810まで</br>お電話をいただけますようお願い申し上げます。<p>'
+		;
+	}
+}

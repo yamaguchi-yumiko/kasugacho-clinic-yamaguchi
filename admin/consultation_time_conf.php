@@ -7,7 +7,7 @@ $consultation_time = $consultationTime->getConsultationTime();
 ?>
 <!--header共通 -->
 <?php require_once('clinic_management_header.php'); ?>
-<main class="list-mai">
+<main class="list-main">
     <?php getPage(); ?>
     <table class="consultation-edit-listbox">
         <tr>
@@ -37,7 +37,7 @@ $consultation_time = $consultationTime->getConsultationTime();
         <?php endforeach; ?>
     </table>
     <form action="consultation_time_done.php?type=edit" method="post">
-        <div class="submid-time">
+        <div class="submit-time">
             <?php foreach ($consultation_time['timetable'] as $key => $value) : ?>
                 <!--タイムテーブルの内容を受け渡し-->
                 <input type="hidden" name="timetable[<?=$key?>][name]" value="<?=h($_POST['timetable'][$key]['name'])?>">

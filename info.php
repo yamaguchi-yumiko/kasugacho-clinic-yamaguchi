@@ -70,5 +70,5 @@
     </div>
     <!--modal-->
 </main>
-<!--fooder共通 -->
-<?php require_once('fooder.php'); ?>
+<!--footer共通 -->
+<?php require_once('footer.php'); ?>

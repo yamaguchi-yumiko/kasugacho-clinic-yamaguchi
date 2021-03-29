@@ -20,6 +20,7 @@
     box-shadow: 0px 10px 15px #80808073;
     overflow: hidden;
   }
+
   h1 {
     background-color: #f39800;
     color: #fff;
@@ -108,25 +109,25 @@
     margin: 0 0 5px 0;
   }
 
-  .dltable {
+  .dl-table {
     border: 1px solid #cccccc;
     margin: 5px 5px 5px 5px;
   }
 
-  .dltable .row1,
-  .dltable .row2,
-  .dltable .row3,
-  .dltable .row4,
-  .dltable .row5,
-  .dltable .row6,
-  .dltable .row7,
-  .dltable dt:last-of-type,
-  .dltable dd:last-of-type {
+  .dl-table .row1,
+  .dl-table .row2,
+  .dl-table .row3,
+  .dl-table .row4,
+  .dl-table .row5,
+  .dl-table .row6,
+  .dl-table .row7,
+  .dl-table dt:last-of-type,
+  .dl-table dd:last-of-type {
     width: 30px;
   }
 
-  .dltable dt:last-of-type,
-  .dltable dd:last-of-type {
+  .dl-table dt:last-of-type,
+  .dl-table dd:last-of-type {
     width: 30%;
     border-right: none;
   }
@@ -145,23 +146,23 @@
   .active-time .font-size {
     font-size: 16px;
   }
-  .dltable dl {
+  .dl-table dl {
     display: flex;
     text-align: center;
     font-size: 20px;
     border-bottom: 1px solid #ccc;
   }
-  .dltable dl:last-child {
+  .dl-table dl:last-child {
     border-bottom: none;
   }
-  .dltable dl dt {
+  .dl-table dl dt {
     padding: 9px 1px;
     background: #46c9ba none repeat scroll 0 0;
     color: #fff;
     font-weight: bold;
     border-right: 1px solid #dee2e6;
   }
-  .dltable dl dd {
+  .dl-table dl dd {
     border-right: 1px solid #b2b5b8;
   }
 

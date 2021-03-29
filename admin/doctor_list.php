@@ -12,7 +12,7 @@ $doctors_info = $doctorInfo->getDoctorsInfo();
 ?>
 <!--header共通 -->
 <?php require_once('clinic_management_header.php'); ?>
-<main class="list-mai">
+<main class="list-main">
     <?php getPage(); ?>
     <form action="" method="post">
         <table class="listbox doctor">

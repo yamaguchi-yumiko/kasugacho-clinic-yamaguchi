@@ -1,4 +1,4 @@
-<!--fooder共通 -->
+<!--footer 共通 -->
 <footer>
     <p>春日町診療所</p>
     <div>

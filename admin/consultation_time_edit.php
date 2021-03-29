@@ -8,7 +8,7 @@ $consultation_time = $_POST + $consultation_time;
 ?>
 <!--header共通 -->
 <?php require_once('clinic_management_header.php'); ?>
-<main class="list-mai">
+<main class="list-main">
     <?php getPage(); ?>
     <form action="consultation_time_conf.php?type=edit" method="post">
         <table class="consultation-edit-listbox">
@@ -50,7 +50,7 @@ $consultation_time = $_POST + $consultation_time;
                 </tr>
             <?php endforeach; ?>
         </table>
-        <div class="submid-time">
+        <div class="submit-time">
             <p class="time-button">
                 <input type="submit" value="確認">
             </p>

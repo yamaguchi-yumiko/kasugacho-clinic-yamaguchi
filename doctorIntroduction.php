@@ -46,7 +46,7 @@ $consultation_time = $consultationTime->getConsultationTime();
                     </dt>
                     <?php foreach ($consultation_time['week'] as $week) : ?>
                         <dt class="row">
-                            <?=$value['name']?>
+                            <?=$week['name']?>
                         </dt>
                     <?php endforeach; ?>
                 </dl>
@@ -101,5 +101,5 @@ $consultation_time = $consultationTime->getConsultationTime();
         </div>
     </section>
 </main>
-<!--fooder共通 -->
-<?php require_once('fooder.php'); ?>
+<!--footer 共通 -->
+<?php require_once('footer.php'); ?>

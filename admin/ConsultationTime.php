@@ -22,10 +22,8 @@ class ConsultationTime extends Model
                 . ', timetable_id'
                 . ', consultation_type'
                 . ', remarks'
-            . ' FROM'
-                . ' consultation_time'
-            . ' WHERE'
-                . ' delete_flg = 0'
+            . ' FROM consultation_time'
+            . ' WHERE delete_flg = 0'
         ;
         $stm = $this->dbh->query($sql);
         $consultation = $stm->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_GROUP);
@@ -58,7 +56,8 @@ class ConsultationTime extends Model
                     . ', ?'
                 . ')'
                 . ' ON DUPLICATE KEY UPDATE'
-                    . ' week_id = VALUES('
+					. ' week_id ='
+					.' VALUES('
                     . 'week_id'
                 . ')'
                 . ', timetable_id ='
