@@ -11,56 +11,56 @@
         flex-wrap: wrap;
     }
 
-    #hospitalGuide_doctor .danraku{
+    #hospitalGuide-doctor .danraku{
         margin-bottom: 15px;
     }
 
-    #hospitalGuide_doctor h3{
+    #hospitalGuide-doctor h3{
         margin: 20px 0 15px 0;
     }
-    #hospitalGuide_doctor h3 + p{
+    #hospitalGuide-doctor h3 + p{
         margin-bottom: 15px;
     }
 
-    #hospitalGuide_doctor img{
+    #hospitalGuide-doctor img{
         height: 335px;
     }
 
-    #hospitalGuide_doctor ul{
+    #hospitalGuide-doctor ul{
         padding-left: 20px;
     }
 
-    #hospitalGuide_doctor ul li{
+    #hospitalGuide-doctor ul li{
         list-style: unset;
     }
 
-    #hospitalGuide_doctor .explain h2 span{
+    #hospitalGuide-doctor .explain h2 span{
         font-size: 16px;
     }
 
-    #hospitalGuide_doctor .explain {
+    #hospitalGuide-doctor .explain {
         margin-left: 3%;
     }
 
-    #hospitalGuide_doctor .explain-box{
+    #hospitalGuide-doctor .explain-box{
         margin-left: 2.5vw;
     }
 
-    #hospitalGuide_doctor .one-thing {
+    #hospitalGuide-doctor .one-thing {
         margin-bottom: 15px;
     }
 
 
     /* 蛹ｻ蟶ｫ邏ｹ莉句句挨 */
-    #hospitalGuide_doctor .docter-woman{
+    #hospitalGuide-doctor .docter-woman{
         margin: 60px 20px 20px 20px;
     }
 
-    #hospitalGuide_doctor .docter-man{
+    #hospitalGuide-doctor .docter-man{
         margin:  30px 20px 20px 20px;
     }
 
-    #hospitalGuide_doctor .docter-woman .one-thing {
+    #hospitalGuide-doctor .docter-woman .one-thing {
         margin-top: 60px;
     }
 

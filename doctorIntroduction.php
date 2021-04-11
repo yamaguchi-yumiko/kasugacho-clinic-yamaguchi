@@ -5,19 +5,15 @@ $doctorInfo = new DoctorInfo();
 $doctors_Info = $doctorInfo->getDoctorsInfo();
 
 $consultationTime = new ConsultationTime();
-//タイムテーブルの時間を取得
-$timetable = $consultationTime->getTimeTable();
 //診療時間を取得
 $consultation_time = $consultationTime->getConsultationTime();
-//曜日を取得
-$m_week = $consultationTime->getWeek();
 ?>
 <!-- header共通 -->
 <?php require_once('header.php'); ?>
 <main>
     <!-- aside共通 -->
     <?php require_once('aside.php'); ?>
-    <section id="hospitalGuide_doctor">
+    <section id="hospitalGuide-doctor">
         <h1>医師紹介</h1>
         <?php foreach ($doctors_Info as $doctor) : ?>
             <div class="flexbox docter-man">
@@ -48,9 +44,9 @@ $m_week = $consultationTime->getWeek();
                 <dl>
                     <dt class="row">
                     </dt>
-                    <?php foreach ($m_week as $week) : ?>
+                    <?php foreach ($consultation_time['week'] as $week) : ?>
                         <dt class="row">
-                            <?=$value['name'] ?>
+                            <?=$week['name']?>
                         </dt>
                     <?php endforeach; ?>
                 </dl>
@@ -105,5 +101,5 @@ $m_week = $consultationTime->getWeek();
         </div>
     </section>
 </main>
-<!--fooder共通 -->
-<?php require_once('fooder.php'); ?>t
+<!--footer 共通 -->
+<?php require_once('footer.php'); ?>

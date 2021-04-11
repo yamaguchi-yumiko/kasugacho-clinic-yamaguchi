@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+@media screen and (min-width: 768px) {
+  .contact-forme {
+    margin: 15px 20px 20px 20px;
+    text-align: center;
+  }
+
+  .contact-forme input {
+    background: #cccccc;
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 2px 2px 4px grey;
+  }
+
+  #contact .contact {
+    margin: 20px 20px 40px 20px;
+  }
+
+  #contact h2 {
+    margin: 0 0 30px 10px;
+  }
+
+  #contact th {
+    width: 200px;
+    height: 90px;
+    text-align: right;
+  }
+
+  #contact td {
+    width: 300px;
+    padding-left: 40px;
+    font-weight: 2;
+  }
+
+  #contact td p {
+    margin-top: 3px;
+  }
+
+  #contact select {
+    width: 200px;
+    height: 30px;
+    margin-left: 5px;
+  }
+
+  #contact .submit-button {
+    text-align: center;
+  }
+
+  #contact input {
+    width: 350px;
+    height: 30px;
+  }
+
+  #contact textarea {
+    margin-top: 5px;
+  }
+
+  #contact .submit-button input {
+    width: 300px;
+    height: 50px;
+    background: #d91139;
+    color: #fff;
+    border-radius: 3px;
+    border: 1px solid #fff;
+    font-size: 15px;
+  }
+
+  #contact .submit-button-return input {
+    width: 100px;
+    height: 50px;
+    background: #666;
+    color: #fff;
+    border-radius: 3px;
+    border: 1px solid #fff;
+    font-size: 15px;
+  }
+}
+
+#contact span {
+  color: #d91139;
+}
+
+#contact .contact-conf {
+  display: flex;
+  text-align: center;
+  margin: 0 0 30px 130px;
+}
+
+#contact .submit-button-conf input {
+  width: 300px;
+  height: 50px;
+  background: #f39800;
+  color: #fff;
+  border-radius: 3px;
+  border: 1px solid #fff;
+  font-size: 15px;
+}
+
+table {
+  margin-bottom: 50px;
+}
+
+.contact-message {
+  margin: 50px 0 0 20px;
+}
+
+.contact-message p:nth-child(1) {
+  margin-bottom: 20px;
+}
+
+.conf-table th,
+.conf-table td {
+  vertical-align: top;
+}
+
+.top-return a {
+  color: rgb(4, 84, 203);
+  text-decoration: underline;
+}
+
+.error {
+  color: #d91139;
+}

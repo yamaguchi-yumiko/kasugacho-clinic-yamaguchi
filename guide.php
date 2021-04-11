@@ -17,10 +17,10 @@
                     <span class="new-line">地域の患者さんの健やかな毎日を支えていくため、生活習慣病をはじめとする病気の予防にも注力していく所存ですので、安心して気軽にご相談・受診していただければ幸いです。</span>
                 </p>
                 <p>
-                    院長　今村　宗嗣
+                    院長&nbsp;今村&nbsp;宗嗣
                 </p>
             </div>
-            <div class="flexbox1">
+            <div class="flexbox-second">
                 <div class="parking">
                     <h2>駐車場</h2>
                     <img src="./img/parking.png" alt="駐車場">
@@ -39,5 +39,5 @@
         </div>
     </section>
 </main>
-<!--fooder共通 -->
-<?php require_once('fooder.php'); ?>
+<!--footer 共通 -->
+<?php require_once('footer.php'); ?>

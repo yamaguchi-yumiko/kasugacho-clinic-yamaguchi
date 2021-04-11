@@ -4,9 +4,9 @@ auth_confirm();
 ?>
 <!--header共通 -->
 <?php require_once('clinic_management_header.php'); ?>
-<main class="add_main">
+<main class="add-main">
     <?php getPage(); ?>
-    <table class="add_table">
+    <table class="add-table">
         <tr>
             <th>
                 医師名
@@ -92,7 +92,7 @@ auth_confirm();
         <input type="hidden" name="comment" value="<?=h($_POST['comment'])?>">
         <input type="hidden" name="directer_flg" value="<?=h($_POST['directer_flg'])?>">
         <input type="hidden" name="directer_comment" value="<?=h($_POST['directer_comment'])?>">
-        <div class="submit_container">
+        <div class="submit-container">
             <p class="submit">
                 <input type="submit" value="戻る" formaction="doctor_edit.php?type=<?=($_GET['type'])?><?=$_GET['type'] === 'edit' ? '&id=' . $_GET['id'] : ''?>">
             </p>

@@ -2,41 +2,32 @@
 require_once('config.php');
 auth_confirm();
 $consultationTime = new ConsultationTime();
-//曜日を取得
-$m_week = $consultationTime->getWeek();
 //診療時間を取得
 $consultation_time = $consultationTime->getConsultationTime();
-//タイムテーブルの時間を取得
-$timetable = $consultationTime->getTimeTable();
-//タイムテーブルのidの数分、多次元配列に変更
-foreach ($timetable as $value) {
-    $week_array[$value['id']] = $m_week;
-}
-$consultation_time = $consultation_time + $week_array;
 ?>
 <!--header共通 -->
 <?php require_once('clinic_management_header.php'); ?>
-<main class="list_main">
+<main class="list-main">
     <?php getPage(); ?>
     <table class="consultation-listbox">
         <tr>
             <th>
             </th>
-            <?php foreach ($m_week as $week) : ?>
+            <?php foreach ($consultation_time['week'] as $week) : ?>
                 <th>
                     <?=$week['name']?>
                 </th>
             <?php endforeach ?>
         </tr>
-        <?php foreach ($timetable as $value) : ?>
+        <?php foreach ($consultation_time['timetable'] as $value) : ?>
             <tr>
                 <td>
-                    <?=$value['name']?><br><?=toTimetableTime($value['start_time'])?><br>〜<br><?=toTimetableTime($value['end_time'])?>
+                    <?=h($value['name'])?><br><?=toTimetableTime(h($value['start_time']))?><br>〜<br><?=toTimetableTime(h($value['end_time']))?>
                 </td>
-                <?php foreach ($consultation_time[$value['id']] as $val) : ?>
+                <?php foreach ($consultation_time['week'] as $key => $val) : ?>
                     <td>
-                        <p class="<?=isset($val['consultation_type']) ? ($val['consultation_type'] == 1 ? 'circle' : ($val['consultation_type'] == 2 ? 'triangl' : ($val['consultation_type'] == 99 ? 'cross' : ''))) : 'circle'?>"></p>
-                        <p class="remarks_indicate"><?=isset($val['consultation_type']) ? $val['remarks'] : ''?></p>
+                        <p class="<?=getConsultationTimeMark($consultation_time['consultation'][$value['id']][$key]['consultation_type'])?>"></p>
+                        <p class="remarks-indicate"><?=isset($consultation_time['consultation'][$value['id']][$key]['remarks']) ? h($consultation_time['consultation'][$value['id']][$key]['remarks']) : ''?></p>
                     </td>
                 <?php endforeach; ?>
             </tr>

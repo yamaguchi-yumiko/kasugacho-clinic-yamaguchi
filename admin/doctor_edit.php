@@ -14,10 +14,10 @@ $doctor_info = $_POST + $doctor_info;
 ?>
 <!--header共通 -->
 <?php require_once('clinic_management_header.php'); ?>
-<main class="add_main">
+<main class="add-main">
     <?php getPage(); ?>
     <form action="doctor_conf.php?type=<?=($_GET['type'])?><?=$_GET['type'] === 'edit' ? '&id=' . $_GET['id'] : ''?>" method="post">
-        <table class="add_table">
+        <table class="add-table">
             <tr>
                 <th>
                     医師名
@@ -94,7 +94,7 @@ $doctor_info = $_POST + $doctor_info;
                 </td>
             </tr>
         </table>
-        <div class="submit_conteaner">
+        <div class="submit-conteaner">
             <p class="submit">
                 <input type="submit" value="確認する">
             </p>

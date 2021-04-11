@@ -12,7 +12,7 @@ $doctors_info = $doctorInfo->getDoctorsInfo();
 ?>
 <!--header共通 -->
 <?php require_once('clinic_management_header.php'); ?>
-<main class="list_main">
+<main class="list-main">
     <?php getPage(); ?>
     <form action="" method="post">
         <table class="listbox doctor">
@@ -33,7 +33,7 @@ $doctors_info = $doctorInfo->getDoctorsInfo();
                     更新日時<p class="sort"><a href="?sort=update_asc">&#9650</a><a href="?sort=update_desc">&#9660</a></p>
                 </th>
                 <th>
-                    <input type="submit" value="新規登録" name="add" formaction="doctor_edit.php?type=add" class="add_button">
+                    <input type="submit" value="新規登録" name="add" formaction="doctor_edit.php?type=add" class=.add-button">
                 </th>
             </tr>
             <?php foreach ($doctors_info as $doctor) : ?>

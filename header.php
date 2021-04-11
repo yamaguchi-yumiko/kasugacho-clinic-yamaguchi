@@ -1,16 +1,9 @@
 <?php
 require_once('admin/config.php');
+require_once('vendor/autoload.php');
 $consultationTime = new ConsultationTime();
 //診療時間を取得
 $consultation_time = $consultationTime->getConsultationTime();
-//曜日を取得
-$m_week = $consultationTime->getWeek();
-//タイムテーブルの時間を取得
-$timetable = $consultationTime->getTimeTable();
-foreach ($timetable as $value) {
-    $week_array[$value['id']] = $m_week;
-}
-$consultation_time = $consultation_time + $week_array;
 ?>
 <!DOCTYPE HTML>
 <html lang="ja">
@@ -27,6 +20,7 @@ $consultation_time = $consultation_time + $week_array;
     <link rel="stylesheet" type="text/css" href="./css/access.css" media="all">
     <link rel="stylesheet" type="text/css" href="./css/doctorIntroduction.css" media="all">
     <link rel="stylesheet" type="text/css" href="./css/index.css" media="all">
+	<link rel="stylesheet" type="text/css" href="./css/contact.css" media="all">
     <!-- sp -->
     <link rel="stylesheet" type="text/css" href="./css/sp/default.css" media="all">
     <link rel="stylesheet" type="text/css" href="./css/sp/info.css" media="all">
@@ -76,7 +70,7 @@ $consultation_time = $consultation_time + $week_array;
                     <a href="index.php">TOP</a>
                 </li>
                 <li>
-                    <a href="guide.php"> 病院案内</a>
+                    <a href="guide.php">病院案内</a>
                 </li>
                 <li>
                     <a href="doctorIntroduction.php?sort=directer_desc">医師紹介</a>

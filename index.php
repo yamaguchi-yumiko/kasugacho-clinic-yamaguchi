@@ -1,6 +1,6 @@
 <!-- header共通 -->
-<?php require_once('header.php'); ?>
 <?php
+require_once('header.php');
 $doctorInfo = new DoctorInfo();
 //院長情報を取得
 $directer_info = $doctorInfo->getDirecterInfo();
@@ -11,7 +11,7 @@ $directer_info = $doctorInfo->getDirecterInfo();
     <!-- 挨拶 -->
     <section id="greeting" class="odd last">
         <h1>ご挨拶</h1>
-        <div class="sp-waku flexbox1">
+        <div class="sp-waku flexbox-second">
             <img src="./img/<?=h($directer_info['img'])?>" alt="医者">
             <div class="docter-explain">
                 <h2><?=h($directer_info['name'])?><span class="rs-1000"><?=h($directer_info['roman_name'])?></span></h2>
@@ -26,5 +26,5 @@ $directer_info = $doctorInfo->getDirecterInfo();
         <a href="#" title="TOPへ"><img src="img/top.png" class="top" style="display: inline;"></a>
     </div>
 </main>
-<!--fooder共通 -->
-<?php require_once('fooder.php'); ?>
+<!--footer 共通 -->
+<?php require_once('footer.php'); ?>

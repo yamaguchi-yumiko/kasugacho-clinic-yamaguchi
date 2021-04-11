@@ -41,7 +41,7 @@ body {
 }
 
 .navlist ul,
-.list_nav ul {
+.list-nav ul {
   background: #fff;
   display: flex;
 }
@@ -53,23 +53,23 @@ body {
   background-color: #000;
 }
 
-.list_nav li {
+.list-nav li {
   width: 150px;
   padding: 5px 0 5px 0;
   margin-right: 5px;
   background-color: #666;
 }
 
-.list_nav li:nth-of-type(1n + 2) {
+.list-nav li:nth-of-type(1n + 2) {
   background-color: #cccccc;
 }
 
-.list_nav {
+.list-nav {
   margin-bottom: 30px;
 }
 
 .navlist li a,
-.list_nav li a {
+.list-nav li a {
   font-size: 18px;
   color: #ffff;
   display: block;
@@ -93,11 +93,11 @@ body {
   padding-right: 5px;
 }
 
-.submit_container {
+.submit-container {
   display: flex;
 }
 
-.submit_container p:nth-of-type(1n + 2) {
+.submit-container p:nth-of-type(1n + 2) {
   margin-left: 40px;
 }
 
@@ -170,14 +170,14 @@ body {
  医師管理画面
 -------------------------*/
 
-.list_conteaner {
+.list-conteaner {
   background: #f39800;
   max-width: 1300px;
   margin: auto;
   text-align: center;
 }
 
-.list_main {
+.list-main {
   background: #fff;
   padding: 60px 0 30px 0;
 }
@@ -220,7 +220,7 @@ body {
 }
 
 .button,
-.add_button {
+.add-button {
   width: 60px;
   height: 30px;
   display: inline-block;
@@ -232,7 +232,7 @@ body {
   border-radius: 8px;
 }
 
-.add_button {
+.add-button {
   width: 80px;
 }
 
@@ -240,44 +240,44 @@ body {
  医師管理登録/編集
 -------------------------*/
 
-.add_conteaner {
+.add-conteaner {
   background: #f39800;
   max-width: 1300px;
   margin: auto;
   text-align: center;
 }
 
-.add_main {
+.add-main {
   height: 1000px;
   background: #fff;
   padding-top: 60px;
 }
 
-.add_main form p {
+.add-main form p {
   text-align: left;
   margin-left: 150px;
 }
 
-.add_table {
+.add-table {
   width: 1000px;
   border-collapse: collapse;
   margin: 30px auto 0 auto;
 }
 
-.add_table th {
+.add-table th {
   width: 210px;
 }
 
-.add_table textarea {
+.add-table textarea {
   margin-top: 5px;
 }
 
-.add_table tr,
-.add_table th {
+.add-table tr,
+.add-table th {
   border: 1px solid #1c1c1c;
 }
 
-.add_table td {
+.add-table td {
   text-align: left;
 }
 
@@ -308,7 +308,7 @@ body {
 /*-------------------------
  医師管理完了
 -------------------------*/
-.done_main {
+.done-main {
   height: 650px;
   background: #fff;
   padding-top: 60px;
@@ -361,7 +361,7 @@ body {
   margin-left: 25px;
 }
 
-.triangl {
+.triangle {
   width: 0;
   height: 0;
   border-left: 11px solid transparent;
@@ -393,7 +393,7 @@ body {
   background: red;
 }
 
-.remarks_indicate {
+.remarks-indicate {
   position: absolute;
   top: 90px;
   left: 4px;
@@ -493,12 +493,12 @@ body {
   border-radius: 8px;
 }
 
-.submid_time {
+.submit-time {
   display: flex;
   justify-content: center;
 }
 
-.submid_time p:nth-of-type(1n + 2) {
+.submit-time p:nth-of-type(1n + 2) {
   margin-left: 30px;
 }
 

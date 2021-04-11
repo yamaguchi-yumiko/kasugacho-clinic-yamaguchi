@@ -21,7 +21,7 @@ if (isset($_POST['done'])) {
 ?>
 <!--header共通 -->
 <?php require_once('clinic_management_header.php'); ?>
-<main class="done_main">
+<main class="done-main">
     <?php getPage(); ?>
     <!-- 完了画面の文言を取得 -->
     <?php getDoneSentence(); ?>
